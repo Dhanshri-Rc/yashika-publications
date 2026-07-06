@@ -115,7 +115,7 @@ const About = () => {
       >
         {/* <div className="absolute inset-0 bg-gradient-to-r from-[#001f4f] via-[#002c68]/90 to-transparent" /> */}
 
-        <div className="relative z-10 mx-auto flex min-h-[490px] max-w-[1400px] items-center px-8  py-10 sm:min-h-[490px] sm:px-8 lg:min-h-[500px] lg:px-14 xl:px-16">
+        <div className="relative z-10 mx-auto flex min-h-[390px] max-w-[1400px] items-center px-8  py-10 sm:px-8 lg:px-14 xl:px-16">
           <motion.div5
             initial="hidden"
             animate="show"
