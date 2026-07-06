@@ -1,414 +1,670 @@
+import React from "react";
 import { motion } from "framer-motion";
 import {
   FaBookOpen,
-  FaGlobeAmericas,
-  FaUserGraduate,
-  FaQuoteRight,
-  FaFlask,
-  FaLaptopCode,
+  FaUsers,
   FaChartLine,
-  FaHeartbeat,
-  FaLeaf,
-  FaBalanceScale,
-  FaFileUpload,
+  FaGlobeAsia,
+  FaBolt,
+  FaGlobe,
+  FaHandshake,
+  FaPenNib,
+  FaLock,
+  FaUserCheck,
+  FaComments,
   FaSearch,
-  FaCheckCircle,
+  FaEdit,
+  FaBrain,
+  FaDesktop,
+  FaCloud,
+  FaMicrochip,
+  FaShieldAlt,
+  FaFileAlt,
+  FaArrowRight,
   FaAward,
+  FaHeadset,
+  FaPaperPlane,
+  FaRegFileAlt,
+  FaCalendarAlt,
+  FaGraduationCap,
+  FaBullseye,
 } from "react-icons/fa";
-import Button from "../components/Button";
-import SectionTitle from "../components/SectionTitle";
-import PageTransition from "../components/PageTransition";
+
+import heroImg from "../assets/homebg.png";
+import aboutImg from "../assets/about.png";
+import { BadgeCheck, BrainCircuit, ChartNoAxesCombined, CloudCog, FilePenLine, LockKeyhole, Monitor, Network, PencilLine, ShieldCheck, UsersRound } from "lucide-react";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 35 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+};
+
+
+const heroFeatures = [
+  {
+    icon: <FaAward />,
+    title: "Global Standards",
+    text: "Riveting Elsevier & Springer",
+  },
+  {
+    icon: <FaShieldAlt />,
+    title: "Rigorous Peer",
+    text: "Review Process",
+  },
+  {
+    icon: <FaGlobe />,
+    title: "High Impact",
+    text: "& Visibility",
+  },
+  // {
+  //   icon: <FaHeadset />,
+  //   title: "Continuous",
+  //   text: "Support",
+  // },
+];
+
 
 const stats = [
-  { icon: <FaBookOpen />, value: "150+", label: "Published Journals" },
-  { icon: <FaUserGraduate />, value: "25,000+", label: "Global Authors" },
-  { icon: <FaGlobeAmericas />, value: "80+", label: "Countries Reached" },
-  { icon: <FaAward />, value: "1.2M+", label: "Citations" },
+  {
+    icon: <FaBookOpen />,
+    value: "5",
+    title: "New Journals",
+    desc: "In Emerging Tech",
+    color: "#0b8de3",
+  },
+  {
+    icon: <FaUsers />,
+    value: "200+",
+    title: "Editorial Board",
+    desc: "International Experts",
+    color: "#ff6b00",
+  },
+  {
+    icon: <FaRegFileAlt />,
+    value: "0%",
+    title: "Author Charges",
+    desc: "For Quality Publications",
+    color: "#1677d2",
+  },
+  {
+    icon: <FaGlobe />,
+    value: "Global Readership",
+    title: "",
+    desc: "Across 100+ Countries",
+    color: "#37b34a",
+  },
+  {
+    icon: <FaChartLine />,
+    value: "High Impact Visibility",
+    title: "",
+    desc: "Riveting Elsevier & Springer",
+    color: "#ff6b00",
+  },
+  {
+    icon: <FaBolt />,
+    value: "Fast & Efficient Publication",
+    title: "",
+    desc: "Timely & Transparent",
+    color: "#8e5cf7",
+  },
+];
+const aboutFeatures = [
+  {
+    icon: <FaCalendarAlt />,
+    title: "12+",
+    desc: "Years of Excellence",
+  },
+  {
+    icon: <FaGraduationCap />,
+    title: "Specialized in",
+    desc: "AI, IT & Education Industries",
+  },
+  {
+    icon: <FaUsers />,
+    title: "Global Network",
+    desc: "Authors, Editors & Reviewers",
+  },
+  {
+    icon: <FaAward />,
+    title: "Commitment to",
+    desc: "Quality, Integrity & Open Access",
+  },
+];
+const services = [
+  {
+    title: "Journal Publishing",
+    desc: "High-quality, peer-reviewed journals in cutting-edge fields.",
+    icon: <PencilLine size={34} strokeWidth={2.2} />,
+    color: "#0874c9",
+  },
+  {
+    title: "Open Access Publishing",
+    desc: "Wider visibility and greater impact through open access.",
+    icon: <LockKeyhole size={34} strokeWidth={2.2} />,
+    color: "#ff6b12",
+  },
+  {
+    title: "Author Support",
+    desc: "End-to-end support for authors from submission to publication.",
+    icon: <UsersRound size={34} strokeWidth={2.2} />,
+    color: "#34ae5f",
+  },
+  {
+    title: "Peer Review Management",
+    desc: "Rigorous and transparent peer review by domain experts.",
+    icon: <BadgeCheck size={34} strokeWidth={2.2} />,
+    color: "#7c45c8",
+  },
+  {
+    title: "Indexing & Visibility",
+    desc: "Ensuring global indexing, high visibility and maximum impact.",
+    icon: <ChartNoAxesCombined size={34} strokeWidth={2.2} />,
+    color: "#08a5ad",
+  },
+  {
+    title: "Editing & Production",
+    desc: "Professional editing, formatting and production for quality publications.",
+    icon: <FilePenLine size={34} strokeWidth={2.2} />,
+    color: "#0874c9",
+  },
 ];
 
 const journals = [
   {
-    icon: <FaFlask />,
-    title: "Applied Sciences & Engineering",
-    desc: "Peer-reviewed research covering emerging technologies, materials science and engineering innovation.",
+    title: "Journal of Artificial Intelligence Education (JAIE)",
+    desc: "Exploring AI techniques, learning paradigms, and intelligent systems in education.",
+    icon: <BrainCircuit size={50} strokeWidth={1.7} />,
+    color: "from-[#0085d9] to-[#0068b8]",
   },
   {
-    icon: <FaLaptopCode />,
-    title: "Computer Science & IT",
-    desc: "Cutting-edge studies in AI, data science, cybersecurity and software engineering.",
+    title: "Journal of Computer Science Education (JCSE)",
+    desc: "Advancing computer science education through research, innovation and practice.",
+    icon: <Monitor size={50} strokeWidth={1.7} />,
+    color: "from-[#18a860] to-[#07884f]",
   },
   {
-    icon: <FaHeartbeat />,
-    title: "Medical & Health Sciences",
-    desc: "Clinical research, public health studies and advances in medical practice.",
+    title: "Journal of Information Technology & Learning (JITL)",
+    desc: "Focuses on IT innovations, e-learning, and digital transformation in education.",
+    icon: <CloudCog size={50} strokeWidth={1.7} />,
+    color: "from-[#7a45d6] to-[#6030b7]",
   },
   {
-    icon: <FaChartLine />,
-    title: "Management & Economics",
-    desc: "Business strategy, finance, economics and organizational research.",
+    title: "Journal of Data Science & AI Applications (JDSAA)",
+    desc: "Bridging data science, machine learning, and real-world applications in education.",
+    icon: <Network size={50} strokeWidth={1.7} />,
+    color: "from-[#0085d9] to-[#0068b8]",
   },
   {
-    icon: <FaLeaf />,
-    title: "Environmental Sciences",
-    desc: "Sustainability, climate research and environmental policy studies.",
-  },
-  {
-    icon: <FaBalanceScale />,
-    title: "Social Sciences & Humanities",
-    desc: "Research spanning law, education, psychology and cultural studies.",
+    title: "Journal of Cyber Security Education & Research (JCSER)",
+    desc: "Promoting cybersecurity awareness, education strategies, and secure digital environments.",
+    icon: <ShieldCheck size={50} strokeWidth={1.7} />,
+    color: "from-[#08aab0] to-[#078b96]",
   },
 ];
 
-const process = [
-  {
-    icon: <FaFileUpload />,
-    step: "01",
-    title: "Submit Manuscript",
-    desc: "Authors submit their original research through our online submission portal.",
-  },
-  {
-    icon: <FaSearch />,
-    step: "02",
-    title: "Peer Review",
-    desc: "Manuscripts undergo rigorous double-blind peer review by subject experts.",
-  },
-  {
-    icon: <FaCheckCircle />,
-    step: "03",
-    title: "Editorial Decision",
-    desc: "Editors make an informed decision based on reviewer feedback and quality.",
-  },
-  {
-    icon: <FaBookOpen />,
-    step: "04",
-    title: "Publication",
-    desc: "Accepted papers are formatted, indexed and published with a DOI.",
-  },
-];
-
-const features = [
-  {
-    title: "Rigorous Peer Review",
-    desc: "Every submission is evaluated by qualified experts to ensure academic integrity.",
-  },
-  {
-    title: "Fast Turnaround",
-    desc: "Efficient editorial workflow ensures quick review and publication timelines.",
-  },
-  {
-    title: "Global Indexing",
-    desc: "Journals indexed across major international databases for maximum visibility.",
-  },
-  {
-    title: "Open Access",
-    desc: "Free and unrestricted access to published research for readers worldwide.",
-  },
-];
-
-const testimonials = [
-  {
-    quote:
-      "The review process was transparent and constructive. My paper reached a global audience within weeks of acceptance.",
-    name: "Dr. Ananya Sharma",
-    role: "Professor, Delhi University",
-  },
-  {
-    quote:
-      "Excellent editorial support and a smooth submission process. Highly recommended for young researchers.",
-    name: "Dr. Michael Chen",
-    role: "Research Fellow, NUS Singapore",
-  },
-  {
-    quote:
-      "Fast, professional and reliable. Yashika Publications helped my work gain the recognition it deserved.",
-    name: "Dr. Fatima Noor",
-    role: "Associate Professor, Cairo University",
-  },
-];
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.1, duration: 0.6, ease: "easeOut" },
-  }),
-};
-
-const Home = () => {
+function Home() {
   return (
-    <PageTransition>
+    <div className="w-full overflow-hidden bg-white text-[#09224a]">
       {/* HERO */}
-      <section className="relative overflow-hidden bg-navy-900">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(15,181,186,0.25),transparent_50%)]" />
-        <div className="container-x relative section-py flex flex-col items-center gap-10 text-center">
-          <motion.span
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            className="rounded-full bg-teal-500/10 px-4 py-1.5 text-xs md:text-sm font-semibold tracking-wide text-teal-300"
-          >
-            International Peer-Reviewed Journals
-          </motion.span>
+     <section className="relative overflow-hidden bg-[#061f45]">
+      <div
+        className="relative min-h-[480px] bg-cover bg-center bg-no-repeat sm:min-h-[490px] lg:min-h-[500px]"
+        style={{ backgroundImage: `url(${heroImg})` }}
+      >
+        
 
-          <motion.h1
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            custom={1}
-            className="max-w-4xl font-heading text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl"
-          >
-            Empowering Global{" "}
-            <span className="text-teal-400">Research Excellence</span>
-          </motion.h1>
-
-          <motion.p
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            custom={2}
-            className="max-w-2xl text-sm leading-relaxed text-navy-100/80 md:text-base"
-          >
-            Yashika Publications is a trusted platform for researchers, academics
-            and students to publish high-quality, peer-reviewed work across
-            multiple disciplines and reach a global scholarly community.
-          </motion.p>
-
+        <div className="relative z-10 mx-auto flex min-h-[490px] max-w-[1400px] items-center px-5 py-10 sm:min-h-[490px] sm:px-8 lg:min-h-[500px] lg:px-14 xl:px-16">
           <motion.div
+            variants={fadeUp}
             initial="hidden"
             animate="visible"
-            variants={fadeUp}
-            custom={3}
-            className="flex flex-col gap-4 sm:flex-row"
+            className="w-full max-w-[640px]"
           >
-            <Button to="/contact" variant="primary">
-              Submit Manuscript
-            </Button>
-            <Button to="/journals" variant="secondary">
-              Explore Journals
-            </Button>
-          </motion.div>
-        </div>
+            <motion.p
+              whileHover={{ x: 5 }}
+              className="mb-4 text-[18px] font-semibold leading-[1.35] text-[#ff8a00] sm:text-[20px] lg:text-[22px]"
+            >
+              Advancing Knowledge.
+              <br />
+              Empowering Innovation.
+            </motion.p>
 
-        {/* Stats bar */}
-        <div className="relative border-t border-white/10 bg-navy-950/60 backdrop-blur">
-          <div className="container-x grid grid-cols-2 gap-8 py-10 md:grid-cols-4">
-            {stats.map((s, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="flex flex-col items-center text-center"
-              >
-                <div className="mb-2 text-2xl text-teal-400">{s.icon}</div>
-                <p className="font-heading text-xl font-bold text-white md:text-2xl">
-                  {s.value}
-                </p>
-                <p className="text-xs text-navy-200/70 md:text-sm">{s.label}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+            <h1 className="max-w-[620px] text-[34px] font-[600] leading-[1.12] tracking-[-0.8px] text-white sm:text-[36px] md:text-[38px] lg:text-[40px]">
+              India’s Leading Publisher in Computer, IT & AI Education
+            </h1>
 
-      {/* OUR JOURNALS */}
-      <section className="section-py bg-white">
-        <div className="container-x">
-          <SectionTitle
-            tag="OUR JOURNALS"
-            title="Explore Our Diverse Range of Journals"
-            subtitle="We publish research across a broad spectrum of academic disciplines, connecting scholars with a worldwide readership."
-          />
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {journals.map((j, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="card group p-7"
-              >
-                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-teal-50 text-2xl text-teal-500 transition-transform duration-300 group-hover:scale-110">
-                  {j.icon}
-                </div>
-                <h3 className="mb-2 font-heading text-lg font-semibold text-navy-900">
-                  {j.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-navy-500">{j.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* WHY CHOOSE US */}
-      <section className="section-py bg-navy-50">
-        <div className="container-x grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="section-tag">WHY CHOOSE US</span>
-            <h2 className="mt-3 font-heading text-2xl font-bold text-navy-900 sm:text-3xl md:text-4xl">
-              Trusted Partner for Academic Publishing
-            </h2>
-            <p className="mt-4 text-sm leading-relaxed text-navy-500 md:text-base">
-              We are committed to advancing scholarly communication through
-              ethical publishing practices, rigorous review standards and
-              exceptional author support at every step.
+            <p className="mt-4 max-w-[470px] text-[14px] font-medium leading-[1.8] text-white/85 sm:text-[14px] lg:text-[15px]">
+              Yashika Publications is committed to publishing high-quality,
+              impactful research that drives innovation and shapes the future of
+              technology and education.
             </p>
 
-            <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
-              {features.map((f, i) => (
+            <div className="mt-6 grid max-w-[650px] grid-cols-2 gap-2 sm:grid-cols-4">
+              {heroFeatures.map((item, index) => (
                 <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="flex items-start gap-3"
+                  key={index}
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15 * index, duration: 0.5 }}
+                  whileHover={{ y: -6, scale: 1.03 }}
+                  className="group flex items-center gap-2 border-r border-white/25 pr-3 last:border-r-0"
                 >
-                  <FaCheckCircle className="mt-1 shrink-0 text-teal-500" />
+                  <div className="text-[30px] text-[#4aa2ea] transition duration-300 group-hover:scale-110 group-hover:text-[#18b9ff]">
+                    {item.icon}
+                  </div>
                   <div>
-                    <h4 className="font-semibold text-navy-900">{f.title}</h4>
-                    <p className="mt-1 text-sm text-navy-500">{f.desc}</p>
+                    <h4 className="text-[10px] font-medium leading-tight text-white sm:text-[11px]">
+                      {item.title}
+                    </h4>
+                    <p className="text-[9px] font-medium leading-tight text-white/75 sm:text-[10px]">
+                      {item.text}
+                    </p>
                   </div>
                 </motion.div>
               ))}
             </div>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-            className="relative"
-          >
-            <div className="rounded-2xl bg-navy-900 p-10 text-white shadow-card-hover">
-              <FaQuoteRight className="mb-4 text-3xl text-teal-400" />
-              <p className="text-lg leading-relaxed text-navy-100/90">
-                "Our mission is to make quality research accessible to
-                everyone, everywhere - bridging the gap between groundbreaking
-                ideas and the global academic community."
-              </p>
-              <div className="mt-6 border-t border-white/10 pt-6">
-                <p className="font-semibold">Editorial Board</p>
-                <p className="text-sm text-navy-200/70">Yashika Publications</p>
-              </div>
+            <div className="mt-6 flex flex-col gap-4 sm:flex-row">
+              <motion.a
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 0 25px rgba(0,119,217,0.7)",
+                }}
+                whileTap={{ scale: 0.96 }}
+                href="/journals"
+                className="inline-flex h-[44px] items-center justify-center gap-3 rounded-[6px] bg-[#0077d9] px-7 text-[14px] font-semibold text-white shadow-lg transition duration-300 hover:bg-[#0064ba]"
+              >
+                Explore Our Journals <FaArrowRight />
+              </motion.a>
+
+              <motion.a
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 0 22px rgba(255,255,255,0.35)",
+                }}
+                whileTap={{ scale: 0.96 }}
+                href="/authors"
+                className="inline-flex h-[44px] items-center justify-center gap-3 rounded-[6px] border-2 border-white/45 bg-transparent px-8 text-[14px] font-semibold text-white transition duration-300 hover:bg-white hover:text-[#061f45]"
+              >
+                For Authors <FaArrowRight />
+              </motion.a>
             </div>
           </motion.div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* PUBLICATION PROCESS */}
-      <section className="section-py bg-white">
-        <div className="container-x">
-          <SectionTitle
-            tag="HOW IT WORKS"
-            title="Our Simple Publication Process"
-            subtitle="A streamlined, transparent workflow from manuscript submission to final publication."
-          />
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {process.map((p, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="relative rounded-xl border border-navy-100 p-7 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-card-hover"
-              >
-                <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-amber-400 px-3 py-1 text-xs font-bold text-navy-900">
-                  {p.step}
-                </span>
-                <div className="mx-auto mb-4 mt-3 flex h-14 w-14 items-center justify-center rounded-full bg-teal-50 text-2xl text-teal-500">
-                  {p.icon}
-                </div>
-                <h3 className="mb-2 font-heading text-base font-semibold text-navy-900">
-                  {p.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-navy-500">{p.desc}</p>
-              </motion.div>
-            ))}
+      {/* STATS */}
+    <section className="relative z-20 mx-auto -mt-4 max-w-[1180px] px-4 sm:-mt-12 lg:-mt-6">
+  <motion.div
+    initial={{ opacity: 0, y: 35 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.65 }}
+    className="grid overflow-hidden rounded-[10px] border border-[#e7edf5] bg-white shadow-[0_14px_35px_rgba(15,35,70,0.16)] sm:grid-cols-2 lg:grid-cols-6"
+  >
+    {stats.map((item, index) => (
+      <motion.div
+        key={index}
+        whileHover={{
+          y: -7,
+          scale: 1.02,
+          boxShadow: "0 15px 30px rgba(0,0,0,0.12)",
+        }}
+        transition={{ duration: 0.25 }}
+        className="group flex min-h-[130px] items-center gap-4 border-b border-[#e7edf5] px-3 py-6 last:border-b-0 sm:last:border-b lg:border-b-0 lg:border-r lg:last:border-r-0"
+      >
+        <div
+          className="shrink-0 text-[38px] transition duration-300 group-hover:scale-110"
+          style={{ color: item.color }}
+        >
+          {item.icon}
+        </div>
+
+        <div>
+          <h3 className="text-[16px] font-semibold leading-tight text-[#072b5f]">
+            {item.value}
+          </h3>
+
+          {item.title && (
+            <p className="mt-1 text-[12px] font-semibold leading-tight text-[#111827]">
+              {item.title}
+            </p>
+          )}
+
+          <p className="mt-2 text-[11px] font-medium leading-[1.5] text-[#64748b]">
+            {item.desc}
+          </p>
+        </div>
+      </motion.div>
+    ))}
+  </motion.div>
+</section>
+
+      {/* ABOUT */}
+    <section className="mx-auto grid max-w-[1210px] grid-cols-1 items-center gap-6 px-5 py-10 lg:grid-cols-[0.95fr_1.15fr] lg:px-8 lg:py-10">
+  {/* LEFT CONTENT */}
+  <motion.div
+    variants={fadeUp}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.3 }}
+  >
+    <p className="text-[26px] font-semibold leading-tight text-[#004b9b]">
+      About
+    </p>
+
+    <h2 className=" text-[28px] font-semibold leading-tight text-[#004b9b] sm:text-[32px]">
+      Yashika Publications
+    </h2>
+
+    <div className="mt-2 h-[3px] w-[64px] bg-[#ff7a00] rounded-full" />
+
+    <p className="mt-5 max-w-[430px] text-[14px] font-medium leading-[1.85] text-[#1f2937] sm:text-[15px]">
+      With over 12 years of excellence, Yashika Publications has become a
+      trusted name in academic publishing, specializing in Computer Science,
+      Information Technology, and AI Education.
+    </p>
+
+    <div className="mt-6 grid grid-cols-2 gap-y-6 sm:grid-cols-4">
+      {aboutFeatures.map((item, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: index * 0.12, duration: 0.5 }}
+          whileHover={{ y: -7, scale: 1.04 }}
+          className="group border-r border-[#d8dee8] px-2  last:border-r-0"
+        >
+          <div className="mx-auto mb-3 text-[38px] text-[#005fc5] transition duration-300 group-hover:scale-110 group-hover:text-[#1356e8]">
+            {item.icon}
           </div>
-        </div>
-      </section>
 
-      {/* TESTIMONIALS */}
-      <section className="section-py bg-navy-50">
-        <div className="container-x">
-          <SectionTitle
-            tag="TESTIMONIALS"
-            title="What Our Authors Say"
-            subtitle="Feedback from researchers who have published with us."
-          />
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {testimonials.map((t, i) => (
+          <h4 className="text-[12px] font-semibold leading-5 text-[#111827]">
+            {item.title}
+          </h4>
+
+          <p className="mt-1 text-[11px] font-medium leading-5 text-[#111827]">
+            {item.desc}
+          </p>
+        </motion.div>
+      ))}
+    </div>
+
+    <motion.a
+      whileHover={{
+        scale: 1.05,
+        boxShadow: "0 0 24px rgba(0,95,197,0.45)",
+      }}
+      whileTap={{ scale: 0.96 }}
+      href="/about"
+      className="mt-10 inline-flex h-[50px] items-center justify-center gap-3 rounded-[6px] bg-[#0067c8] px-8 text-[15px] font-semibold text-white shadow-lg transition duration-300 hover:bg-[#0053a8]"
+    >
+      Learn More About Us <FaArrowRight />
+    </motion.a>
+  </motion.div>
+
+  {/* RIGHT IMAGE */}
+  <motion.div
+    initial={{ opacity: 0, x: 45 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    viewport={{ once: true, amount: 0.3 }}
+    transition={{ duration: 0.7 }}
+    className="relative pb-28 sm:pb-24"
+  >
+    <motion.img
+      whileHover={{ scale: 1.02 }}
+      transition={{ duration: 0.4 }}
+      src={aboutImg}
+      alt="Yashika Publications Office"
+      className="h-[270px] w-full rounded-[18px] object-cover object-center shadow-[0_18px_45px_rgba(0,0,0,0.15)] sm:h-[350px] lg:h-[370px]"
+    />
+
+    <motion.div
+      initial={{ opacity: 0, y: 35 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.25, duration: 0.6 }}
+      whileHover={{ y: -6 }}
+      className="absolute bottom-10 left-4 rounded-[14px] bg-[#002b63] px-9 py-4 text-center text-white shadow-xl sm:left-8 lg:bottom-4"
+    >
+      <h3 className="text-[30px] font-semibold leading-none">12+</h3>
+      <p className="mt-3 text-[15px]  leading-7">
+        Years of <br />
+        Publishing <br />
+        Excellence
+      </p>
+      <div className="absolute -bottom-1 left-1/2 h-[8px] w-[86px] -translate-x-1/2 rounded-full bg-[#ff7a00]" />
+    </motion.div>
+
+    <motion.div
+      initial={{ opacity: 0, y: 35 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.35, duration: 0.6 }}
+      whileHover={{ y: -6 }}
+      className=" absolute bottom-0 right-0 flex max-w-[390px] items-center gap-5 rounded-[14px] bg-white px-7 py-6 shadow-[0_18px_45px_rgba(0,0,0,0.18)] sm:right-3 lg:-bottom-6"
+    >
+      <p className="text-[14px]  leading-6 text-[#1f2937]">
+        Our mission is to empower researchers and educators by publishing
+        innovative research that solves real-world challenges and contributes to
+        a smarter tomorrow.
+      </p>
+
+      <FaBullseye className="hidden shrink-0 text-[60px] text-[#005fc5] sm:block" />
+    </motion.div>
+  </motion.div>
+</section>
+
+      {/* SERVICES */}
+         <section className="w-full bg-white px-4 py-8 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1160px] text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45 }}
+          className="text-[26px] font-[600] leading-tight text-[#004b9b] sm:text-[28px]"
+        >
+          Our Services
+        </motion.h2>
+
+        <div className="mx-auto mt-2 h-[3px] w-[38px] rounded-full bg-[#f28b21]" />
+
+        <motion.p
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45, delay: 0.1 }}
+          className="mx-auto mt-3 max-w-[760px] text-[13px] font-medium leading-6 text-[#09224a] sm:text-[15px]"
+        >
+          Comprehensive publishing solutions designed to support researchers and
+          institutions.
+        </motion.p>
+
+        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: index * 0.08 }}
+              whileHover={{
+                y: -10,
+                scale: 1.03,
+                transition: { duration: 0.25 },
+              }}
+              className="group flex min-h-[245px] flex-col items-center rounded-[12px] border border-[#e6e8ec] bg-white px-5 py-7 shadow-[0_4px_18px_rgba(9,34,74,0.13)] transition-all duration-300 hover:shadow-[0_12px_30px_rgba(9,34,74,0.22)]"
+            >
               <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="card p-7"
+                whileHover={{ rotate: 8 }}
+                className="flex h-[68px] w-[68px] items-center justify-center rounded-full text-white shadow-md"
+                style={{ backgroundColor: service.color }}
               >
-                <FaQuoteRight className="mb-4 text-2xl text-teal-500/40" />
-                <p className="text-sm leading-relaxed text-navy-600">
-                  {t.quote}
-                </p>
-                <div className="mt-6 border-t border-navy-100 pt-4">
-                  <p className="font-semibold text-navy-900">{t.name}</p>
-                  <p className="text-xs text-navy-400">{t.role}</p>
-                </div>
+                {service.icon}
               </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* CTA BANNER */}
-      <section className="relative overflow-hidden bg-navy-900">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(245,166,35,0.15),transparent_50%)]" />
-        <div className="container-x relative flex flex-col items-center gap-6 py-16 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl font-heading text-2xl font-bold text-white sm:text-3xl md:text-4xl"
-          >
-            Ready to Publish Your Research?
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="max-w-xl text-sm text-navy-100/80 md:text-base"
-          >
-            Join thousands of researchers who trust Yashika Publications to
-            showcase their work to the world.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <Button to="/contact" variant="primary">
-              Get Started Today
-            </Button>
-          </motion.div>
+              <h3 className="mt-6 min-h-[44px] text-center text-[15px] font-[600] leading-[21px] text-[#09224a]">
+                {service.title}
+              </h3>
+
+              <div
+                className="mt-4 h-[3px] w-[30px] rounded-full"
+                style={{ backgroundColor: service.color }}
+              />
+
+              <p className="mt-5 text-center text-[12px] font-medium leading-[22px] text-[#2b2f36]">
+                {service.desc}
+              </p>
+            </motion.div>
+          ))}
         </div>
-      </section>
-    </PageTransition>
+      </div>
+    </section>
+
+      {/* JOURNALS */}
+       <section className="relative overflow-hidden bg-[#003b72] px-4 py-10 text-white sm:px-6 lg:px-8">
+      <div className="absolute right-6 top-5 hidden h-[135px] w-[135px] opacity-20 lg:block">
+        <div className="grid grid-cols-10 gap-2">
+          {Array.from({ length: 90 }).map((_, i) => (
+            <span key={i} className="h-[3px] w-[3px] rounded-full bg-white/40" />
+          ))}
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-[1160px] text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45 }}
+          className="text-[26px] font-[600] leading-tight  sm:text-[28px]"
+        >
+          Our Serivnals
+        </motion.h2>
+
+        <div className="mx-auto mt-2 h-[3px] w-[48px] rounded-full bg-[#f28b21]" />
+
+        <motion.p
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45, delay: 0.1 }}
+          className="mx-auto mt-3 max-w-[670px] text-[12px] font-medium leading-5 text-white/90 sm:text-[13px]"
+        >
+          Five new peer-reviewed, open access journals dedicated to advancing
+          research and innovation in Computer Science, IT, and AI Education.
+        </motion.p>
+
+      <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+  {journals.map((j, index) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.45, delay: index * 0.08 }}
+      whileHover={{
+        y: -10,
+        scale: 1.03,
+        transition: { duration: 0.25 },
+      }}
+      className="group overflow-hidden rounded-[18px] bg-white text-left text-[#09224a] shadow-[0_12px_28px_rgba(0,0,0,0.28)] transition-all duration-300 hover:shadow-[0_20px_42px_rgba(0,0,0,0.38)]"
+    >
+      <div
+        className={`relative flex h-[110px] items-center justify-center bg-gradient-to-br ${j.color}`}
+      >
+        <motion.div
+          whileHover={{ rotate: 6, scale: 1.12 }}
+          transition={{ duration: 0.25 }}
+          className="text-white"
+        >
+          {React.cloneElement(j.icon, {
+            size: 55,
+            strokeWidth: 1.7,
+          })}
+        </motion.div>
+
+        {/* <span className="absolute bottom-[-1px] left-1/2 h-0 w-0 -translate-x-1/2 border-l-[13px] border-r-[13px] border-t-[13px] border-l-transparent border-r-transparent border-t-white" /> */}
+      </div>
+
+      <div className="min-h-[240px] rounded-t-[18px] bg-white px-6 pb-7 pt-4">
+        <h3 className="min-h-[62px] text-[15px] font-semibold leading-[25px] text-[#09224a]">
+          {j.title}
+        </h3>
+
+        <div
+          className="mt-3 h-[3px] w-[32px] rounded-full"
+          style={{ backgroundColor: j.lineColor || "#168bd2" }}
+        />
+
+        <p className="mt-6 min-h-[95px] text-[13px] font-medium leading-[26px] text-[#202733]">
+          {j.desc}
+        </p>
+
+        <p className="mt-6 whitespace-nowrap text-[14px] font-semibold leading-none text-[#ff6b12]">
+          Coming Soon
+        </p>
+      </div>
+    </motion.div>
+  ))}
+</div>
+      </div>
+    </section>
+
+      {/* CTA */}
+    <section className="relative overflow-hidden bg-[#004b93] px-5 py-8  text-white sm:py-8 ">
+  <div className="absolute right-0 top-0 h-full w-[240px] opacity-35 ">
+    <div className="h-full w-full bg-[radial-gradient(circle,#28b8ff_2px,transparent_2px)] [background-size:18px_18px]" />
+  </div>
+
+  <motion.div
+    initial={{ opacity: 0, y: 25 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6 }}
+    className="relative z-10 mx-auto flex max-w-[1170px] flex-col items-center justify-between gap-7 md:flex-row"
+  >
+    <div className="flex flex-col items-center gap-5 text-center sm:flex-row sm:text-left">
+      <motion.div
+        whileHover={{ scale: 1.08, rotate: 3 }}
+        className="flex h-[80px] w-[80px] items-center justify-center rounded-full border-2 border-white/70 text-[44px]"
+      >
+        <FaFileAlt />
+      </motion.div>
+
+      <div>
+        <h2 className="text-[24px] font-medium leading-tight sm:text-[26px]">
+          Ready to Publish Your Research?
+        </h2>
+        <p className="mt-1 max-w-[560px] text-[14px] font-medium leading-6 text-white/90 sm:text-[14px]">
+          Join thousands of researchers worldwide who trust <br className="hidden sm:block" />
+          Yashika Publications for quality and impact.
+        </p>
+      </div>
+    </div>
+
+    <motion.a
+      whileHover={{
+        scale: 1.06,
+        boxShadow: "0 0 25px rgba(255,255,255,0.45)",
+      }}
+      whileTap={{ scale: 0.96 }}
+      href="/contact"
+      className="inline-flex h-[50px] sm:mr-10 mr-0 min-w-[220px] items-center justify-center gap-3 rounded-[6px] bg-white px-6 text-[15px] font-semibold text-[#063a70] shadow-xl transition duration-300 hover:bg-[#f2f7ff]"
+    >
+      Submit Your Paper <FaPaperPlane className="text-[18px]" />
+    </motion.a>
+  </motion.div>
+</section>
+    </div>
   );
-};
+}
 
 export default Home;
