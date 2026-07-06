@@ -120,7 +120,7 @@ const Services = () => {
               Home &nbsp;›&nbsp; Our Services
             </p>
 
-            <h1 className="text-[30px] font-[600] leading-tight sm:text-[48px] md:text-[54px]">
+            <h1 className="text-[36px] font-[600] leading-tight sm:text-[40px] md:text-[44px]">
               Our Services
             </h1>
 
