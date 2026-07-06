@@ -6,125 +6,163 @@ import {
   FaLinkedinIn,
   FaYoutube,
   FaMapMarkerAlt,
-  FaPhoneAlt,
   FaEnvelope,
+  FaGlobe,
+  FaHeart,
 } from "react-icons/fa";
-import logo from "../assets/logo.png";
+import logo from "../assets/flogo.png";
+import bg from "../assets/bgfooter.png";
 
-const quickLinks = [
-  { name: "About Us", path: "/about" },
-  { name: "Authors", path: "/authors" },
-  { name: "Journals", path: "/journals" },
-  { name: "Reviewers", path: "/reviewers" },
+const journalLinks = [
+  "About the Journal",
+  "Editorial Board",
+  "Current Issue",
+  "Archives",
+  "Indexing & Abstracting",
+  "Contact",
 ];
 
-const moreLinks = [
-  { name: "Resources", path: "/resources" },
-  { name: "Services", path: "/services" },
-  { name: "Contact", path: "/contact" },
-  { name: "Submit Manuscript", path: "/contact" },
+const authorLinks = [
+  "Author Guidelines",
+  "Submit Manuscript",
+  "Publication Ethics",
+  "Peer Review Process",
+  "Copyright Policy",
+  "Article Processing Charges",
+];
+
+const policyLinks = [
+  "Privacy Policy",
+  "Terms of Use",
+  "Open Access Policy",
+  "Conflict of Interest",
+  "Plagiarism Policy",
 ];
 
 const socials = [
-  { icon: <FaFacebookF />, href: "https://facebook.com" },
-  { icon: <FaTwitter />, href: "https://twitter.com" },
-  { icon: <FaLinkedinIn />, href: "https://linkedin.com" },
-  { icon: <FaYoutube />, href: "https://youtube.com" },
+  { icon: <FaFacebookF />, href: "#" },
+  { icon: <FaTwitter />, href: "#" },
+  { icon: <FaLinkedinIn />, href: "#" },
+  { icon: <FaYoutube />, href: "#" },
 ];
 
 const Footer = () => {
   return (
-    <footer className="bg-navy-950 text-white">
-      <div className="container-x grid grid-cols-1 gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
-        {/* Brand */}
-        <div>
-          <img src={logo} alt="Yashika Publications" className="mb-4 h-14 w-auto object-contain brightness-0 invert" />
-          <p className="text-sm leading-relaxed text-navy-200/80">
-            Empowering global research by publishing high-quality, peer-reviewed
-            journals across multiple disciplines for scholars and institutions
-            worldwide.
-          </p>
-          <div className="mt-5 flex gap-3">
-            {socials.map((s, i) => (
-              <motion.a
-                key={i}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.15, y: -2 }}
-                whileTap={{ scale: 0.9 }}
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-navy-800 text-sm text-teal-300 transition-colors duration-300 hover:bg-teal-500 hover:text-white"
-              >
-                {s.icon}
-              </motion.a>
-            ))}
-          </div>
-        </div>
+    <footer className="relative overflow-hidden bg-white">
+      <div
+        className="relative bg-cover bg-center bg-no-repeat px-4 pt-6 pb-12 sm:px-6 lg:px-10"
+        style={{ backgroundImage: `url(${bg})` }}
+      >
+        <div className="mx-auto grid max-w-[1240px] grid-cols-1 gap-8 text-white sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.4fr]">
+          {/* Logo Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45 }}
+          >
+            <img
+              src={logo}
+              alt="Yashika Publications"
+              className="mb-4 h-[42px] w-auto object-contain"
+            />
 
-        {/* Quick links */}
-        <div>
-          <h4 className="mb-5 text-base font-semibold text-white">Quick Links</h4>
-          <ul className="space-y-3">
-            {quickLinks.map((link) => (
-              <li key={link.path}>
-                <Link
-                  to={link.path}
-                  className="text-sm text-navy-200/80 transition-colors duration-300 hover:text-teal-300"
+            <p className="max-w-[270px] text-[12px]  leading-[22px] text-white/90">
+              Yashika Publications is committed to promoting high 
+              academic research and innovation across diverse disciplines
+              through our peer reviewed journals.
+            </p>
+
+            <div className="mt-2 flex gap-2">
+              {socials.map((s, i) => (
+                <motion.a
+                  key={i}
+                  href={s.href}
+                  whileHover={{ y: -4, scale: 1.12 }}
+                  whileTap={{ scale: 0.92 }}
+                  className="flex h-8 w-8 items-center justify-center rounded-full border border-white/70 text-[13px] text-white transition-all duration-300 hover:bg-white hover:text-[#0066ad]"
                 >
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+                  {s.icon}
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
 
-        {/* More links */}
-        <div>
-          <h4 className="mb-5 text-base font-semibold text-white">Explore</h4>
-          <ul className="space-y-3">
-            {moreLinks.map((link, i) => (
-              <li key={i}>
-                <Link
-                  to={link.path}
-                  className="text-sm text-navy-200/80 transition-colors duration-300 hover:text-teal-300"
-                >
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+          {/* Journal */}
+          <FooterColumn title="JOURNAL" links={journalLinks} />
 
-        {/* Contact info */}
-        <div>
-          <h4 className="mb-5 text-base font-semibold text-white">Get in Touch</h4>
-          <ul className="space-y-4 text-sm text-navy-200/80">
-            <li className="flex items-start gap-3">
-              <FaMapMarkerAlt className="mt-1 shrink-0 text-teal-400" />
-              <span>Sector 62, Noida, Uttar Pradesh, India</span>
-            </li>
-            <li className="flex items-center gap-3">
-              <FaPhoneAlt className="shrink-0 text-teal-400" />
-              <span>+91 98765 43210</span>
-            </li>
-            <li className="flex items-center gap-3">
-              <FaEnvelope className="shrink-0 text-teal-400" />
-              <span>info@yashikapublications.com</span>
-            </li>
-          </ul>
+          {/* Authors */}
+          <FooterColumn title="FOR AUTHORS" links={authorLinks} />
+
+          {/* Policies */}
+          <FooterColumn title="POLICIES" links={policyLinks} />
+
+          {/* Contact */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.25 }}
+          >
+            <h4 className="mb-4 text-[13px] font-[600] uppercase tracking-wide">
+              CONTACT US
+            </h4>
+
+            <ul className="space-y-3 text-[13px] font-medium leading-[21px] text-white/90">
+              <li className="flex items-start gap-3">
+                <FaMapMarkerAlt className="mt-1 shrink-0 text-white" />
+                <span>
+                  Yashika Publications
+                  <br />
+                  Indore, Madhya Pradesh, India
+                </span>
+              </li>
+
+              <li className="flex items-center gap-3">
+                <FaEnvelope className="shrink-0 text-white" />
+                <span>editor.aire@yashikapublications.com</span>
+              </li>
+
+              <li className="flex items-center gap-3">
+                <FaGlobe className="shrink-0 text-white" />
+                <span>www.yashikapublications.com/aire</span>
+              </li>
+            </ul>
+          </motion.div>
         </div>
       </div>
 
-      <div className="border-t border-white/10">
-        <div className="container-x flex flex-col items-center justify-between gap-3 py-5 text-xs text-navy-300 sm:flex-row">
-          <p>© {new Date().getFullYear()} Yashika Publications. All rights reserved.</p>
-          <div className="flex gap-5">
-            <Link to="/about" className="hover:text-teal-300">Privacy Policy</Link>
-            <Link to="/about" className="hover:text-teal-300">Terms of Service</Link>
-          </div>
-        </div>
-      </div>
+      {/* Bottom Bar */}
+     
     </footer>
+  );
+};
+
+const FooterColumn = ({ title, links }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.45 }}
+    >
+      <h4 className="mb-2 text-[13px] font-[600] uppercase tracking-wide">
+        {title}
+      </h4>
+
+      <ul className="space-y-1">
+        {links.map((link, index) => (
+          <li key={index}>
+            <Link
+              to="/"
+              className="inline-block text-[12px] font-medium leading-[18px] text-white/90 transition-all duration-300 hover:translate-x-1 hover:text-orange-400 hover:underline"
+            >
+              {link}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </motion.div>
   );
 };
 

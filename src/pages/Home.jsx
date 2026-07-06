@@ -217,7 +217,7 @@ function Home() {
       >
         
 
-        <div className="relative z-10 mx-auto flex min-h-[490px] max-w-[1400px] items-center px-5 py-10 sm:min-h-[490px] sm:px-8 lg:min-h-[500px] lg:px-14 xl:px-16">
+        <div className="relative z-10 mx-auto flex min-h-[490px] max-w-[1400px] items-center px-5 py-10 sm:min-h-[490px] sm:px-8 lg:min-h-[500px] lg:px-14 xl:px-14">
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -299,7 +299,7 @@ function Home() {
     </section>
 
       {/* STATS */}
-    <section className="relative z-20 mx-auto -mt-4 max-w-[1180px] px-4 sm:-mt-12 lg:-mt-6">
+    <section className="relative z-20 mx-auto -mt-4 max-w-[1190px] px-4 sm:-mt-12 lg:-mt-6">
   <motion.div
     initial={{ opacity: 0, y: 35 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -619,7 +619,8 @@ function Home() {
     </section>
 
       {/* CTA */}
-    <section className="relative overflow-hidden bg-[#004b93] px-5 py-8  text-white sm:py-8 ">
+      <div className="py-6">
+    <section className="relative overflow-hidden bg-[#004b93] px-5 py-8 text-white sm:py-8 ">
   <div className="absolute right-0 top-0 h-full w-[240px] opacity-35 ">
     <div className="h-full w-full bg-[radial-gradient(circle,#28b8ff_2px,transparent_2px)] [background-size:18px_18px]" />
   </div>
@@ -662,7 +663,7 @@ function Home() {
       Submit Your Paper <FaPaperPlane className="text-[18px]" />
     </motion.a>
   </motion.div>
-</section>
+</section></div>
     </div>
   );
 }
