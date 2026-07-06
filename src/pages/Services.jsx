@@ -14,6 +14,7 @@ import {
   FaTrophy,
   FaShieldAlt,
   FaFileAlt,
+  FaPaperPlane,
 } from "react-icons/fa";
 import PageTransition from "../components/PageTransition";
 
@@ -390,35 +391,52 @@ const Services = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-[#004aad] px-4 py-8 text-white sm:px-5">
-        <div className="mx-auto flex max-w-[1180px] flex-col items-center justify-between gap-7 md:flex-row">
-          <div className="flex flex-col items-center gap-5 text-center sm:flex-row sm:text-left">
-            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-white/50 text-[30px]">
-              <FaFileAlt />
-            </div>
+         {/* CTA */}
+      <div className="py-6">
+    <section className="relative overflow-hidden bg-[#004b93] px-5 py-8 text-white sm:py-8 ">
+  <div className="absolute right-0 top-0 h-full w-[240px] opacity-35 ">
+    <div className="h-full w-full bg-[radial-gradient(circle,#28b8ff_2px,transparent_2px)] [background-size:18px_18px]" />
+  </div>
 
-            <div>
-              <h2 className="text-[18px] font-[600] md:text-[24px]">
-                Ready to Publish Your Research?
-              </h2>
-              <p className="mt-2 max-w-[430px] text-[14px] leading-6 text-white/90">
-                Join thousands of researchers worldwide who trust Yashika
-                Publications for quality and impact.
-              </p>
-            </div>
-          </div>
+  <motion.div
+    initial={{ opacity: 0, y: 25 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6 }}
+    className="relative z-10 mx-auto flex max-w-[1170px] flex-col items-center justify-between gap-7 md:flex-row"
+  >
+    <div className="flex flex-col items-center gap-5 text-center sm:flex-row sm:text-left">
+      <motion.div
+        whileHover={{ scale: 1.08, rotate: 3 }}
+        className="flex h-[75px] w-[75px] items-center justify-center rounded-full border-2 border-white/70 text-[38px]"
+      >
+        <FaFileAlt />
+      </motion.div>
 
-          <motion.a
-            whileHover={{ scale: 1.07, y: -3 }}
-            whileTap={{ scale: 0.96 }}
-            href="/submit-paper"
-            className="inline-flex items-center gap-3 rounded-md border border-white/70 px-6 py-3 text-[14px] font-[600] text-white shadow-lg hover:bg-white hover:text-[#004aad]"
-          >
-            Submit Your Paper <FaUsers />
-          </motion.a>
-        </div>
-      </section>
+      <div>
+        <h2 className="text-[24px] font-medium leading-tight sm:text-[24px]">
+          Ready to Publish Your Research?
+        </h2>
+        <p className="mt-1 max-w-[560px] text-[14px] font-medium leading-6 text-white/90 sm:text-[14px]">
+          Join thousands of researchers worldwide who trust <br className="hidden sm:block" />
+          Yashika Publications for quality and impact.
+        </p>
+      </div>
+    </div>
+
+    <motion.a
+      whileHover={{
+        scale: 1.06,
+        boxShadow: "0 0 25px rgba(255,255,255,0.45)",
+      }}
+      whileTap={{ scale: 0.96 }}
+      href="/contact"
+      className="inline-flex h-[50px] sm:mr-10 mr-0 min-w-[220px] items-center justify-center gap-3 rounded-[6px] bg-white px-6 text-[15px] font-semibold text-[#063a70] shadow-xl transition duration-300 hover:bg-[#f2f7ff]"
+    >
+      Submit Your Paper <FaPaperPlane className="text-[18px]" />
+    </motion.a>
+  </motion.div>
+</section></div>
     </PageTransition>
   );
 };
