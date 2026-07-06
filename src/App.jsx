@@ -12,6 +12,7 @@ import Reviewers from "./pages/Reviewers";
 import Resources from "./pages/Resources";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
+import ScrollToTop from "./components/ScrollToTop";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -39,6 +40,7 @@ function App() {
     <BrowserRouter>
       <div className="flex min-h-screen flex-col">
         <Navbar />
+          <ScrollToTop />
         <main className="flex-1">
           <AnimatedRoutes />
         </main>
