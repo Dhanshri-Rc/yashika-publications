@@ -115,15 +115,17 @@ const About = () => {
       >
         {/* <div className="absolute inset-0 bg-gradient-to-r from-[#001f4f] via-[#002c68]/90 to-transparent" /> */}
 
-        <div className="relative z-10 mx-auto flex min-h-[380px] max-w-[1240px] flex-col justify-center px-5 md:min-h-[430px]">
-          <motion.div
+        <div className="relative z-10 mx-auto flex min-h-[490px] max-w-[1400px] items-center px-8  py-10 sm:min-h-[490px] sm:px-8 lg:min-h-[500px] lg:px-14 xl:px-16">
+          <motion.div5
             initial="hidden"
             animate="show"
             variants={fadeUp}
             transition={{ duration: 0.6 }}
             className="max-w-xl"
           >
-            <p className="mb-6 text-[12px] font-[500]">Home &nbsp;›&nbsp; About Us</p>
+            <p className="mb-6 text-[12px] font-[500]">
+              Home &nbsp;›&nbsp; About Us
+            </p>
 
             <h1 className="text-[14px] font-[600] leading-tight md:text-[54px]">
               About Us
@@ -139,16 +141,16 @@ const About = () => {
 
             <p className="mt-4 max-w-lg font-medium text-[15px] leading-8 text-white/90">
               Yashika Publications is a trusted academic publisher committed to
-              advancing research and education in the fields of Computer Science,
-              Information Technology, and AI Education.
+              advancing research and education in the fields of Computer
+              Science, Information Technology, and AI Education.
             </p>
-          </motion.div>
+          </motion.div5>
         </div>
       </section>
 
       {/* WHO WE ARE */}
-      <section className="bg-white px-5 py-10 md:py-10">
-        <div className="mx-auto grid max-w-[1240px] items-center gap-12 lg:grid-cols-2">
+      <section className="relative mx-auto max-w-[1180px] bg-white px-8 py-10 sm:px-4">
+        <div className="grid items-center gap-12 lg:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, x: -35 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -167,8 +169,8 @@ const About = () => {
 
             <p className="mt-6 text-[14px] leading-6 text-gray-700">
               With over 12 years of unwavering commitment, Yashika Publications
-              has established itself as a leading academic publisher in India. We
-              specialize in high-quality, peer-reviewed content that drives
+              has established itself as a leading academic publisher in India.
+              We specialize in high-quality, peer-reviewed content that drives
               innovation and academic excellence in Computer Science, IT, and AI
               Education.
             </p>
@@ -179,31 +181,28 @@ const About = () => {
               research.
             </p>
 
-     <div className="mt-9 grid grid-cols-2 gap-4 sm:grid-cols-4">
-  {features.map((item, i) => (
-    <motion.div
-      key={i}
-      whileHover={{ y: -8, scale: 1.03 }}
-      transition={{ type: "spring", stiffness: 260 }}
-      className="flex h-[180px] flex-col items-center justify-start border-r border-gray-200 px-2 text-center last:border-r-0"
-    >
-      {/* Icon */}
-      <div className="mb-4 flex h-12 items-center justify-center text-[34px] text-[#004aad]">
-        {item.icon}
-      </div>
+            <div className="mt-9 grid grid-cols-2 gap-4 sm:grid-cols-4">
+              {features.map((item, i) => (
+                <motion.div
+                  key={i}
+                  whileHover={{ y: -8, scale: 1.03 }}
+                  transition={{ type: "spring", stiffness: 260 }}
+                  className="flex min-h-[165px] flex-col items-center justify-start border-gray-200 px-2 text-center sm:border-r sm:last:border-r-0"
+                >
+                  <div className="mb-4 flex h-12 items-center justify-center text-[34px] text-[#004aad]">
+                    {item.icon}
+                  </div>
 
-      {/* Title - Fixed Height */}
-      <h4 className="flex h-[42px] items-center justify-center text-[12px] font-medium leading-5 text-[#061d45]">
-        {item.title}
-      </h4>
+                  <h4 className="flex h-[42px] items-center justify-center text-[12px] font-medium leading-5 text-[#061d45]">
+                    {item.title}
+                  </h4>
 
-      {/* Description - Fixed Height */}
-      <p className="mt-2 flex h-[60px] items-start justify-center text-[12px] font-medium leading-5 text-gray-600">
-        {item.desc}
-      </p>
-    </motion.div>
-  ))}
-</div>
+                  <p className="mt-2 flex h-[60px] items-start justify-center text-[12px] font-medium leading-5 text-gray-600">
+                    {item.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
 
           <motion.div
@@ -211,24 +210,25 @@ const About = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.65 }}
-            className="relative "
+            className="relative pb-14 sm:pb-12 lg:pb-0"
           >
             <img
               src={WhoImage}
               alt="Yashika Publications Office"
-              className="h-[400px] w-full rounded-xl object-cover shadow-xl"
+              className="h-[260px] w-full rounded-xl object-cover shadow-xl sm:h-[340px] lg:h-[400px]"
             />
 
             <motion.div
               whileHover={{ scale: 1.04 }}
-              className="absolute  w-[450px] -bottom-10 left-6 right-10 flex items-center gap-4 rounded-2xl bg-[#052148] p-5 text-white shadow-2xl md:left-10 md:right-10"
+              className="absolute -bottom-2 left-4 right-4 flex items-center gap-4 rounded-2xl bg-[#052148] p-4 text-white shadow-2xl sm:left-8 sm:right-8 sm:p-5 lg:-bottom-10 lg:left-10 lg:right-10"
             >
-              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-white/40 text-3xl">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-white/40 text-[26px] sm:h-16 sm:w-16 sm:text-3xl">
                 <FaRocket />
               </div>
+
               <div>
                 <h3 className="text-[15px] font-[500]">Our Commitment</h3>
-                <p className="mt-1 text-[12px] leading-6 text-white/90">
+                <p className="mt-1 text-[12px] leading-5 text-white/90 sm:leading-6">
                   To publish research that solves real-world challenges and
                   contributes to a smarter, more innovative future.
                 </p>
@@ -237,10 +237,9 @@ const About = () => {
           </motion.div>
         </div>
       </section>
-
       {/* MILESTONES */}
       <section className="bg-[#f7fbff] px-5 py-10">
-        <div className="mx-auto max-w-[1240px]">
+        <div className="relative mx-auto  max-w-[1180px] px-8 py-10 sm:px-4">
           <div className="grid gap-12 lg:grid-cols-[280px_1fr]">
             <motion.div
               initial={{ opacity: 0, x: -35 }}
@@ -260,8 +259,8 @@ const About = () => {
 
               <p className="mt-6 text-[14px] leading-6 text-gray-700">
                 From a humble beginning to becoming a trusted name in academic
-                publishing, our journey has been fueled by passion, perseverance,
-                and purpose.
+                publishing, our journey has been fueled by passion,
+                perseverance, and purpose.
               </p>
 
               <motion.a
@@ -309,97 +308,97 @@ const About = () => {
         </div>
       </section>
 
-    {/* WHY CHOOSE US */}
-<section className="relative overflow-hidden bg-white px-5 py-10 md:py-10">
-  <div className="mx-auto grid max-w-[1240px] items-center gap-8 lg:grid-cols-[250px_minmax(0,1fr)_270px]">
-    {/* Left Content */}
-    <motion.div
-      initial={{ opacity: 0, x: -35 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-    >
-      <p className="text-[14px] font-[500] uppercase text-[#ff6b00]">
-        Why Choose Us
-      </p>
-
-      <h2 className="mt-3 text-[24px] font-[600] leading-tight text-[#00245d] md:text-[28px]">
-        Built on Trust.
-        <br />
-        Driven by Impact.
-      </h2>
-
-      <div className="mt-4 h-1 w-12 bg-[#ff6b00]" />
-
-      <p className="mt-4 text-[14px] leading-6 text-gray-700">
-        We combine global publishing standards with local insight to deliver a
-        world-class publishing experience.
-      </p>
-    </motion.div>
-
-    {/* Cards */}
-    <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-      {trustCards.map((card, i) => (
-        <motion.div
-          key={i}
-          initial={{ opacity: 0, y: 35 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          whileHover={{
-            y: -8,
-            scale: 1.02,
-            boxShadow: "0 18px 35px rgba(0,74,173,.12)",
-          }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45, delay: i * 0.08 }}
-          className="flex h-[220px] flex-col items-center rounded-[16px] border border-[#E8EDF5] bg-white px-4 py-5 text-center shadow-[0_4px_18px_rgba(0,0,0,0.05)]"
-        >
-          {/* Fixed Icon Area */}
-          <div className="flex h-[44px] items-center justify-center">
-            <div className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#004aad] text-[22px] text-[#004aad]">
-              {card.icon}
-            </div>
-          </div>
-
-          {/* Fixed Title Area */}
-          <div className="mt-4 flex h-[40px] items-center justify-center">
-            <h3 className="text-[13px] font-[550] leading-5 text-[#061d45]">
-              {card.title}
-            </h3>
-          </div>
-
-          {/* Fixed Description Area */}
-          <div className="mt-1 flex h-[70px] items-start justify-center">
-            <p className="text-[12px] leading-6 text-gray-700">
-              {card.desc}
+      {/* WHY CHOOSE US */}
+      <section className="relative mx-auto  max-w-[1180px] px-8 py-10 sm:px-4 bg-white">
+        <div className="mx-auto grid items-center gap-8 lg:grid-cols-[250px_minmax(0,1fr)_270px]">
+          {/* Left Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-[14px] font-[500] uppercase text-[#ff6b00]">
+              Why Choose Us
             </p>
-          </div>
-        </motion.div>
-      ))}
-    </div>
 
-   {/* Right Image */}
-<motion.div
-  initial={{ opacity: 0, x: 35 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.6 }}
-  className="relative -mr-[50px] hidden h-[260px] w-[430px] overflow-hidden lg:block"
-  style={{
-    clipPath: "polygon(18% 0, 100% 0, 100% 100%, 0 100%)",
-  }}
->
-  <img
-    src={WhyImage}
-    alt="Team Collaboration"
-    className="h-full w-full object-cover object-right"
-  />
-</motion.div>
-  </div>
-</section>
+            <h2 className="mt-3 text-[24px] font-[600] leading-tight text-[#00245d] md:text-[28px]">
+              Built on Trust.
+              <br />
+              Driven by Impact.
+            </h2>
+
+            <div className="mt-4 h-1 w-12 bg-[#ff6b00]" />
+
+            <p className="mt-4 text-[14px] leading-6 text-gray-700">
+              We combine global publishing standards with local insight to
+              deliver a world-class publishing experience.
+            </p>
+          </motion.div>
+
+          {/* Cards */}
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {trustCards.map((card, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{
+                  y: -8,
+                  scale: 1.02,
+                  boxShadow: "0 18px 35px rgba(0,74,173,.12)",
+                }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: i * 0.08 }}
+                className="flex h-[200px] flex-col items-center rounded-[16px] border border-[#E8EDF5] bg-white px-2 py-4 text-center shadow-[0_4px_18px_rgba(0,0,0,0.05)]"
+              >
+                {/* Fixed Icon Area */}
+                <div className="flex h-[44px] items-center justify-center">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#004aad] text-[22px] text-[#004aad]">
+                    {card.icon}
+                  </div>
+                </div>
+
+                {/* Fixed Title Area */}
+                <div className="mt-4 flex h-[40px] items-center justify-center">
+                  <h3 className="text-[13px] font-[550] leading-5 text-[#061d45]">
+                    {card.title}
+                  </h3>
+                </div>
+
+                {/* Fixed Description Area */}
+                <div className="mt-1 flex h-[70px] items-start justify-center">
+                  <p className="text-[11px] leading-6 text-gray-700">
+                    {card.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Right Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative  hidden h-[240px] w-[430px] overflow-hidden lg:block"
+            style={{
+              clipPath: "polygon(18% 0, 100% 0, 100% 100%, 0 100%)",
+            }}
+          >
+            <img
+              src={WhyImage}
+              alt="Team Collaboration"
+              className="h-full w-full object-cover object-right"
+            />
+          </motion.div>
+        </div>
+      </section>
 
       {/* CTA */}
-      <section className="bg-[#004aad] px-5 py-8 text-white">
-        <div className="mx-auto flex max-w-[1240px] flex-col items-center justify-between gap-7 md:flex-row">
+      <section className="bg-[#004aad] px-8 py-8 sm:px-4 text-white">
+        <div className="relative mx-auto max-w-[1180px] px-4 flex flex-col items-center justify-between gap-7 md:flex-row">
           <div className="flex flex-col items-center gap-5 text-center sm:flex-row sm:text-left">
             <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/50 text-[30px]">
               <FaFileAlt />
