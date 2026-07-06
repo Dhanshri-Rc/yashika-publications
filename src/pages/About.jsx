@@ -1,235 +1,429 @@
 import { motion } from "framer-motion";
 import {
-  FaBullseye,
-  FaEye,
-  FaHandshake,
-  FaAward,
+  FaCalendarAlt,
+  FaGraduationCap,
   FaUsers,
+  FaAward,
+  FaFlag,
   FaGlobe,
+  FaUnlockAlt,
+  FaStar,
+  FaShieldAlt,
+  FaRocket,
+  FaChartLine,
+  FaUserCheck,
+  FaFileAlt,
+  FaPaperPlane,
 } from "react-icons/fa";
-import SectionTitle from "../components/SectionTitle";
-import Button from "../components/Button";
 import PageTransition from "../components/PageTransition";
 
-const values = [
+import HeroBg from "../assets/About-bg.png";
+import WhoImage from "../assets/about1.png";
+import WhyImage from "../assets/about2.png";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 35 },
+  show: { opacity: 1, y: 0 },
+};
+
+const features = [
   {
-    icon: <FaBullseye />,
-    title: "Our Mission",
-    desc: "To democratize access to quality research by providing a transparent, ethical and efficient publishing platform for scholars worldwide.",
+    icon: <FaCalendarAlt />,
+    title: "12+ Years",
+    desc: "of Publishing Excellence",
   },
   {
-    icon: <FaEye />,
-    title: "Our Vision",
-    desc: "To become the most trusted global publisher, recognized for advancing knowledge and fostering academic collaboration across borders.",
+    icon: <FaGraduationCap />,
+    title: "Specialized in AI, IT",
+    desc: "& Education Publishing",
   },
   {
-    icon: <FaHandshake />,
-    title: "Our Values",
-    desc: "Integrity, transparency and academic excellence guide everything we do - from peer review to final publication.",
+    icon: <FaUsers />,
+    title: "Global Network of",
+    desc: "Authors, Editors & Reviewers",
+  },
+  {
+    icon: <FaAward />,
+    title: "Commitment to",
+    desc: "Quality, Integrity & Open Access",
   },
 ];
 
 const milestones = [
-  { year: "2015", text: "Yashika Publications founded with 3 journals." },
-  { year: "2018", text: "Expanded to 50+ peer-reviewed journals globally." },
-  { year: "2021", text: "Crossed 15,000 published research papers." },
-  { year: "2024", text: "Serving authors across 80+ countries." },
+  {
+    year: "2012",
+    icon: <FaFlag />,
+    color: "bg-blue-100 text-blue-700 border-blue-200",
+    text: "Yashika Publications was founded with a vision to promote quality research.",
+  },
+  {
+    year: "2014",
+    icon: <FaUsers />,
+    color: "bg-orange-100 text-orange-600 border-orange-200",
+    text: "Expanded our editorial board and launched our first set of journals in emerging fields.",
+  },
+  {
+    year: "2017",
+    icon: <FaGlobe />,
+    color: "bg-blue-100 text-blue-700 border-blue-200",
+    text: "Enhanced global collaborations and strengthened our peer review process.",
+  },
+  {
+    year: "2020",
+    icon: <FaUnlockAlt />,
+    color: "bg-green-100 text-green-600 border-green-200",
+    text: "Embraced Open Access publishing to ensure wider visibility and greater impact.",
+  },
+  {
+    year: "2024+",
+    icon: <FaStar />,
+    color: "bg-purple-100 text-purple-600 border-purple-200",
+    text: "Continuing to innovate and set new standards in academic publishing excellence.",
+  },
 ];
 
-const team = [
-  { name: "Dr. Rajesh Kumar", role: "Editor-in-Chief" },
-  { name: "Dr. Sarah Williams", role: "Managing Editor" },
-  { name: "Dr. Amit Verma", role: "Head of Peer Review" },
-  { name: "Dr. Lisa Chen", role: "Publications Director" },
+const trustCards = [
+  {
+    icon: <FaShieldAlt />,
+    title: "Rigorous Quality",
+    desc: "Strict peer review and editorial standards.",
+  },
+  {
+    icon: <FaRocket />,
+    title: "Global Reach",
+    desc: "Authors and readers from 100+ countries.",
+  },
+  {
+    icon: <FaChartLine />,
+    title: "High Visibility",
+    desc: "Indexed in leading databases for maximum impact.",
+  },
+  {
+    icon: <FaUserCheck />,
+    title: "Ethical Publishing",
+    desc: "Transparency, integrity, and best practices.",
+  },
 ];
 
 const About = () => {
   return (
     <PageTransition>
       {/* HERO */}
-      <section className="bg-navy-900 py-16 text-center md:py-20">
-        <div className="container-x">
-          <motion.span
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="section-tag"
+      <section
+        className="relative min-h-[380px] overflow-hidden bg-cover bg-center text-white md:min-h-[430px]"
+        style={{ backgroundImage: `url(${HeroBg})` }}
+      >
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-[#001f4f] via-[#002c68]/90 to-transparent" /> */}
+
+        <div className="relative z-10 mx-auto flex min-h-[380px] max-w-[1240px] flex-col justify-center px-5 md:min-h-[430px]">
+          <motion.div
+            initial="hidden"
+            animate="show"
+            variants={fadeUp}
+            transition={{ duration: 0.6 }}
+            className="max-w-xl"
           >
-            ABOUT US
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-4 font-heading text-3xl font-bold text-white sm:text-4xl md:text-5xl"
-          >
-            Advancing Knowledge Since 2015
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mx-auto mt-4 max-w-2xl text-sm text-navy-100/80 md:text-base"
-          >
-            Yashika Publications is dedicated to fostering academic excellence
-            through ethical, high-quality scholarly publishing.
-          </motion.p>
+            <p className="mb-6 text-[12px] font-[500]">Home &nbsp;›&nbsp; About Us</p>
+
+            <h1 className="text-[14px] font-[600] leading-tight md:text-[54px]">
+              About Us
+            </h1>
+
+            <div className="mt-4 h-1 w-12 bg-[#ff7a00]" />
+
+            <h2 className="mt-4 text-[18px] font-[500] leading-snug md:text-[22px]">
+              Advancing Knowledge,
+              <br />
+              Empowering Innovation.
+            </h2>
+
+            <p className="mt-4 max-w-lg font-medium text-[15px] leading-8 text-white/90">
+              Yashika Publications is a trusted academic publisher committed to
+              advancing research and education in the fields of Computer Science,
+              Information Technology, and AI Education.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* STORY */}
-      <section className="section-py bg-white">
-        <div className="container-x grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+      {/* WHO WE ARE */}
+      <section className="bg-white px-5 py-10 md:py-10">
+        <div className="mx-auto grid max-w-[1240px] items-center gap-12 lg:grid-cols-2">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -35 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.65 }}
           >
-            <span className="section-tag">OUR STORY</span>
-            <h2 className="mt-3 font-heading text-2xl font-bold text-navy-900 sm:text-3xl md:text-4xl">
-              A Decade of Empowering Researchers
+            <p className="text-[14px] font-[500] uppercase text-[#ff6b00]">
+              Who We Are
+            </p>
+
+            <h2 className="mt-3 max-w-md text-[24px] font-[600] leading-tight text-[#00245d] md:text-[28px]">
+              A Legacy of Excellence in Academic Publishing
             </h2>
-            <p className="mt-4 text-sm leading-relaxed text-navy-500 md:text-base">
-              Founded in 2015, Yashika Publications began with a simple goal:
-              to make scholarly publishing accessible, transparent and
-              rigorous. What started as a small platform for a handful of
-              journals has grown into a trusted global publisher serving tens
-              of thousands of authors.
+
+            <div className="mt-5 h-1 w-12 bg-[#ff6b00]" />
+
+            <p className="mt-6 text-[14px] leading-6 text-gray-700">
+              With over 12 years of unwavering commitment, Yashika Publications
+              has established itself as a leading academic publisher in India. We
+              specialize in high-quality, peer-reviewed content that drives
+              innovation and academic excellence in Computer Science, IT, and AI
+              Education.
             </p>
-            <p className="mt-4 text-sm leading-relaxed text-navy-500 md:text-base">
-              Today, we support researchers across engineering, medicine,
-              social sciences and the humanities - ensuring every submission
-              is reviewed with academic integrity and published with global
-              visibility.
+
+            <p className="mt-4 text-[14px] leading-6 text-gray-700">
+              Our mission is to empower researchers, academicians, and students
+              by providing a global platform for knowledge sharing and impactful
+              research.
             </p>
-            <div className="mt-6">
-              <Button to="/contact" variant="outline">
-                Get in Touch
-              </Button>
-            </div>
+
+     <div className="mt-9 grid grid-cols-2 gap-4 sm:grid-cols-4">
+  {features.map((item, i) => (
+    <motion.div
+      key={i}
+      whileHover={{ y: -8, scale: 1.03 }}
+      transition={{ type: "spring", stiffness: 260 }}
+      className="flex h-[180px] flex-col items-center justify-start border-r border-gray-200 px-2 text-center last:border-r-0"
+    >
+      {/* Icon */}
+      <div className="mb-4 flex h-12 items-center justify-center text-[34px] text-[#004aad]">
+        {item.icon}
+      </div>
+
+      {/* Title - Fixed Height */}
+      <h4 className="flex h-[42px] items-center justify-center text-[12px] font-medium leading-5 text-[#061d45]">
+        {item.title}
+      </h4>
+
+      {/* Description - Fixed Height */}
+      <p className="mt-2 flex h-[60px] items-start justify-center text-[12px] font-medium leading-5 text-gray-600">
+        {item.desc}
+      </p>
+    </motion.div>
+  ))}
+</div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 35 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-2 gap-5"
+            viewport={{ once: true }}
+            transition={{ duration: 0.65 }}
+            className="relative "
           >
-            {[
-              { icon: <FaAward />, label: "9+ Years Experience" },
-              { icon: <FaUsers />, label: "25,000+ Authors" },
-              { icon: <FaGlobe />, label: "80+ Countries" },
-              { icon: <FaHandshake />, label: "150+ Journals" },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="card flex flex-col items-center gap-3 p-6 text-center"
-              >
-                <div className="text-3xl text-teal-500">{item.icon}</div>
-                <p className="text-sm font-semibold text-navy-900">
-                  {item.label}
+            <img
+              src={WhoImage}
+              alt="Yashika Publications Office"
+              className="h-[400px] w-full rounded-xl object-cover shadow-xl"
+            />
+
+            <motion.div
+              whileHover={{ scale: 1.04 }}
+              className="absolute  w-[450px] -bottom-10 left-6 right-10 flex items-center gap-4 rounded-2xl bg-[#052148] p-5 text-white shadow-2xl md:left-10 md:right-10"
+            >
+              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-white/40 text-3xl">
+                <FaRocket />
+              </div>
+              <div>
+                <h3 className="text-[15px] font-[500]">Our Commitment</h3>
+                <p className="mt-1 text-[12px] leading-6 text-white/90">
+                  To publish research that solves real-world challenges and
+                  contributes to a smarter, more innovative future.
                 </p>
               </div>
-            ))}
+            </motion.div>
           </motion.div>
-        </div>
-      </section>
-
-      {/* MISSION / VISION / VALUES */}
-      <section className="section-py bg-navy-50">
-        <div className="container-x">
-          <SectionTitle
-            tag="WHAT DRIVES US"
-            title="Mission, Vision & Values"
-            subtitle="The principles that shape every decision we make as a publisher."
-          />
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {values.map((v, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="card p-8 text-center"
-              >
-                <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-teal-50 text-3xl text-teal-500">
-                  {v.icon}
-                </div>
-                <h3 className="mb-3 font-heading text-lg font-semibold text-navy-900">
-                  {v.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-navy-500">{v.desc}</p>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
       {/* MILESTONES */}
-      <section className="section-py bg-white">
-        <div className="container-x">
-          <SectionTitle
-            tag="OUR JOURNEY"
-            title="Milestones Along the Way"
-          />
-          <div className="mx-auto max-w-3xl">
-            {milestones.map((m, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="relative flex gap-6 pb-10 last:pb-0"
+      <section className="bg-[#f7fbff] px-5 py-10">
+        <div className="mx-auto max-w-[1240px]">
+          <div className="grid gap-12 lg:grid-cols-[280px_1fr]">
+            <motion.div
+              initial={{ opacity: 0, x: -35 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <p className="text-[14px] font-[500] uppercase text-[#ff6b00]">
+                Our Journey
+              </p>
+
+              <h2 className="mt-3 max-w-md text-[24px] font-[600] leading-tight text-[#00245d] md:text-[28px]">
+                Milestones That Define Us
+              </h2>
+
+              <div className="mt-5 h-1 w-12 bg-[#ff6b00]" />
+
+              <p className="mt-6 text-[14px] leading-6 text-gray-700">
+                From a humble beginning to becoming a trusted name in academic
+                publishing, our journey has been fueled by passion, perseverance,
+                and purpose.
+              </p>
+
+              <motion.a
+                whileHover={{ scale: 1.06 }}
+                whileTap={{ scale: 0.96 }}
+                href="/journals"
+                className="mt-6 inline-flex items-center gap-2 rounded-md bg-[#004aad] px-6 py-3 text-[12px] font-[500] text-white shadow-lg hover:bg-[#003b8f]"
               >
-                <div className="flex flex-col items-center">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-navy-900 text-sm font-bold text-teal-300">
-                    {m.year}
-                  </span>
-                  {i !== milestones.length - 1 && (
-                    <span className="mt-2 h-full w-px flex-1 bg-navy-100" />
-                  )}
-                </div>
-                <p className="pt-3 text-sm leading-relaxed text-navy-600 md:text-base">
-                  {m.text}
-                </p>
-              </motion.div>
-            ))}
+                Explore Our Journals →
+              </motion.a>
+            </motion.div>
+
+            <div className="relative grid gap-10 md:grid-cols-5">
+              <div className="absolute left-0 right-0 top-[82px] hidden h-px bg-gray-300 md:block" />
+
+              {milestones.map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 35 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.55, delay: i * 0.1 }}
+                  className="relative text-center"
+                >
+                  <motion.div
+                    whileHover={{ y: -8, scale: 1.08 }}
+                    className={`mx-auto flex h-16 w-16 items-center justify-center rounded-full border text-[30px] shadow-sm ${item.color}`}
+                  >
+                    {item.icon}
+                  </motion.div>
+
+                  <div className="mx-auto mt-5 h-4 w-4 rounded-full bg-[#004aad] md:mt-6" />
+
+                  <h3 className="mt-5 text-[14px] font-[500] text-[#061d45]">
+                    {item.year}
+                  </h3>
+
+                  <p className="mt-4 text-[13px] leading-6 text-gray-700">
+                    {item.text}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* TEAM */}
-      <section className="section-py bg-navy-50">
-        <div className="container-x">
-          <SectionTitle
-            tag="LEADERSHIP"
-            title="Meet Our Editorial Team"
-            subtitle="Experienced academics and editors ensuring the highest publishing standards."
-          />
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {team.map((t, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="card p-7 text-center"
-              >
-                <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-navy-900 text-2xl font-bold text-teal-300">
-                  {t.name.split(" ").map((n) => n[0]).join("")}
-                </div>
-                <h3 className="font-heading text-base font-semibold text-navy-900">
-                  {t.name}
-                </h3>
-                <p className="text-sm text-teal-600">{t.role}</p>
-              </motion.div>
-            ))}
+    {/* WHY CHOOSE US */}
+<section className="relative overflow-hidden bg-white px-5 py-10 md:py-10">
+  <div className="mx-auto grid max-w-[1240px] items-center gap-8 lg:grid-cols-[250px_minmax(0,1fr)_270px]">
+    {/* Left Content */}
+    <motion.div
+      initial={{ opacity: 0, x: -35 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      <p className="text-[14px] font-[500] uppercase text-[#ff6b00]">
+        Why Choose Us
+      </p>
+
+      <h2 className="mt-3 text-[24px] font-[600] leading-tight text-[#00245d] md:text-[28px]">
+        Built on Trust.
+        <br />
+        Driven by Impact.
+      </h2>
+
+      <div className="mt-4 h-1 w-12 bg-[#ff6b00]" />
+
+      <p className="mt-4 text-[14px] leading-6 text-gray-700">
+        We combine global publishing standards with local insight to deliver a
+        world-class publishing experience.
+      </p>
+    </motion.div>
+
+    {/* Cards */}
+    <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+      {trustCards.map((card, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          whileHover={{
+            y: -8,
+            scale: 1.02,
+            boxShadow: "0 18px 35px rgba(0,74,173,.12)",
+          }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45, delay: i * 0.08 }}
+          className="flex h-[220px] flex-col items-center rounded-[16px] border border-[#E8EDF5] bg-white px-4 py-5 text-center shadow-[0_4px_18px_rgba(0,0,0,0.05)]"
+        >
+          {/* Fixed Icon Area */}
+          <div className="flex h-[44px] items-center justify-center">
+            <div className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#004aad] text-[22px] text-[#004aad]">
+              {card.icon}
+            </div>
           </div>
+
+          {/* Fixed Title Area */}
+          <div className="mt-4 flex h-[40px] items-center justify-center">
+            <h3 className="text-[13px] font-[550] leading-5 text-[#061d45]">
+              {card.title}
+            </h3>
+          </div>
+
+          {/* Fixed Description Area */}
+          <div className="mt-1 flex h-[70px] items-start justify-center">
+            <p className="text-[12px] leading-6 text-gray-700">
+              {card.desc}
+            </p>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+
+   {/* Right Image */}
+<motion.div
+  initial={{ opacity: 0, x: 35 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6 }}
+  className="relative -mr-[50px] hidden h-[260px] w-[430px] overflow-hidden lg:block"
+  style={{
+    clipPath: "polygon(18% 0, 100% 0, 100% 100%, 0 100%)",
+  }}
+>
+  <img
+    src={WhyImage}
+    alt="Team Collaboration"
+    className="h-full w-full object-cover object-right"
+  />
+</motion.div>
+  </div>
+</section>
+
+      {/* CTA */}
+      <section className="bg-[#004aad] px-5 py-8 text-white">
+        <div className="mx-auto flex max-w-[1240px] flex-col items-center justify-between gap-7 md:flex-row">
+          <div className="flex flex-col items-center gap-5 text-center sm:flex-row sm:text-left">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/50 text-[30px]">
+              <FaFileAlt />
+            </div>
+
+            <div>
+              <h2 className="text-[18px] font-[500] md:text-[22px]">
+                Ready to Publish Your Research?
+              </h2>
+              <p className="mt-2 text-[14px] w-[370px] leading-6 text-white/90">
+                Join thousands of researchers worldwide who trust Yashika
+                Publications for quality and impact.
+              </p>
+            </div>
+          </div>
+
+          <motion.a
+            whileHover={{ scale: 1.07, y: -3 }}
+            whileTap={{ scale: 0.96 }}
+            href="/submit-paper"
+            className="inline-flex items-center gap-3 rounded-md border text-[14px] border-white/70 px-4 py-3 text-sm font-[500] text-white shadow-lg hover:bg-white hover:text-[#004aad]"
+          >
+            Submit Your Paper <FaPaperPlane />
+          </motion.a>
         </div>
       </section>
     </PageTransition>
