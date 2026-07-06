@@ -1,186 +1,490 @@
 import { motion } from "framer-motion";
 import {
-  FaUserCheck,
-  FaClipboardList,
-  FaCommentDots,
+  FaMedal,
   FaCertificate,
-  FaGraduationCap,
-  FaClock,
   FaGlobe,
+  FaBookOpen,
+  FaUsers,
+  FaHandHoldingHeart,
+  FaEnvelopeOpenText,
+  FaFileAlt,
+  FaClipboardCheck,
+  FaUserFriends,
   FaAward,
+  FaTrophy,
+  FaPaperPlane,
+  FaUserCheck,
+  FaQuoteLeft, FaChevronLeft, FaChevronRight 
 } from "react-icons/fa";
-import SectionTitle from "../components/SectionTitle";
-import Button from "../components/Button";
 import PageTransition from "../components/PageTransition";
 
-const responsibilities = [
-  {
-    icon: <FaClipboardList />,
-    title: "Evaluate Manuscripts",
-    desc: "Assess submitted research for originality, methodology and scientific merit.",
-  },
-  {
-    icon: <FaCommentDots />,
-    title: "Provide Constructive Feedback",
-    desc: "Offer clear, actionable feedback to help authors strengthen their manuscripts.",
-  },
-  {
-    icon: <FaClock />,
-    title: "Timely Reviews",
-    desc: "Complete reviews within the agreed timeline to keep the publication process moving.",
-  },
-  {
-    icon: <FaUserCheck />,
-    title: "Maintain Confidentiality",
-    desc: "Treat all manuscripts under review as strictly confidential documents.",
-  },
-];
+import ReviewerHero from "../assets/reviewerBG.png";
+import r1 from "../assets/emly.webp";
 
 const benefits = [
-  { icon: <FaCertificate />, label: "Reviewer Certificate" },
-  { icon: <FaGraduationCap />, label: "Professional Recognition" },
-  { icon: <FaGlobe />, label: "Global Networking" },
-  { icon: <FaAward />, label: "Editorial Board Opportunities" },
+  {
+    icon: <FaMedal />,
+    title: "Enhance Your Profile",
+    desc: "Gain recognition for your expertise and strengthen your academic reputation.",
+    color: "border-[#bcd4ff] bg-[#eaf3ff] text-[#004aad]",
+  },
+  {
+    icon: <FaCertificate />,
+    title: "Recognition & Certificates",
+    desc: "Receive certificates and acknowledgment for your valuable contributions.",
+    color: "border-[#bcd4ff] bg-[#eaf3ff] text-[#004aad]",
+  },
+  {
+    icon: <FaGlobe />,
+    title: "Global Exposure",
+    desc: "Be part of a global network of researchers and subject matter experts.",
+    color: "border-[#bcd4ff] bg-[#eaf3ff] text-[#004aad]",
+  },
+  {
+    icon: <FaBookOpen />,
+    title: "Access to Research",
+    desc: "Get early access to the latest research in your field of expertise.",
+    color: "border-[#bcd4ff] bg-[#eaf3ff] text-[#004aad]",
+  },
+  {
+    icon: <FaUsers />,
+    title: "Professional Growth",
+    desc: "Improve your reviewing skills and stay updated with research trends.",
+    color: "border-[#bcd4ff] bg-[#eaf3ff] text-[#004aad]",
+  },
+  {
+    icon: <FaHandHoldingHeart />,
+    title: "Make an Impact",
+    desc: "Help maintain research quality and shape the future of your discipline.",
+    color: "border-[#bcd4ff] bg-[#eaf3ff] text-[#004aad]",
+  },
 ];
 
-const criteria = [
-  "PhD or equivalent research experience in relevant field",
-  "Minimum 3 published research papers in reputed journals",
-  "Strong understanding of research methodology & ethics",
-  "Ability to provide timely, constructive feedback",
+const process = [
+  {
+    icon: <FaEnvelopeOpenText />,
+    step: "1.",
+    title: "Invitation",
+    desc: "You will receive an invitation to review a manuscript that matches your expertise.",
+    color: "border-[#bcd4ff] bg-[#eaf3ff] text-[#004aad]",
+  },
+  {
+    icon: <FaFileAlt />,
+    step: "2.",
+    title: "Accept & Review",
+    desc: "Accept the invitation and submit your review within the given timeline.",
+    color: "border-[#ffd1a8] bg-[#fff2e7] text-[#ff6b00]",
+  },
+  {
+    icon: <FaClipboardCheck />,
+    step: "3.",
+    title: "Submit Feedback",
+    desc: "Provide constructive and confidential feedback to help improve the manuscript.",
+    color: "border-[#b7e7c0] bg-[#eaf9ed] text-[#22a447]",
+  },
+  {
+    icon: <FaUserFriends />,
+    step: "4.",
+    title: "Editorial Decision",
+    desc: "Your review helps our editors make informed decisions about the manuscript.",
+    color: "border-[#d7c3ff] bg-[#f3ecff] text-[#7b46d8]",
+  },
+  {
+    icon: <FaAward />,
+    step: "5.",
+    title: "Recognition",
+    desc: "Receive acknowledgment and continue contributing to quality research.",
+    color: "border-[#aeeaf0] bg-[#e9fbfd] text-[#069aa8]",
+  },
 ];
+
+const stats = [
+  {
+    icon: <FaUsers />,
+    value: "200+",
+    label: "Expert Reviewers",
+    sub: "Worldwide",
+    color: "text-[#20a852]",
+  },
+  {
+    icon: <FaFileAlt />,
+    value: "1000+",
+    label: "Manuscripts",
+    sub: "Reviewed",
+    color: "text-[#7442c8]",
+  },
+  {
+    icon: <FaBookOpen />,
+    value: "5+",
+    label: "High-quality Journals in",
+    sub: "Diverse Disciplines",
+    color: "text-[#ff6b00]",
+  },
+  {
+    icon: <FaTrophy />,
+    value: "100%",
+    label: "Commitment to Ethical",
+    sub: "Publishing",
+    color: "text-[#004aad]",
+  },
+];
+
+const testimonials = [
+  {
+    image: r1,
+    text: "Reviewing for Yashika Publications has been a rewarding experience. The editorial team is professional, supportive, and responsive.",
+    name: "Dr. Rajeev Sharma",
+    role: "Professor, Computer Science",
+    country: "India",
+  },
+  {
+    image: r1,
+    text: "I appreciate the timely process and recognition I receive for my reviews. It's a great platform for researchers.",
+    name: "Dr. Maria Gonzalez",
+    role: "Associate Professor, Education",
+    country: "Spain",
+  },
+  {
+    image: r1,
+    text: "The quality of submissions and the transparent review process make Yashika Publications stand out.",
+    name: "Dr. Ahmed Khan",
+    role: "Research Scientist, AI & ML",
+    country: "UAE",
+  },
+];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 35 },
+  show: { opacity: 1, y: 0 },
+};
 
 const Reviewers = () => {
   return (
     <PageTransition>
       {/* HERO */}
-      <section className="bg-navy-900 py-16 text-center md:py-20">
-        <div className="container-x">
-          <motion.span
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="section-tag"
-          >
-            FOR REVIEWERS
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-4 font-heading text-3xl font-bold text-white sm:text-4xl md:text-5xl"
-          >
-            Join Our Reviewer Panel
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mx-auto mt-4 max-w-2xl text-sm text-navy-100/80 md:text-base"
-          >
-            Help shape the future of academic research by joining our global
-            community of expert peer reviewers.
-          </motion.p>
+      <section
+        className="relative overflow-hidden bg-cover bg-center text-white"
+        style={{ backgroundImage: `url(${ReviewerHero})` }}
+      >
+        <div className="relative z-10 mx-auto flex min-h-[390px] max-w-[1400px] items-center px-4 py-10 sm:min-h-[420px] sm:px-8 lg:min-h-[430px] lg:px-14 xl:px-16">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-8"
+            initial="hidden"
+            animate="show"
+            variants={fadeUp}
+            transition={{ duration: 0.6 }}
+            className="max-w-[560px]"
           >
-            <Button to="/contact" variant="primary">
-              Apply to Become a Reviewer
-            </Button>
+            <p className="mb-5 text-[12px] font-medium">
+              Home &nbsp;›&nbsp; For Reviewers
+            </p>
+
+            <h1 className="text-[36px] font-[600] leading-tight sm:text-[40px] md:text-[44px]">
+              For Reviewers
+            </h1>
+
+            <div className="mt-4 h-1 w-12 bg-[#ff7a00]" />
+
+            <h2 className="mt-4 text-[18px] font-[500] leading-snug md:text-[22px]">
+              Be a part of quality publishing.
+              <br />
+              Make a global impact.
+            </h2>
+
+            <p className="mt-5 max-w-[395px] text-[14px] font-medium leading-7 text-white/90 sm:text-[15px]">
+              Your expertise helps us maintain the highest standards of research
+              and drive innovation forward.
+            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* RESPONSIBILITIES */}
-      <section className="section-py bg-white">
-        <div className="container-x">
-          <SectionTitle
-            tag="RESPONSIBILITIES"
-            title="What Reviewers Do"
-            subtitle="Reviewers play a vital role in maintaining the quality and integrity of published research."
-          />
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {responsibilities.map((r, i) => (
+      {/* WHY REVIEW */}
+      <section className="bg-white px-4 py-12 sm:px-5 lg:py-14">
+        <div className="mx-auto grid max-w-[1180px] gap-12 lg:grid-cols-[330px_1fr]">
+          <motion.div
+            initial={{ opacity: 0, x: -35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="mt-2 text-[24px] font-[600] leading-tight text-[#00245d] md:text-[28px]">
+              Why Review with
+              <br />
+              Yashika Publications?
+            </h2>
+
+            <div className="mt-5 h-1 w-12 bg-[#ff6b00]" />
+
+            <p className="mt-6 text-[14px] leading-6 text-gray-700">
+              We value reviewers as the backbone of scholarly publishing. Join a
+              global community of experts and contribute to advancing research
+              and knowledge.
+            </p>
+
+            <motion.div
+              whileHover={{ y: -6, scale: 1.02 }}
+              className="mt-8 rounded-[14px] bg-[#fff4e7] p-7 shadow-[0_10px_35px_rgba(255,107,0,0.12)]"
+            >
+              <h3 className="text-[18px] font-[550] text-[#00245d]">
+                We Value Your Expertise
+              </h3>
+              <div className="mt-2 text-[46px] leading-none text-[#ff6b00]">
+                “
+              </div>
+              <p className="-mt-10 pl-6 text-[14px] italic leading-7 text-gray-700">
+                Every review you complete helps ensure that only high-quality,
+                ethical and original research is published.
+              </p>
+              <div className="ml-6 mt-3 h-px w-12 bg-[#00245d]/20" />
+            </motion.div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+            {benefits.map((item, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 35 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="card group p-7 text-center"
+                whileHover={{ y: -8, scale: 1.02 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: i * 0.06 }}
+                className="flex min-h-[180px] flex-col items-center justify-start border-gray-200 px-6 text-center sm:border-r sm:[&:nth-child(2n)]:border-r-0 lg:[&:nth-child(2n)]:border-r lg:[&:nth-child(3n)]:border-r-0"
               >
-                <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-teal-50 text-2xl text-teal-500 transition-transform duration-300 group-hover:scale-110">
-                  {r.icon}
+                <div
+                  className={`flex h-[60px] w-[60px] items-center justify-center rounded-full border text-[28px] shadow-sm ${item.color}`}
+                >
+                  {item.icon}
                 </div>
-                <h3 className="mb-2 font-heading text-base font-semibold text-navy-900">
-                  {r.title}
+
+                <h3 className="mt-5 text-[14px] font-[550] text-[#061d45]">
+                  {item.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-navy-500">{r.desc}</p>
+
+                <p className="mt-3 max-w-[210px] text-[13px] leading-6 text-gray-700">
+                  {item.desc}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ELIGIBILITY */}
-      <section className="section-py bg-navy-50">
-        <div className="container-x grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
+      {/* PROCESS */}
+      <section className="bg-white px-4 pb-10 sm:px-5">
+        <div className="mx-auto max-w-[1180px] text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-2 text-[24px] font-[600] leading-tight text-[#00245d] md:text-[28px]"
           >
-            <span className="section-tag">ELIGIBILITY CRITERIA</span>
-            <h2 className="mt-3 font-heading text-2xl font-bold text-navy-900 sm:text-3xl md:text-4xl">
-              Who Can Become a Reviewer?
-            </h2>
-            <ul className="mt-6 space-y-4">
-              {criteria.map((c, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-teal-500" />
-                  <span className="text-sm leading-relaxed text-navy-600 md:text-base">
-                    {c}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+            How the Review Process Works
+          </motion.h2>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-2 gap-5"
-          >
-            {benefits.map((b, i) => (
-              <div
+          <div className="mx-auto mt-3 h-1 w-10 bg-[#ff6b00]" />
+
+          <div className="relative mt-9 grid gap-8 sm:grid-cols-2 md:grid-cols-5 md:gap-5">
+            <div className="absolute left-[8%] right-[8%] top-[42px] hidden border-t-2 border-dotted border-[#9aa8b9] md:block" />
+
+            {process.map((item, i) => (
+              <motion.div
                 key={i}
-                className="card flex flex-col items-center gap-3 p-7 text-center"
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -8 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="relative z-10 text-center"
               >
-                <div className="text-3xl text-teal-500">{b.icon}</div>
-                <p className="text-sm font-semibold text-navy-900">{b.label}</p>
-              </div>
+                <div
+                  className={`mx-auto flex h-[60px] w-[60px] items-center justify-center rounded-full border text-[28px] shadow-sm ${item.color}`}
+                >
+                  {item.icon}
+                </div>
+
+                <h3 className="mt-5 text-[14px] font-[550] text-[#061d45]">
+                  {item.step} {item.title}
+                </h3>
+
+                <p className="mx-auto mt-3 max-w-[170px] text-[13px] leading-6 text-gray-700">
+                  {item.desc}
+                </p>
+              </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
+      {/* STATS */}
+      <section className="bg-white px-4 py-7 sm:px-5">
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mx-auto grid max-w-[1180px] items-center gap-6 rounded-[16px] bg-[#f4f8ff] p-7 shadow-[0_8px_30px_rgba(0,74,173,0.08)] lg:grid-cols-[260px_1fr]"
+        >
+          <div>
+            <h2 className="mt-2 text-[24px] font-[600] leading-tight text-[#00245d] md:text-[26px]">
+              Your Knowledge.
+              <br />
+              Their Future.
+              <br />
+              Our Impact.
+            </h2>
+            <div className="mt-4 h-1 w-12 bg-[#ff6b00]" />
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {stats.map((item, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ y: -6, scale: 1.03 }}
+                className="flex flex-col items-center justify-center border-gray-300 px-4 text-center lg:border-r lg:last:border-r-0"
+              >
+                <div className={`text-[42px] ${item.color}`}>{item.icon}</div>
+                <h3 className="mt-3 text-[24px] font-[500] text-[#00245d]">
+                  {item.value}
+                </h3>
+                <p className="mt-1 text-[13px] leading-5 text-gray-800">
+                  {item.label}
+                  <br />
+                  {item.sub}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* TESTIMONIALS */}
+<section className="bg-white px-4 py-12 sm:px-5">
+  <div className="mx-auto max-w-[1180px]">
+
+    <motion.h2
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="text-center text-[24px] font-[600] text-[#00245d] md:text-[28px]"
+    >
+      Voices of Our Reviewers
+    </motion.h2>
+
+    <div className="mx-auto mt-3 h-1 w-10 bg-[#ff6b00]" />
+
+    <div className="relative mt-10">
+
+      {/* Left Arrow */}
+      <button className="absolute -left-6 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition hover:scale-110 lg:flex">
+        <FaChevronLeft className="text-[#00245d]" />
+      </button>
+
+      {/* Right Arrow */}
+      <button className="absolute -right-6 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition hover:scale-110 lg:flex">
+        <FaChevronRight className="text-[#00245d]" />
+      </button>
+
+      <div className="grid gap-5 md:grid-cols-3">
+
+        {testimonials.map((item, i) => (
+
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{
+              y: -8,
+              boxShadow: "0 20px 45px rgba(0,74,173,.12)",
+            }}
+            viewport={{ once: true }}
+            transition={{ duration: .45, delay: i*.08 }}
+            className="rounded-[14px] border border-[#edf2fa] bg-[#f8fbff] p-7"
+          >
+
+            <FaQuoteLeft className="mb-4 text-[24px] text-[#0a3da9]" />
+
+            <p className="min-h-[108px] text-[14px] leading-7 text-[#4d5667]">
+              {item.text}
+            </p>
+
+            <div className="mt-2 flex items-center gap-4">
+
+              <img
+                src={item.image}
+                alt={item.name}
+                className="h-14 w-14 rounded-full object-cover border-2 border-white shadow-md"
+              />
+
+              <div>
+
+                <h4 className="text-[15px] font-[550] text-[#0a3da9]">
+                  {item.name}
+                </h4>
+
+                <p className="mt-1 text-[13px] text-[#444]">
+                  {item.role}
+                </p>
+
+                <p className="text-[13px] text-[#555]">
+                  {item.country}
+                </p>
+
+              </div>
+
+            </div>
+
+          </motion.div>
+
+        ))}
+
+      </div>
+
+      {/* Dots */}
+
+      <div className="mt-8 flex justify-center gap-3">
+
+        <span className="h-3 w-3 rounded-full bg-[#0a3da9]" />
+
+        <span className="h-3 w-3 rounded-full bg-[#d5d9e3]" />
+
+        <span className="h-3 w-3 rounded-full bg-[#d5d9e3]" />
+
+        <span className="h-3 w-3 rounded-full bg-[#d5d9e3]" />
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
       {/* CTA */}
-      <section className="section-py bg-navy-900 text-center">
-        <div className="container-x flex flex-col items-center gap-6">
-          <SectionTitle
-            title="Ready to Contribute to Global Research?"
-            subtitle="Apply today and become part of our trusted reviewer community."
-            light
-          />
-          <Button to="/contact" variant="primary">
-            Apply Now
-          </Button>
+      <section className="bg-gradient-to-r from-[#001f55] via-[#004aad] to-[#003b8f] px-4 py-8 text-white sm:px-5">
+        <div className="mx-auto flex max-w-[1180px] flex-col items-center justify-between gap-7 md:flex-row">
+          <div className="flex flex-col items-center gap-5 text-center sm:flex-row sm:text-left">
+            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-white/50 text-[30px]">
+              <FaUsers />
+            </div>
+
+            <div>
+              <h2 className="text-[20px] font-[700] md:text-[26px]">
+                Ready to Review and Make a Difference?
+              </h2>
+              <p className="mt-2 max-w-[480px] text-[14px] leading-6 text-white/90">
+                Join our reviewer community and contribute to advancing
+                knowledge worldwide.
+              </p>
+            </div>
+          </div>
+
+          <motion.a
+            whileHover={{ scale: 1.07, y: -3 }}
+            whileTap={{ scale: 0.96 }}
+            href="/contact"
+            className="inline-flex items-center gap-3 rounded-md bg-[#ff6b00] px-8 py-4 text-[14px] font-[700] text-white shadow-lg hover:bg-white hover:text-[#004aad]"
+          >
+            Join as Reviewer <FaUserCheck />
+          </motion.a>
         </div>
       </section>
     </PageTransition>

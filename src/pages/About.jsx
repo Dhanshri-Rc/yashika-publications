@@ -127,7 +127,7 @@ const About = () => {
               Home &nbsp;›&nbsp; About Us
             </p>
 
-            <h1 className="text-[14px] font-[600] leading-tight md:text-[54px]">
+            <h1 className="text-[36px] font-[600] leading-tight sm:text-[40px] md:text-[44px]">
               About Us
             </h1>
 
