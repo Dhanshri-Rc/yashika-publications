@@ -245,7 +245,7 @@ const Authors = () => {
 
         {/* PLATFORM + RESOURCES */}
         <section className="w-full bg-white px-4 py-6 sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-[1280px] overflow-hidden rounded-[14px] border border-[#e5e9f2] bg-white shadow-sm lg:grid-cols-[1fr_1.38fr]">
+      <div className="mx-auto grid max-w-[1280px] overflow-hidden rounded-[14px] border border-[#e5e9f2] bg-white shadow-sm lg:grid-cols-[1fr_1.28fr]">
 
         {/* LEFT BLUE CARD */}
         <motion.div
@@ -255,13 +255,13 @@ const Authors = () => {
           transition={{ duration: 0.65 }}
           className="relative overflow-hidden rounded-[14px] bg-[#062b86] px-6 py-6 text-white sm:px-8 lg:rounded-r-none"
         >
-          {/* dotted world background */}
+        
           
 
           <div className="absolute inset-0 bg-gradient-to-br from-[#07266f] via-[#003b91]/90 to-[#001b58]" />
 
           <div className="relative z-10">
-            <h2 className="text-[20px] font-bold leading-tight sm:text-[22px]">
+            <h2 className="text-[20px] font-semibold leading-tight sm:text-[22px]">
               Your Research. Our Global Platform.
             </h2>
 
@@ -278,15 +278,15 @@ const Authors = () => {
                     ${i === 2 || i === 5 ? "sm:border-r-0" : ""}
                   `}
                 >
-                  <div className="text-[38px] text-white transition duration-300 group-hover:text-[#8ec5ff]">
+                  <div className="text-[30px] text-white transition duration-300 group-hover:text-[#8ec5ff]">
                     {item[0]}
                   </div>
 
-                  <h3 className="mt-3 text-[28px] font-bold leading-none">
+                  <h3 className="mt-3 text-[22px] font-semibold leading-none">
                     {item[1]}
                   </h3>
 
-                  <p className="mt-2 whitespace-pre-line text-[12px] font-medium leading-[16px] text-white">
+                  <p className="mt-2 whitespace-pre-line text-[11px] font-medium leading-[16px] text-white">
                     {item[2]}
                   </p>
                 </motion.div>
@@ -298,10 +298,7 @@ const Authors = () => {
         {/* RIGHT RESOURCE AREA */}
         <div
           className="relative grid min-h-[360px] overflow-hidden bg-cover bg-center md:grid-cols-[1.1fr_.9fr]"
-          style={{
-            backgroundImage:
-              "linear-gradient(90deg, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.92) 52%, rgba(255,255,255,0.15) 72%), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80')",
-          }}
+        
         >
           <motion.div
             initial={{ opacity: 0, y: 35 }}
@@ -310,13 +307,13 @@ const Authors = () => {
             transition={{ duration: 0.65 }}
             className="relative z-10 px-6 py-6 sm:px-8"
           >
-            <h2 className="text-[24px] font-extrabold leading-tight text-[#061f5c] sm:text-[26px]">
+            <h2 className="text-[20px] font-semibold leading-tight text-[#061f5c] sm:text-[24px]">
               Author Resources
             </h2>
 
             <div className="mt-1 h-[2px] w-9 bg-[#f58220]" />
 
-            <p className="mt-3 text-[13px] font-semibold text-[#202020]">
+            <p className="mt-3 text-[13px] font-medium text-[#202020]">
               Find everything you need to prepare and submit your best work.
             </p>
 
@@ -326,7 +323,7 @@ const Authors = () => {
                   key={i}
                   whileHover={{ x: 6, scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="group flex min-h-[42px] items-center justify-between rounded-[7px] border border-[#dfe6f1] bg-white px-3 text-left text-[12px] font-bold text-[#061f5c] shadow-[0_3px_10px_rgba(7,35,90,0.08)] transition hover:border-[#0646b4] hover:shadow-lg"
+                  className="group flex min-h-[42px] items-center justify-between rounded-[7px] border border-[#dfe6f1] bg-white px-3 text-left text-[12px] font-medium text-[#061f5c] shadow-[0_3px_10px_rgba(7,35,90,0.08)] transition hover:border-[#0646b4] hover:shadow-lg"
                 >
                   <span className="flex items-center gap-3">
                     <span className="text-[20px] text-[#0646b4] transition group-hover:scale-110">
@@ -335,18 +332,12 @@ const Authors = () => {
                     {r[1]}
                   </span>
 
-                  <FiChevronRight className="text-[20px] text-[#0646b4] transition group-hover:translate-x-1" />
+                  {/* <FiChevronRight className="text-[20px] text-[#0646b4] transition group-hover:translate-x-1" /> */}
                 </motion.button>
               ))}
             </div>
 
-            <motion.button
-              whileHover={{ y: -3 }}
-              whileTap={{ scale: 0.97 }}
-              className="mt-6 rounded-[6px] border border-[#0646b4] bg-white px-5 py-3 text-[13px] font-bold text-[#0646b4] transition hover:bg-[#0646b4] hover:text-white"
-            >
-              Explore All Resources <span className="ml-2">→</span>
-            </motion.button>
+          
           </motion.div>
 
           {/* RIGHT IMAGE */}
