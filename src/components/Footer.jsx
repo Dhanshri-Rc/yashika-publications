@@ -115,18 +115,18 @@ const Footer = () => {
                 <span>
                   Yashika Publications
                   <br />
-                  Indore, Madhya Pradesh, India
+                 Wardha, Nagpur, Pune 
                 </span>
               </li>
 
               <li className="flex items-center gap-3">
                 <FaEnvelope className="shrink-0 text-white" />
-                <span>editor.aire@yashikapublications.com</span>
+                <span>info@yashikapublications.com</span>
               </li>
 
               <li className="flex items-center gap-3">
                 <FaGlobe className="shrink-0 text-white" />
-                <span>www.yashikapublications.com/aire</span>
+                <span>www.yashikapublications.com</span>
               </li>
             </ul>
           </motion.div>
