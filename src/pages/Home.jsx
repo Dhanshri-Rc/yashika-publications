@@ -546,7 +546,7 @@ function Home() {
           transition={{ duration: 0.45 }}
           className="text-[26px] font-[600] leading-tight  sm:text-[28px]"
         >
-          Our Serivnals
+          Our Journals
         </motion.h2>
 
         <div className="mx-auto mt-2 h-[3px] w-[48px] rounded-full bg-[#f28b21]" />
