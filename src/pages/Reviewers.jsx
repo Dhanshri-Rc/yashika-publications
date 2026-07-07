@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   FaMedal,
@@ -14,7 +15,9 @@ import {
   FaTrophy,
   FaPaperPlane,
   FaUserCheck,
-  FaQuoteLeft, FaChevronLeft, FaChevronRight 
+  FaQuoteLeft,
+  FaChevronLeft,
+  FaChevronRight,
 } from "react-icons/fa";
 import PageTransition from "../components/PageTransition";
 
@@ -174,9 +177,18 @@ const Reviewers = () => {
             transition={{ duration: 0.6 }}
             className="max-w-[560px]"
           >
-            <p className="mb-5 text-[12px] font-medium">
-              Home &nbsp;›&nbsp; For Reviewers
-            </p>
+            <div className="flex items-center gap-2 text-sm text-white/80 sm:mt-9 mt-5 mb-4">
+              <Link
+                to="/"
+                className="transition duration-300 hover:text-[#ff9b21]"
+              >
+                Home
+              </Link>
+
+              <FaChevronRight className="text-[10px]" />
+
+              <span className="font-medium text-white">For Reviewers</span>
+            </div>
 
             <h1 className="text-[36px] font-[600] leading-tight sm:text-[40px] md:text-[44px]">
               For Reviewers
@@ -358,151 +370,135 @@ const Reviewers = () => {
       </section>
 
       {/* TESTIMONIALS */}
-<section className="bg-white px-4 py-8 sm:px-5">
-  <div className="mx-auto max-w-[1180px]">
-
-    <motion.h2
-      initial={{ opacity: 0, y: 25 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="text-center text-[24px] font-[600] text-[#00245d] md:text-[28px]"
-    >
-      Voices of Our Reviewers
-    </motion.h2>
-
-    <div className="mx-auto mt-3 h-1 w-10 bg-[#ff6b00]" />
-
-    <div className="relative mt-10">
-
-      {/* Left Arrow */}
-      <button className="absolute -left-6 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition hover:scale-110 lg:flex">
-        <FaChevronLeft className="text-[#00245d]" />
-      </button>
-
-      {/* Right Arrow */}
-      <button className="absolute -right-6 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition hover:scale-110 lg:flex">
-        <FaChevronRight className="text-[#00245d]" />
-      </button>
-
-      <div className="grid gap-5 md:grid-cols-3">
-
-        {testimonials.map((item, i) => (
-
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 30 }}
+      <section className="bg-white px-4 py-8 sm:px-5">
+        <div className="mx-auto max-w-[1180px]">
+          <motion.h2
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            whileHover={{
-              y: -8,
-              boxShadow: "0 20px 45px rgba(0,74,173,.12)",
-            }}
             viewport={{ once: true }}
-            transition={{ duration: .45, delay: i*.08 }}
-            className="rounded-[14px] border border-[#edf2fa] bg-[#f8fbff] p-7"
+            className="text-center text-[24px] font-[600] text-[#00245d] md:text-[28px]"
           >
+            Voices of Our Reviewers
+          </motion.h2>
 
-            <FaQuoteLeft className="mb-4 text-[24px] text-[#0a3da9]" />
+          <div className="mx-auto mt-3 h-1 w-10 bg-[#ff6b00]" />
 
-            <p className="min-h-[108px] text-[14px] leading-7 text-[#4d5667]">
-              {item.text}
-            </p>
+          <div className="relative mt-10">
+            {/* Left Arrow */}
+            <button className="absolute -left-6 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition hover:scale-110 lg:flex">
+              <FaChevronLeft className="text-[#00245d]" />
+            </button>
 
-            <div className="mt-2 flex items-center gap-4">
+            {/* Right Arrow */}
+            <button className="absolute -right-6 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition hover:scale-110 lg:flex">
+              <FaChevronRight className="text-[#00245d]" />
+            </button>
 
-              <img
-                src={item.image}
-                alt={item.name}
-                className="h-14 w-14 rounded-full object-cover border-2 border-white shadow-md"
-              />
+            <div className="grid gap-5 md:grid-cols-3">
+              {testimonials.map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{
+                    y: -8,
+                    boxShadow: "0 20px 45px rgba(0,74,173,.12)",
+                  }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: i * 0.08 }}
+                  className="rounded-[14px] border border-[#edf2fa] bg-[#f8fbff] p-7"
+                >
+                  <FaQuoteLeft className="mb-4 text-[24px] text-[#0a3da9]" />
 
-              <div>
+                  <p className="min-h-[108px] text-[14px] leading-7 text-[#4d5667]">
+                    {item.text}
+                  </p>
 
-                <h4 className="text-[15px] font-[550] text-[#0a3da9]">
-                  {item.name}
-                </h4>
+                  <div className="mt-2 flex items-center gap-4">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="h-14 w-14 rounded-full object-cover border-2 border-white shadow-md"
+                    />
 
-                <p className="mt-1 text-[13px] text-[#444]">
-                  {item.role}
-                </p>
+                    <div>
+                      <h4 className="text-[15px] font-[550] text-[#0a3da9]">
+                        {item.name}
+                      </h4>
 
-                <p className="text-[13px] text-[#555]">
-                  {item.country}
-                </p>
+                      <p className="mt-1 text-[13px] text-[#444]">
+                        {item.role}
+                      </p>
 
-              </div>
-
+                      <p className="text-[13px] text-[#555]">{item.country}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
 
-          </motion.div>
+            {/* Dots */}
 
-        ))}
+            <div className="mt-8 flex justify-center gap-3">
+              <span className="h-3 w-3 rounded-full bg-[#0a3da9]" />
 
-      </div>
+              <span className="h-3 w-3 rounded-full bg-[#d5d9e3]" />
 
-      {/* Dots */}
+              <span className="h-3 w-3 rounded-full bg-[#d5d9e3]" />
 
-      <div className="mt-8 flex justify-center gap-3">
-
-        <span className="h-3 w-3 rounded-full bg-[#0a3da9]" />
-
-        <span className="h-3 w-3 rounded-full bg-[#d5d9e3]" />
-
-        <span className="h-3 w-3 rounded-full bg-[#d5d9e3]" />
-
-        <span className="h-3 w-3 rounded-full bg-[#d5d9e3]" />
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
+              <span className="h-3 w-3 rounded-full bg-[#d5d9e3]" />
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* CTA */}
       <div className="py-6">
-    <section className="relative overflow-hidden bg-[#004b93] px-5 py-8 text-white sm:py-8 ">
-  <div className="absolute right-0 top-0 h-full w-[240px] opacity-35 ">
-    <div className="h-full w-full bg-[radial-gradient(circle,#28b8ff_2px,transparent_2px)] [background-size:18px_18px]" />
-  </div>
+        <section className="relative overflow-hidden bg-[#004b93] px-5 py-8 text-white sm:py-8 ">
+          <div className="absolute right-0 top-0 h-full w-[240px] opacity-35 ">
+            <div className="h-full w-full bg-[radial-gradient(circle,#28b8ff_2px,transparent_2px)] [background-size:18px_18px]" />
+          </div>
 
-  <motion.div
-    initial={{ opacity: 0, y: 25 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6 }}
-    className="relative z-10 mx-auto flex max-w-[1170px] flex-col items-center justify-between gap-7 md:flex-row"
-  >
-    <div className="flex flex-col items-center gap-5 text-center sm:flex-row sm:text-left">
-      <motion.div
-        whileHover={{ scale: 1.08, rotate: 3 }}
-        className="flex h-[75px] w-[75px] items-center justify-center rounded-full border-2 border-white/70 text-[38px]"
-      >
-        <FaFileAlt />
-      </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative z-10 mx-auto flex max-w-[1170px] flex-col items-center justify-between gap-7 md:flex-row"
+          >
+            <div className="flex flex-col items-center gap-5 text-center sm:flex-row sm:text-left">
+              <motion.div
+                whileHover={{ scale: 1.08, rotate: 3 }}
+                className="flex h-[75px] w-[75px] items-center justify-center rounded-full border-2 border-white/70 text-[38px]"
+              >
+                <FaFileAlt />
+              </motion.div>
 
-      <div>
-        <h2 className="text-[24px] font-medium leading-tight sm:text-[24px]">
-          Ready to Review and Make a Difference?
-        </h2>
-        <p className="mt-1 max-w-[560px] text-[14px] font-medium leading-6 text-white/90 sm:text-[14px]">
-          Join our reviewer community and contribute to advancing knowledge worldwide.
-        </p>
+              <div>
+                <h2 className="text-[24px] font-medium leading-tight sm:text-[24px]">
+                  Ready to Review and Make a Difference?
+                </h2>
+                <p className="mt-1 max-w-[560px] text-[14px] font-medium leading-6 text-white/90 sm:text-[14px]">
+                  Join our reviewer community and contribute to advancing
+                  knowledge worldwide.
+                </p>
+              </div>
+            </div>
+
+            <motion.a
+              whileHover={{
+                scale: 1.06,
+                boxShadow: "0 0 25px rgba(255,255,255,0.45)",
+              }}
+              whileTap={{ scale: 0.96 }}
+              href="/contact"
+              className="inline-flex h-[50px] sm:mr-10 mr-0 min-w-[220px] items-center justify-center gap-3 rounded-[6px] bg-white px-6 text-[15px] font-semibold text-[#063a70] shadow-xl transition duration-300 hover:bg-[#f2f7ff]"
+            >
+              Submit Your Paper <FaPaperPlane className="text-[18px]" />
+            </motion.a>
+          </motion.div>
+        </section>
       </div>
-    </div>
-
-    <motion.a
-      whileHover={{
-        scale: 1.06,
-        boxShadow: "0 0 25px rgba(255,255,255,0.45)",
-      }}
-      whileTap={{ scale: 0.96 }}
-      href="/contact"
-      className="inline-flex h-[50px] sm:mr-10 mr-0 min-w-[220px] items-center justify-center gap-3 rounded-[6px] bg-white px-6 text-[15px] font-semibold text-[#063a70] shadow-xl transition duration-300 hover:bg-[#f2f7ff]"
-    >
-      Submit Your Paper <FaPaperPlane className="text-[18px]" />
-    </motion.a>
-  </motion.div>
-</section></div>
     </PageTransition>
   );
 };
