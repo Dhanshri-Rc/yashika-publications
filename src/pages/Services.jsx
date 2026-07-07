@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   FaBookOpen,
@@ -15,6 +16,7 @@ import {
   FaShieldAlt,
   FaFileAlt,
   FaPaperPlane,
+  FaChevronRight
 } from "react-icons/fa";
 import PageTransition from "../components/PageTransition";
 
@@ -116,9 +118,20 @@ const Services = () => {
             transition={{ duration: 0.6 }}
             className="max-w-[600px]"
           >
-            <p className="mb-5 text-[12px] font-medium">
-              Home &nbsp;›&nbsp; Our Services
-            </p>
+             <div className="flex items-center gap-2 text-sm text-white/80 sm:mt-9 mt-5 mb-4">
+  <Link
+    to="/"
+    className="transition duration-300 hover:text-[#ff9b21]"
+  >
+    Home
+  </Link>
+
+  <FaChevronRight className="text-[10px]" />
+
+  <span className="font-medium text-white">
+    Our Services
+  </span>
+</div>
 
             <h1 className="text-[36px] font-[600] leading-tight sm:text-[40px] md:text-[44px]">
               Our Services

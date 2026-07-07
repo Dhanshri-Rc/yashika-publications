@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   FaCalendarAlt,
@@ -14,6 +15,7 @@ import {
   FaUserCheck,
   FaFileAlt,
   FaPaperPlane,
+   FaChevronRight
 } from "react-icons/fa";
 import PageTransition from "../components/PageTransition";
 
@@ -123,9 +125,23 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="max-w-xl"
           >
-            <p className="mb-6 text-[12px] font-[500]">
+            {/* <p className="mb-6 text-[12px] font-[500]">
               Home &nbsp;›&nbsp; About Us
-            </p>
+            </p> */}
+            <div className="flex items-center gap-2 text-sm text-white/80 sm:mt-9 mt-5 mb-4">
+  <Link
+    to="/"
+    className="transition duration-300 hover:text-[#ff9b21]"
+  >
+    Home
+  </Link>
+
+  <FaChevronRight className="text-[10px]" />
+
+  <span className="font-medium text-white">
+    About Us
+  </span>
+</div>
 
             <h1 className="text-[36px] font-[600] leading-tight sm:text-[40px] md:text-[44px]">
               About Us
