@@ -255,10 +255,7 @@ const Authors = () => {
           transition={{ duration: 0.65 }}
           className="relative overflow-hidden rounded-[14px] bg-[#062b86] px-6 py-6 text-white sm:px-8 lg:rounded-r-none"
         >
-        
-          
-
-          <div className="absolute inset-0 bg-gradient-to-br from-[#07266f] via-[#003b91]/90 to-[#001b58]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#07266f] via-[#003b91]/90 to-[#001b58]" />
 
           <div className="relative z-10">
             <h2 className="text-[20px] font-semibold leading-tight sm:text-[22px]">

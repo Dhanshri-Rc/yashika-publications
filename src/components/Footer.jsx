@@ -14,29 +14,32 @@ import logo from "../assets/flogo.png";
 import bg from "../assets/bgfooter.png";
 
 const journalLinks = [
-  "About the Journal",
-  "Editorial Board",
-  "Current Issue",
-  "Archives",
-  "Indexing & Abstracting",
-  "Contact",
+  
+  { name: "About Us", path: "/about" },
+  { name: " Services", path: "/services" },
+  { name: " Journals", path: "/journals" },
+  { name: " Authors", path: "/authors",  },
+  { name: " Reviewers", path: "/reviewers", },
+  { name: " Resources", path: "/reviewers", },
+
+  // { name: "Contact Us", path: "/contact" },
 ];
 
 const authorLinks = [
   "Author Guidelines",
-  "Submit Manuscript",
+  "Submit Your Paper",
   "Publication Ethics",
-  "Peer Review Process",
-  "Copyright Policy",
-  "Article Processing Charges",
+  "Open Access Policy",
+  "FAQ for Authors",
+  
 ];
 
 const policyLinks = [
-  "Privacy Policy",
-  "Terms of Use",
-  "Open Access Policy",
-  "Conflict of Interest",
-  "Plagiarism Policy",
+  "Reviewers Guidelines",
+  "Reviewer Process",
+  "Benefits of Reviewers",
+  "Reviewer Login",
+ 
 ];
 
 const socials = [
@@ -89,13 +92,13 @@ const Footer = () => {
           </motion.div>
 
           {/* Journal */}
-          <FooterColumn title="JOURNAL" links={journalLinks} />
+          <FooterColumn title="QUICK LINKS" links={journalLinks} />
 
           {/* Authors */}
           <FooterColumn title="FOR AUTHORS" links={authorLinks} />
 
           {/* Policies */}
-          <FooterColumn title="POLICIES" links={policyLinks} />
+          <FooterColumn title="FOR REVIEWERS" links={policyLinks} />
 
           {/* Contact */}
           <motion.div
@@ -153,12 +156,21 @@ const FooterColumn = ({ title, links }) => {
       <ul className="space-y-1">
         {links.map((link, index) => (
           <li key={index}>
-            <Link
-              to="/"
-              className="inline-block text-[12px] font-medium leading-[18px] text-white/90 transition-all duration-300 hover:translate-x-1 hover:text-orange-400 hover:underline"
-            >
-              {link}
-            </Link>
+            {typeof link === "string" ? (
+              <Link
+                to="/"
+                className="inline-block text-[12px] font-medium leading-[18px] text-white/90 transition-all duration-300 hover:translate-x-1 hover:text-orange-400 hover:underline"
+              >
+                {link}
+              </Link>
+            ) : (
+              <Link
+                to={link.path}
+                className="inline-block text-[12px] font-medium leading-[18px] text-white/90 transition-all duration-300 hover:translate-x-1 hover:text-orange-400 hover:underline"
+              >
+                {link.name}
+              </Link>
+            )}
           </li>
         ))}
       </ul>
