@@ -36,7 +36,6 @@ import {
 } from "react-icons/hi2";
 import PageTransition from "../components/PageTransition";
 import bg from "../assets/bgauthor.png"
-import author from "../assets/author.png"
 import l1 from "../assets/Scopus_logo.webp"
 import l2 from "../assets/doaj.png"
 import l3 from "../assets/Google_Scholar_logo.png"

@@ -32,7 +32,7 @@ import {
 
 import heroImg from "../assets/homebg.png";
 import aboutImg from "../assets/about.png";
-import { BadgeCheck, BrainCircuit, ChartNoAxesCombined, CloudCog, FilePenLine, LockKeyhole, Monitor, Network, PencilLine, ShieldCheck, UsersRound } from "lucide-react";
+import { ArrowRight, BadgeCheck, BrainCircuit, ChartNoAxesCombined, CloudCog, FilePenLine, LockKeyhole, Monitor, Network, PencilLine, ShieldCheck, UsersRound } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 35 },
@@ -72,7 +72,7 @@ const stats = [
   {
     icon: <FaBookOpen />,
     value: "5",
-    title: "New Journals",
+    title: "Journals",
     desc: "In Emerging Tech",
     color: "#0b8de3",
   },
@@ -115,7 +115,7 @@ const stats = [
 const aboutFeatures = [
   {
     icon: <FaCalendarAlt />,
-    title: "12+",
+    title: "20+",
     desc: "Years of Excellence",
   },
   {
@@ -365,7 +365,7 @@ function Home() {
     <div className="mt-2 h-[3px] w-[64px] bg-[#ff7a00] rounded-full" />
 
     <p className="mt-5 max-w-[430px] text-[14px] font-medium leading-[1.85] text-[#1f2937] sm:text-[15px]">
-      With over 12 years of excellence, Yashika Publications has become a
+      With over 20 years of excellence, Yashika Publications has become a
       trusted name in academic publishing, specializing in Computer Science,
       Information Technology, and AI Education.
     </p>
@@ -433,7 +433,7 @@ function Home() {
       whileHover={{ y: -6 }}
       className="absolute bottom-10 left-4 rounded-[14px] bg-[#002b63] px-9 py-4 text-center text-white shadow-xl sm:left-8 lg:bottom-4"
     >
-      <h3 className="text-[30px] font-semibold leading-none">12+</h3>
+      <h3 className="text-[30px] font-semibold leading-none">20+</h3>
       <p className="mt-3 text-[15px]  leading-7">
         Years of <br />
         Publishing <br />
@@ -609,7 +609,7 @@ function Home() {
         </p>
 
         <p className="mt-6 whitespace-nowrap text-[14px] font-semibold leading-none text-[#ff6b12]">
-          Coming Soon
+          View Details <ArrowRight size={18} className="inline-block" />
         </p>
       </div>
     </motion.div>
