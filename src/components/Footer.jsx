@@ -21,8 +21,6 @@ const journalLinks = [
   { name: " Authors", path: "/authors",  },
   { name: " Reviewers", path: "/reviewers", },
   { name: " Resources", path: "/reviewers", },
-
-  // { name: "Contact Us", path: "/contact" },
 ];
 
 const authorLinks = [
