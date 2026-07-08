@@ -20,9 +20,6 @@ import {
   FaChevronRight,
 } from "react-icons/fa";
 import PageTransition from "../components/PageTransition";
-
-import ReviewerHero from "../assets/reviewerBG.png";
-import r1 from "../assets/emly.webp";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
