@@ -326,11 +326,11 @@ const Resources = () => {
           </p>
 
           {/* Button */}
-          <button className="mt-4 inline-flex items-center gap-3 font-semibold text-[14px] text-[#0c4cc4] transition-all duration-300 group-hover:gap-5">
+          {/* <button className="mt-4 inline-flex items-center gap-3 font-semibold text-[14px] text-[#0c4cc4] transition-all duration-300 group-hover:gap-5">
             {item.btn}
 
             <FiArrowRight className="transition-transform duration-300 group-hover:translate-x-2" />
-          </button>
+          </button> */}
         </motion.div>
       ))}
 
@@ -455,9 +455,9 @@ const Resources = () => {
                 ))}
               </ul>
 
-              <button className="mt-auto mx-4 inline-flex items-center gap-2 pt-3 text-[14px] font-semibold text-[#0b55cc] transition-all duration-300 group-hover:gap-4">
+              {/* <button className="mt-auto mx-4 inline-flex items-center gap-2 pt-3 text-[14px] font-semibold text-[#0b55cc] transition-all duration-300 group-hover:gap-4">
                 View All <FiArrowRight />
-              </button>
+              </button> */}
             </motion.div>
           ))}
         </div>
@@ -491,11 +491,12 @@ const Resources = () => {
               </p>
             </div>
           </div>
-
-          <button className="inline-flex h-[48px] min-w-[165px] items-center justify-center gap-4 rounded-md bg-[#062766] px-7 text-[14px] font-bold text-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-[#0b55cc] hover:shadow-xl">
+<Link to="/contact">
+          <button className="inline-flex h-[48px] min-w-[165px] items-center justify-center gap-4 rounded-md bg-[#062766] px-7 text-[14px] font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-[#0b55cc] hover:shadow-xl">
             Contact Us
             <FiMail className="text-[18px]" />
           </button>
+        </Link>
         </motion.div>
       </div>
     </section>

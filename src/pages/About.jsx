@@ -451,7 +451,7 @@ const About = () => {
         boxShadow: "0 0 25px rgba(255,255,255,0.45)",
       }}
       whileTap={{ scale: 0.96 }}
-      href="/contact"
+      href="/journals"
       className="inline-flex h-[50px] sm:mr-10 mr-0 min-w-[220px] items-center justify-center gap-3 rounded-[6px] bg-white px-6 text-[15px] font-semibold text-[#063a70] shadow-xl transition duration-300 hover:bg-[#f2f7ff]"
     >
       Submit Your Paper <FaPaperPlane className="text-[18px]" />
