@@ -16,7 +16,7 @@ import {
 } from "react-icons/fa";
 import PageTransition from "../components/PageTransition";
 
-import ContactHero from "../assets/yashika-publication-about-us-banner.webp";
+import ContactHero from "../assets/ContactBG.png";
 // import ContactMap from "../assets/contactMap.png";
 
 const contactDetails = [
