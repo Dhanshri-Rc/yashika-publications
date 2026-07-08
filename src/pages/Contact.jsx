@@ -412,9 +412,9 @@ const Contact = () => {
               >
                 <FaMapMarkerAlt className="mt-1 shrink-0 text-[22px]" />
                 <p className="text-[14px] leading-6">
-                  201, Planet Apt, Omkar Nagar,
+                  Yashika Publications
                   <br />
-                  Besa Road, Nagpur – India
+                 Wardha, Nagpur, Pune
                 </p>
               </motion.div>
 
@@ -472,12 +472,12 @@ const Contact = () => {
               className="absolute left-1/2 top-1/2 w-[260px] max-w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-[10px] bg-white p-5 shadow-[0_12px_30px_rgba(0,0,0,0.22)]"
             >
               <div className="flex gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#075bc4] text-[22px] text-white">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#075bc4] text-[18px] text-white">
                   <FaMapMarkerAlt />
                 </div>
 
                 <div>
-                  <h3 className="text-[15px] font-[600] text-[#00245d]">
+                  <h3 className="text-[13px] font-[550] text-[#00245d]">
                     Yashika Publications
                   </h3>
 
