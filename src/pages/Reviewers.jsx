@@ -21,8 +21,8 @@ import {
 } from "react-icons/fa";
 import PageTransition from "../components/PageTransition";
 
-import ReviewerHero from "../assets/reviewerBG.png";
-import r1 from "../assets/emly.webp";
+import ReviewerHero from "../assets/yashika-publication-reviewers-banner.webp";
+import r1 from "../assets/yashika-publication-email-icon.webp";
 
 const benefits = [
   {

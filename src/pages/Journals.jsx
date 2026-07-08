@@ -41,8 +41,8 @@ import {
   HiOutlinePencilSquare,
   HiOutlineGlobeAlt,
 } from "react-icons/hi2";
-import bg from "../assets/bgjournal.png"
-import j1 from "../assets/j1.png"
+import bg from "../assets/yashika-publication-journals-banner.webp"
+import j1 from "../assets/yashika-publication-research-journal.webp"
 import {Link} from "react-router-dom"
 
 const journals = [

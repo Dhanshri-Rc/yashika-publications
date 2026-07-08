@@ -20,14 +20,14 @@ import {
 } from "react-icons/fa";
 import PageTransition from "../components/PageTransition";
 
-import ServicesHero from "../assets/services.png";
-import service2 from "../assets/service2.png";
-import service3 from "../assets/services3.png";
-import service4 from "../assets/services4.png";
-import service5 from "../assets/services5.png";
-import service6 from "../assets/services6.png";
-import service7 from "../assets/sevices7.png";
-import howEWork from "../assets/How-we-work.png"
+import ServicesHero from "../assets/yashika-publication-manuscript-submission.webp";
+import service2 from "../assets/yashika-publication-peer-review-service.webp";
+import service3 from "../assets/yashika-publication-copy-editing-service.webp";
+import service4 from "../assets/yashika-publication-journal-publication-service.webp";
+import service5 from "../assets/yashika-publication-open-access-publishing.webp";
+import service6 from "../assets/yashika-publication-indexing-support.webp";
+import service7 from "../assets/yashika-publication-research-support.webp";
+import howEWork from "../assets/yashika-publication-peer-review-process.webp"
 
 const services = [
   {

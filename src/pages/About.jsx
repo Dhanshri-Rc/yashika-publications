@@ -19,9 +19,9 @@ import {
 } from "react-icons/fa";
 import PageTransition from "../components/PageTransition";
 
-import HeroBg from "../assets/About-bg.png";
-import WhoImage from "../assets/about1.png";
-import WhyImage from "../assets/about2.png";
+import HeroBg from "../assets/yashika-publication-about-us-banner.webp";
+import WhoImage from "../assets/yashika-publication-about-company.webp";
+import WhyImage from "../assets/yashika-publication-editorial-team.webp";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 35 },
