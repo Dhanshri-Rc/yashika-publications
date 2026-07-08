@@ -53,7 +53,7 @@ const journals = [
     color: "#075bc7",
     light: "#dcecff",
     image:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjjSghiwn838upIvijHiRHC4bvfbx0ZxRzu9VEyJKt_ipbc0fd6WV0Eg0&s=10",
   },
   {
     icon: <FaDesktop />,
@@ -62,7 +62,7 @@ const journals = [
     color: "#08964d",
     light: "#dff4e8",
     image:
-      "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=600&q=80",
+      "https://www.brainfacts.org/-/media/Brainfacts2/Neuroscience-in-Society/Tech-and-the-Brain/Article-Images/fei-fei-li-thumbnail-image.jpg",
   },
   {
     icon: <FaCloud />,
@@ -71,7 +71,7 @@ const journals = [
     color: "#6b3cc9",
     light: "#eee6ff",
     image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
+      "https://www.mygreatlearning.com/blog/wp-content/uploads/2025/06/GABI09009.jpg",
   },
   {
     icon: <FaMicrochip />,
@@ -80,7 +80,7 @@ const journals = [
     color: "#ff5b11",
     light: "#ffe4d4",
     image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80",
+      "https://www.brainfacts.org/-/media/Brainfacts2/Neuroscience-in-Society/Tech-and-the-Brain/Article-Images/fei-fei-li-thumbnail-image.jpg",
   },
   {
     icon: <FaShieldAlt />,
@@ -89,7 +89,7 @@ const journals = [
     color: "#0698aa",
     light: "#dff8fb",
     image:
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80",
+      "https://www.shutterstock.com/image-photo/businessman-using-digital-interface-online-260nw-2676050819.jpg",
   },
 ];
 
@@ -345,7 +345,7 @@ const Journals = () => {
 
         {/* Button */}
         <Link to="/">
-        <div className="mt-5 flex justify-center">
+        <div className="mt-3 flex justify-center">
           <span
             className="inline-flex items-center justify-center rounded-full px-7 py-2 text-[12px] font-bold transition-all duration-300"
             style={{
