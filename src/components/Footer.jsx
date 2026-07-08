@@ -9,6 +9,7 @@ import {
   FaEnvelope,
   FaGlobe,
   FaHeart,
+  FaPhoneAlt,
 } from "react-icons/fa";
 import logo from "../assets/yashika-publication-footer-logo.webp";
 import bg from "../assets/yashika-publication-footer-background.webp";
@@ -118,7 +119,10 @@ const Footer = () => {
                  Wardha, Nagpur, Pune 
                 </span>
               </li>
-
+              <li className="flex items-center gap-3">
+               <FaPhoneAlt className="shrink-0 text-white" />
+                              <span className="text-[14px]">+91 99702 94396</span>
+</li>
               <li className="flex items-center gap-3">
                 <FaEnvelope className="shrink-0 text-white" />
                 <span>info@yashikapublications.com</span>

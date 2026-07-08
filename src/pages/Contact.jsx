@@ -48,7 +48,7 @@ const enquiryCards = [
   },
   {
     icon: <FaFileAlt />,
-    title: "Author Support",
+    title: "Author Services",
     desc: "Assistance with submissions, guidelines, and publication.",
     color: "border-[#ffd5b3] bg-[#fff0e3] text-[#ff6b00]",
   },
