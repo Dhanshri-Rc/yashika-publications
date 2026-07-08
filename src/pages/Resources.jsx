@@ -229,7 +229,7 @@ const Resources = () => {
     <PageTransition>
       {/* HERO */}
        <section
-           className="relative min-h-[390px] bg-cover bg-center px-4 py-8 sm:px-8 lg:px-12"
+           className="relative sm:min-h-[390px] min-h-[340px] bg-cover bg-center px-4 py-8 sm:px-8 lg:px-12"
            style={{
              backgroundImage:
                `url(${bg})`,
