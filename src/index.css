@@ -67,3 +67,28 @@ body {
     @apply text-teal-300 after:w-full;
   }
 }
+
+.review-pagination .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #d5d9e3;
+  opacity: 1;
+  transition: all .3s;
+}
+
+.review-pagination .swiper-pagination-bullet-active {
+  width: 28px;
+  border-radius: 999px;
+  background: #0a3da9;
+}
+
+.review-prev,
+.review-next {
+  cursor: pointer;
+}
+
+.review-prev.swiper-button-disabled,
+.review-next.swiper-button-disabled {
+  opacity: .35;
+  pointer-events: none;
+}

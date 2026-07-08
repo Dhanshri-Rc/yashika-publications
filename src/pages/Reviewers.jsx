@@ -23,6 +23,12 @@ import PageTransition from "../components/PageTransition";
 
 import ReviewerHero from "../assets/reviewerBG.png";
 import r1 from "../assets/emly.webp";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const benefits = [
   {
@@ -153,6 +159,13 @@ const testimonials = [
     name: "Dr. Ahmed Khan",
     role: "Research Scientist, AI & ML",
     country: "UAE",
+  },
+  {
+    image: r1,
+    text: "Reviewing for Yashika Publications has been a rewarding experience. The editorial team is professional, supportive, and responsive.",
+    name: "Dr. Dhiraj Kumar",
+    role: "Professor, Computer Science",
+    country: "India",
   },
 ];
 
@@ -384,62 +397,90 @@ const Reviewers = () => {
           <div className="mx-auto mt-3 h-1 w-10 bg-[#ff6b00]" />
 
           <div className="relative mt-10">
-            {/* Left Arrow */}
-            <button className="absolute -left-6 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition hover:scale-110 lg:flex">
-              <FaChevronLeft className="text-[#00245d]" />
-            </button>
+           <button className="review-prev absolute -left-6 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition-all duration-300 hover:scale-110 lg:flex">
+  <FaChevronLeft className="text-[#00245d]" />
+</button>
 
-            {/* Right Arrow */}
-            <button className="absolute -right-6 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition hover:scale-110 lg:flex">
-              <FaChevronRight className="text-[#00245d]" />
-            </button>
+<button className="review-next absolute -right-6 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition-all duration-300 hover:scale-110 lg:flex">
+  <FaChevronRight className="text-[#00245d]" />
+</button>
 
-            <div className="grid gap-5 md:grid-cols-3">
-              {testimonials.map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  whileHover={{
-                    y: -8,
-                    boxShadow: "0 20px 45px rgba(0,74,173,.12)",
-                  }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: i * 0.08 }}
-                  className="rounded-[14px] border border-[#edf2fa] bg-[#f8fbff] p-7"
-                >
-                  <FaQuoteLeft className="mb-4 text-[24px] text-[#0a3da9]" />
+           <Swiper
+  modules={[Navigation, Pagination, Autoplay]}
+  navigation={{
+    nextEl: ".review-next",
+    prevEl: ".review-prev",
+  }}
+  pagination={{
+    clickable: true,
+    el: ".review-pagination",
+  }}
+  loop={true}
+  autoplay={{
+    delay: 3500,
+    disableOnInteraction: false,
+  }}
+  spaceBetween={20}
+  breakpoints={{
+    0: {
+      slidesPerView: 1,
+    },
+    640: {
+      slidesPerView: 1,
+    },
+    768: {
+      slidesPerView: 2,
+    },
+    1024: {
+      slidesPerView: 3,
+    },
+  }}
+>
+  {testimonials.map((item, i) => (
+    <SwiperSlide key={i}>
+      <motion.div
+        whileHover={{
+          y: -8,
+          boxShadow: "0 20px 45px rgba(0,74,173,.12)",
+        }}
+        transition={{ duration: 0.35 }}
+        className="h-full rounded-[14px] border border-[#edf2fa] bg-[#f8fbff] p-7"
+      >
+        <FaQuoteLeft className="mb-4 text-[24px] text-[#0a3da9]" />
 
-                  <p className="min-h-[108px] text-[14px] leading-7 text-[#4d5667]">
-                    {item.text}
-                  </p>
+        <p className="min-h-[108px] text-[14px] leading-7 text-[#4d5667]">
+          {item.text}
+        </p>
 
-                  <div className="mt-2 flex items-center gap-4">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="h-14 w-14 rounded-full object-cover border-2 border-white shadow-md"
-                    />
+        <div className="mt-2 flex items-center gap-4">
+          <img
+            src={item.image}
+            alt={item.name}
+            className="h-14 w-14 rounded-full border-2 border-white object-cover shadow-md"
+          />
 
-                    <div>
-                      <h4 className="text-[15px] font-[550] text-[#0a3da9]">
-                        {item.name}
-                      </h4>
+          <div>
+            <h4 className="text-[15px] font-[550] text-[#0a3da9]">
+              {item.name}
+            </h4>
 
-                      <p className="mt-1 text-[13px] text-[#444]">
-                        {item.role}
-                      </p>
+            <p className="mt-1 text-[13px] text-[#444]">
+              {item.role}
+            </p>
 
-                      <p className="text-[13px] text-[#555]">{item.country}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+            <p className="text-[13px] text-[#555]">
+              {item.country}
+            </p>
+          </div>
+        </div>
+      </motion.div>
+    </SwiperSlide>
+  ))}
+</Swiper>
 
             {/* Dots */}
 
-            <div className="mt-8 flex justify-center gap-3">
+            <div className="review-pagination mt-8 flex justify-center">
               <span className="h-3 w-3 rounded-full bg-[#0a3da9]" />
 
               <span className="h-3 w-3 rounded-full bg-[#d5d9e3]" />
