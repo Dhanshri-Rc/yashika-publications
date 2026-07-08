@@ -29,7 +29,7 @@ import {
   FaGraduationCap,
   FaBullseye,
 } from "react-icons/fa";
-
+import {Link} from "react-router-dom";
 import heroImg from "../assets/yashika-publication-home-hero-banner.webp";
 import aboutImg from "../assets/yashika-publication-about-company.webp";
 import { ArrowRight, BadgeCheck, BrainCircuit, ChartNoAxesCombined, CloudCog, FilePenLine, LockKeyhole, Monitor, Network, PencilLine, ShieldCheck, UsersRound } from "lucide-react";
@@ -175,32 +175,32 @@ const services = [
 
 const journals = [
   {
-    title: "Journal of Artificial Intelligence Education (JAIE)",
-    desc: "Exploring AI techniques, learning paradigms, and intelligent systems in education.",
+    title: "Artificial Intelligence Education Research and Review ",
+    desc: "Advancing innovative research and critical reviews in Artificial Intelligence for education.",
     icon: <BrainCircuit size={50} strokeWidth={1.7} />,
     color: "from-[#0085d9] to-[#0068b8]",
   },
   {
-    title: "Journal of Computer Science Education (JCSE)",
-    desc: "Advancing computer science education through research, innovation and practice.",
+    title: "Journal of Human Centered Artificial Intelligence in Education",
+    desc: "Exploring human-centered AI solutions that enhance teaching, learning, and educational experiences.",
     icon: <Monitor size={50} strokeWidth={1.7} />,
     color: "from-[#18a860] to-[#07884f]",
   },
   {
-    title: "Journal of Information Technology & Learning (JITL)",
-    desc: "Focuses on IT innovations, e-learning, and digital transformation in education.",
+    title: "Journal of Applied Generative AI and Learning Technologies",
+    desc: "Publishing research on generative AI applications and emerging technologies in modern education.",
     icon: <CloudCog size={50} strokeWidth={1.7} />,
     color: "from-[#7a45d6] to-[#6030b7]",
   },
   {
-    title: "Journal of Data Science & AI Applications (JDSAA)",
-    desc: "Bridging data science, machine learning, and real-world applications in education.",
+    title: "Journal of Computational Pedagogy and Intelligent Education",
+    desc: "Focusing on intelligent educational systems, computational pedagogy, and technology-driven learning.",
     icon: <Network size={50} strokeWidth={1.7} />,
     color: "from-[#0085d9] to-[#0068b8]",
   },
   {
-    title: "Journal of Cyber Security Education & Research (JCSER)",
-    desc: "Promoting cybersecurity awareness, education strategies, and secure digital environments.",
+    title: "Future Learning Technologies Journal",
+    desc: "Showcasing cutting-edge research on next-generation learning technologies and digital education innovations.",
     icon: <ShieldCheck size={50} strokeWidth={1.7} />,
     color: "from-[#08aab0] to-[#078b96]",
   },
@@ -562,7 +562,7 @@ function Home() {
           research and innovation in Computer Science, IT, and AI Education.
         </motion.p>
 
-      <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+     <div className="mt-10 grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
   {journals.map((j, index) => (
     <motion.div
       key={index}
@@ -575,10 +575,11 @@ function Home() {
         scale: 1.03,
         transition: { duration: 0.25 },
       }}
-      className="group overflow-hidden rounded-[18px] bg-white text-left text-[#09224a] shadow-[0_12px_28px_rgba(0,0,0,0.28)] transition-all duration-300 hover:shadow-[0_20px_42px_rgba(0,0,0,0.38)]"
+      className="group flex h-full flex-col overflow-hidden rounded-[18px] bg-white text-left text-[#09224a] shadow-[0_12px_28px_rgba(0,0,0,0.28)] transition-all duration-300 hover:shadow-[0_20px_42px_rgba(0,0,0,0.38)]"
     >
+      {/* Top Icon */}
       <div
-        className={`relative flex h-[110px] items-center justify-center bg-gradient-to-br ${j.color}`}
+        className={`relative flex h-[100px] items-center justify-center bg-gradient-to-br ${j.color}`}
       >
         <motion.div
           whileHover={{ rotate: 6, scale: 1.12 }}
@@ -590,27 +591,34 @@ function Home() {
             strokeWidth: 1.7,
           })}
         </motion.div>
-
-        {/* <span className="absolute bottom-[-1px] left-1/2 h-0 w-0 -translate-x-1/2 border-l-[13px] border-r-[13px] border-t-[13px] border-l-transparent border-r-transparent border-t-white" /> */}
       </div>
 
-      <div className="min-h-[240px] rounded-t-[18px] bg-white px-6 pb-7 pt-4">
-        <h3 className="min-h-[62px] text-[15px] font-semibold leading-[25px] text-[#09224a]">
+      {/* Content */}
+      <div className="flex flex-1 flex-col rounded-t-[18px] bg-white px-3 py-5">
+        {/* Title */}
+        <h3 className="min-h-[66px] text-center text-[14.5px] font-semibold leading-[22px] text-[#09224a]">
           {j.title}
         </h3>
 
+        {/* Line */}
         <div
-          className="mt-3 h-[3px] w-[32px] rounded-full"
+          className="mx-auto mt-3 h-[3px] w-[32px] rounded-full"
           style={{ backgroundColor: j.lineColor || "#168bd2" }}
         />
 
-        <p className="mt-6 min-h-[95px] text-[13px] font-medium leading-[26px] text-[#202733]">
+        {/* Description */}
+        <p className="mt-5 flex-1 text-center font-medium text-[12px] leading-6 text-[#202733]">
           {j.desc}
         </p>
 
-        <p className="mt-6 whitespace-nowrap text-[14px] font-semibold leading-none text-[#ff6b12]">
-          View Details <ArrowRight size={18} className="inline-block" />
-        </p>
+        {/* Button */}
+        <Link to="/journals">
+        <div className="mt-6 flex justify-center">
+          <button className="flex items-center gap-2 text-[14px] font-semibold text-[#ff6b12] transition-all duration-300 group-hover:gap-3">
+            View Details
+            <ArrowRight size={18} />
+          </button>
+        </div></Link>
       </div>
     </motion.div>
   ))}

@@ -48,8 +48,8 @@ import {Link} from "react-router-dom"
 const journals = [
   {
     icon: <FaBrain />,
-    title: "Journal of Artificial Intelligence Education ",
-    desc: "Exploring AI techniques, learning paradigms, and intelligent systems in education.",
+    title: "Artificial Intelligence Education Research and Review  ",
+    desc: "Advancing innovative research and critical reviews in Artificial Intelligence for education.",
     color: "#075bc7",
     light: "#dcecff",
     image:
@@ -57,8 +57,8 @@ const journals = [
   },
   {
     icon: <FaDesktop />,
-    title: "Journal of Computer Science Education ",
-    desc: "Advancing computer science education through research, innovation, and practice.",
+    title: "Journal of Human Centered Artificial Intelligence in Education ",
+    desc: "Exploring human-centered AI solutions that enhance teaching, learning, and educational experiences.",
     color: "#08964d",
     light: "#dff4e8",
     image:
@@ -66,8 +66,8 @@ const journals = [
   },
   {
     icon: <FaCloud />,
-    title: "Journal of Information Technology & Learning ",
-    desc: "Focuses on IT innovations, e-learning, and digital transformation in education.",
+    title: "Journal of Applied Generative AI and Learning Technologies",
+    desc: "Publishing research on generative AI applications and emerging technologies in modern education.",
     color: "#6b3cc9",
     light: "#eee6ff",
     image:
@@ -75,8 +75,8 @@ const journals = [
   },
   {
     icon: <FaMicrochip />,
-    title: "Journal of Data Science & AI Applications ",
-    desc: "Bridging data science, machine learning, and real-world applications in education.",
+    title: "Journal of Computational Pedagogy and Intelligent Education",
+    desc: "Focusing on intelligent educational systems, computational pedagogy, and technology-driven learning.",
     color: "#ff5b11",
     light: "#ffe4d4",
     image:
@@ -84,8 +84,8 @@ const journals = [
   },
   {
     icon: <FaShieldAlt />,
-    title: "Journal of Cyber Security Education & Research ",
-    desc: "Promoting cybersecurity awareness, education strategies, and secure digital environments.",
+    title: "Future Learning Technologies Journal ",
+    desc: "Showcasing cutting-edge research on next-generation learning technologies and digital education innovations.",
     color: "#0698aa",
     light: "#dff8fb",
     image:
@@ -310,71 +310,68 @@ const Journals = () => {
       and innovation in Computer Science, IT, and AI Education.
     </motion.p>
 
-    <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
-      {journals.map((j, i) => (
-        <motion.div
-          key={i}
-          initial={{ opacity: 0, y: 35 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45, delay: i * 0.08 }}
-          whileHover={{ y: -12, scale: 1.025 }}
-          className="group overflow-hidden rounded-[10px] border border-[#d9e1ec] bg-white shadow-[0_8px_22px_rgba(6,31,92,0.12)] transition-all duration-300 hover:shadow-[0_18px_35px_rgba(6,31,92,0.22)]"
-          style={{ borderTop: `5px solid ${j.color}` }}
-        >
-          <div className="px-3 pb-5 pt-5">
-            <motion.div
-              whileHover={{ rotate: 8, scale: 1.12 }}
-              transition={{ type: "spring", stiffness: 260 }}
-              className="mx-auto flex h-[60px] w-[60px] items-center justify-center rounded-full text-[28px] text-white shadow-md"
-              style={{ backgroundColor: j.color }}
-            >
-              {j.icon}
-            </motion.div>
-
-            <h3 className="mx-auto mt-5 min-h-[65px] max-w-[190px] text-[16px] font-semibold leading-[1.25] text-[#061f5c]">
-              {j.title}
-            </h3>
-
-            <p className="mx-auto mt-4 min-h-[116px] max-w-[185px] text-[13px] font-[500] leading-[1.75] text-black">
-              {j.desc}
-            </p>
-
-            <span
-              className="mt-3 inline-flex rounded-full px-7 py-2 text-[12px] font-bold"
-              style={{ backgroundColor: j.light, color: j.color }}
-            >
-              Coming Soon
-            </span>
-
-            {/* <button
-              className="mt-4 inline-flex items-center gap-3 rounded-[5px] px-6 py-3 text-[12px] font-bold text-white shadow-md transition-all duration-300 group-hover:scale-105"
-              style={{ backgroundColor: j.color }}
-            >
-              View Details
-              <span className="text-base leading-none">→</span>
-            </button> */}
-          </div>
-
-          <div className="h-[105px] overflow-hidden">
-            <div
-              className="h-full w-full bg-cover bg-center transition duration-500 group-hover:scale-110"
-              style={{
-                backgroundImage: `linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.22)), url(${j.image})`,
-              }}
-            />
-          </div>
-        </motion.div>
-      ))}
-    </div>
-
-    {/* <motion.button
-      whileHover={{ y: -4, scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
-      className="mt-8 rounded-[5px] bg-[#061f5c] px-8 py-3 text-[13px] font-bold text-white shadow-lg transition hover:bg-[#08357f]"
+   <div className="mt-6 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-5">
+  {journals.map((j, i) => (
+    <motion.div
+      key={i}
+      initial={{ opacity: 0, y: 35 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.45, delay: i * 0.08 }}
+      whileHover={{ y: -12, scale: 1.025 }}
+      className="group flex h-full flex-col overflow-hidden rounded-[10px] border border-[#d9e1ec] bg-white shadow-[0_8px_22px_rgba(6,31,92,0.12)] transition-all duration-300 hover:shadow-[0_18px_35px_rgba(6,31,92,0.22)]"
+      style={{ borderTop: `5px solid ${j.color}` }}
     >
-      View All Journals →
-    </motion.button> */}
+      {/* Content */}
+      <div className="flex flex-1 flex-col px-4 pt-5 pb-5">
+        <motion.div
+          whileHover={{ rotate: 8, scale: 1.12 }}
+          transition={{ type: "spring", stiffness: 260 }}
+          className="mx-auto flex h-[55px] w-[55px] items-center justify-center rounded-full text-[26px] text-white shadow-md"
+          style={{ backgroundColor: j.color }}
+        >
+          {j.icon}
+        </motion.div>
+
+        {/* Title */}
+        <h3 className="mt-5 min-h-[65px] text-center text-[14.5px] font-semibold leading-[1.35] text-[#061f5c]">
+          {j.title}
+        </h3>
+
+        {/* Description */}
+        <p className="mt-4 flex-1 text-center text-[13px] font-medium leading-6 text-[#555]">
+          {j.desc}
+        </p>
+
+        {/* Button */}
+        <Link to="/">
+        <div className="mt-5 flex justify-center">
+          <span
+            className="inline-flex items-center justify-center rounded-full px-7 py-2 text-[12px] font-bold transition-all duration-300"
+            style={{
+              backgroundColor: j.light,
+              color: j.color,
+            }}
+          >
+            View Details
+          </span>
+        </div></Link>
+      </div>
+
+      {/* Image */}
+      <div className="h-[120px] overflow-hidden">
+        <div
+          className="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.22)), url(${j.image})`,
+          }}
+        />
+      </div>
+    </motion.div>
+  ))}
+</div>
+
+   
   </div>
 </section>
 
