@@ -80,7 +80,7 @@ const journals = [
     color: "#ff5b11",
     light: "#ffe4d4",
     image:
-      "https://www.brainfacts.org/-/media/Brainfacts2/Neuroscience-in-Society/Tech-and-the-Brain/Article-Images/fei-fei-li-thumbnail-image.jpg",
+      "https://thumbs.dreamstime.com/b/open-book-glowing-light-bulb-representing-innovative-concepts-ideas-related-to-multitalented-artificial-intelligence-455544825.jpg",
   },
   {
     icon: <FaShieldAlt />,
