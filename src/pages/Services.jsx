@@ -46,8 +46,8 @@ const services = [
   },
   {
     icon: <FaUser />,
-    title: "Author Support",
-    desc: "Guidance at every step from submission to publication.",
+    title: "Author Services",
+    desc: "Guidance at every step from Professional editing, & Submissions.",
     image: service4,
     color: "bg-[#36a95b]",
   },
@@ -90,10 +90,10 @@ const partner = [
 ];
 
 const stats = [
-  { icon: <FaBookOpen />, value: "5+", label: "New Journals", sub: "In Emerging Tech" },
+  { icon: <FaBookOpen />, value: "5+", label: " Journals", sub: "In Emerging Tech" },
   { icon: <FaUsers />, value: "200+", label: "Editorial Experts", sub: "Across the Globe" },
   { icon: <FaGlobe />, value: "100+", label: "Countries", sub: "Global Readership" },
-  { icon: <FaChartLine />, value: "0%", label: "Author Charges", sub: "for Quality Publications" },
+  { icon: <FaChartLine />, value: "0%", label: "Strong Indexing", sub: "for Quality Publications" },
   { icon: <FaCheckCircle />, value: "Fast", label: "Publishing", sub: "Timely & Transparent" },
 ];
 
@@ -182,7 +182,7 @@ const Services = () => {
             and world-class publishing standards.
           </p>
 
-         <div className="mt-9 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+         <div className="mt-9 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
   {services.map((item, i) => (
     <motion.div
       key={i}

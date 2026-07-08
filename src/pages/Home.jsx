@@ -48,7 +48,7 @@ const heroFeatures = [
   {
     icon: <FaAward />,
     title: "Global Standards",
-    text: "Riveting Elsevier & Springer",
+    text: "COPE Membership",
   },
   {
     icon: <FaShieldAlt />,
@@ -86,7 +86,7 @@ const stats = [
   {
     icon: <FaRegFileAlt />,
     value: "0%",
-    title: "Author Charges",
+    title: "Strong Indexing",
     desc: "For Quality Publications",
     color: "#1677d2",
   },
@@ -148,8 +148,8 @@ const services = [
     color: "#ff6b12",
   },
   {
-    title: "Author Support",
-    desc: "End-to-end support for authors from submission to publication.",
+    title: "Author Services",
+    desc: "End-to-end support for authors from Professional editing, & Submissions.",
     icon: <UsersRound size={34} strokeWidth={2.2} />,
     color: "#34ae5f",
   },

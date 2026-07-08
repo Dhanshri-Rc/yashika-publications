@@ -97,7 +97,7 @@ const stats = [
   {
     icon: <FiBookOpen />,
     number: "5",
-    text: "New Journals",
+    text: " Journals",
     sub: "In Emerging Tech",
     color: "#0b63ce",
   },
