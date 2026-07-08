@@ -16,7 +16,7 @@ import {
 } from "react-icons/fa";
 import PageTransition from "../components/PageTransition";
 
-import ContactHero from "../assets/About-bg.png";
+import ContactHero from "../assets/ContactBG.png";
 // import ContactMap from "../assets/contactMap.png";
 
 const contactDetails = [
