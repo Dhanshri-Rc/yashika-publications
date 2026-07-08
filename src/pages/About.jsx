@@ -53,31 +53,31 @@ const features = [
 
 const milestones = [
   {
-    year: "2012",
+    year: "2006",
     icon: <FaFlag />,
     color: "bg-blue-100 text-blue-700 border-blue-200",
     text: "Yashika Publications was founded with a vision to promote quality research.",
   },
   {
-    year: "2014",
+    year: "2011",
     icon: <FaUsers />,
     color: "bg-orange-100 text-orange-600 border-orange-200",
     text: "Expanded our editorial board and launched our first set of journals in emerging fields.",
   },
   {
-    year: "2017",
+    year: "2016",
     icon: <FaGlobe />,
     color: "bg-blue-100 text-blue-700 border-blue-200",
     text: "Enhanced global collaborations and strengthened our peer review process.",
   },
   {
-    year: "2020",
+    year: "2021",
     icon: <FaUnlockAlt />,
     color: "bg-green-100 text-green-600 border-green-200",
     text: "Embraced Open Access publishing to ensure wider visibility and greater impact.",
   },
   {
-    year: "2024+",
+    year: "2026",
     icon: <FaStar />,
     color: "bg-purple-100 text-purple-600 border-purple-200",
     text: "Continuing to innovate and set new standards in academic publishing excellence.",
@@ -184,7 +184,7 @@ const About = () => {
             <div className="mt-5 h-1 w-12 bg-[#ff6b00]" />
 
             <p className="mt-6 text-[14px] leading-6 text-gray-700">
-              With over 12 years of unwavering commitment, Yashika Publications
+              With over 20 years of unwavering commitment, Yashika Publications
               has established itself as a leading academic publisher in India.
               We specialize in high-quality, peer-reviewed content that drives
               innovation and academic excellence in Computer Science, IT, and AI
