@@ -33,8 +33,9 @@ import {
 import SectionTitle from "../components/SectionTitle";
 import Button from "../components/Button";
 import PageTransition from "../components/PageTransition";
-import bg from "../assets/bgjournal.png"
+import bg from "../assets/yashika-publication-resources-banner.webp"
 import {Link} from "react-router-dom"
+import cta from "../assets/yashika-publication-call-to-action-banner.webp"
 
 const authorResources = [
   {
@@ -475,7 +476,7 @@ const Resources = () => {
         >
           <div className="flex flex-col items-center gap-5 text-center md:flex-row md:text-left">
             <img
-              src="/images/need-help-books.png"
+              src={cta}
               alt="Need help"
               className="h-[86px] w-[240px] object-contain transition-transform duration-300 group-hover:scale-105"
             />

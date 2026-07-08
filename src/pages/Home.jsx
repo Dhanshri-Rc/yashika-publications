@@ -30,8 +30,8 @@ import {
   FaBullseye,
 } from "react-icons/fa";
 
-import heroImg from "../assets/homebg.png";
-import aboutImg from "../assets/about.png";
+import heroImg from "../assets/yashika-publication-home-hero-banner.webp";
+import aboutImg from "../assets/yashika-publication-about-company.webp";
 import { ArrowRight, BadgeCheck, BrainCircuit, ChartNoAxesCombined, CloudCog, FilePenLine, LockKeyhole, Monitor, Network, PencilLine, ShieldCheck, UsersRound } from "lucide-react";
 
 const fadeUp = {

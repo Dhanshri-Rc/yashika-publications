@@ -10,8 +10,8 @@ import {
   FaGlobe,
   FaHeart,
 } from "react-icons/fa";
-import logo from "../assets/flogo.png";
-import bg from "../assets/bgfooter.png";
+import logo from "../assets/yashika-publication-footer-logo.webp";
+import bg from "../assets/yashika-publication-footer-background.webp";
 
 const journalLinks = [
   

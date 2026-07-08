@@ -35,13 +35,13 @@ import {
   HiOutlineTrophy,
 } from "react-icons/hi2";
 import PageTransition from "../components/PageTransition";
-import bg from "../assets/bgauthor.png"
-import l1 from "../assets/Scopus_logo.webp"
-import l2 from "../assets/doaj.png"
-import l3 from "../assets/Google_Scholar_logo.png"
-import l4 from "../assets/crossref-logo.png"
-import l5 from "../assets/dimensions.png"
-import l6 from "../assets/road.png"
+import bg from "../assets/yashika-publication-authors-banner.webp"
+import l1 from "../assets/scopus-indexed-journal.webp"
+import l2 from "../assets/doaj-indexed-journal.webp"
+import l3 from "../assets/google-scholar-indexing.webp"
+import l4 from "../assets/crossref-doi-registration.webp"
+import l5 from "../assets/dimensions-indexed-journal.webp"
+import l6 from "../assets/yashika-publication-publication-process.webp"
 
 
 const authorCards = [

@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { HiMenu, HiX } from "react-icons/hi";
 import { IoPaperPlaneOutline } from "react-icons/io5";
 import { ChevronDown } from "lucide-react";
-import logo from "../assets/logo.png";
+import logo from "../assets/yashika-publication-logo.webp";
 
 const navItems = [
   { name: "Home", path: "/" },
