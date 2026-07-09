@@ -63,12 +63,13 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.45 }}
           >
+            <Link to="/" >
             <img
               src={logo}
               alt="Yashika Publications"
               className="mb-4 h-[42px] w-auto object-contain"
             />
-
+</Link>
             <p className="max-w-[270px] text-[12px]  leading-[22px] text-white/90">
               Yashika Publications is committed to promoting high 
               academic research and innovation across diverse disciplines
