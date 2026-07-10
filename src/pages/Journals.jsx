@@ -81,7 +81,7 @@ const journals = [
     color: "#ff5b11",
     light: "#ffe4d4",
     image:
-      "https://thumbs.dreamstime.com/b/open-book-glowing-light-bulb-representing-innovative-concepts-ideas-related-to-multitalented-artificial-intelligence-455544825.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5Y79LFrq6Mc3xkHHa7QluK0kjbMFvFGYu4hja6JE-l0bl8RJ4w-zkQUc&s=10",
   },
   {
     icon: <FaShieldAlt />,
