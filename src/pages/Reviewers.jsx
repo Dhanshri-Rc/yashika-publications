@@ -28,6 +28,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import ReviewerHero from "../assets/yashika-publication-reviewers-banner.webp";
 import r1 from "../assets/yashika-publication-email-icon.webp";
+import SEO from "../components/SEO";
 
 const benefits = [
   {
@@ -177,6 +178,12 @@ const Reviewers = () => {
   return (
     <PageTransition>
       {/* HERO */}
+      <SEO
+  title="Reviewers | Yashika Publications"
+  description="Learn about reviewer responsibilities, eligibility requirements, peer-review procedures, and reviewer benefits."
+  keywords="journal reviewers, peer review, reviewer guidelines, academic reviewing"
+  path="/reviewers"
+/>
       <section
         className="relative overflow-hidden bg-cover bg-center text-white"
         style={{ backgroundImage: `url(${ReviewerHero})` }}

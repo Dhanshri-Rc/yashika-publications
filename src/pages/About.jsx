@@ -22,6 +22,7 @@ import PageTransition from "../components/PageTransition";
 import HeroBg from "../assets/yashika-publication-about-us-banner.webp";
 import WhoImage from "../assets/yashika-publication-about-company.webp";
 import WhyImage from "../assets/yashika-publication-editorial-team.webp";
+import SEO from "../components/SEO";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 35 },
@@ -111,6 +112,12 @@ const About = () => {
   return (
     <PageTransition>
       {/* HERO */}
+       <SEO
+        title="About Us | Yashika Publications"
+        description="Learn about Yashika Publications, our mission, vision, editorial standards, and commitment to international peer-reviewed academic publishing."
+        keywords="about Yashika Publications, academic publisher, peer-reviewed journals, research publication"
+        path="/about"
+      />
       <section
         className="relative min-h-[380px] overflow-hidden bg-cover bg-center text-white md:min-h-[430px]"
         style={{ backgroundImage: `url(${HeroBg})` }}
@@ -398,7 +405,7 @@ const About = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative  hidden h-[240px] w-[430px] overflow-hidden lg:block"
+            className="relative  hidden h-[240px] w-[270px] overflow-hidden lg:block"
             style={{
               clipPath: "polygon(18% 0, 100% 0, 100% 100%, 0 100%)",
             }}
@@ -406,7 +413,7 @@ const About = () => {
             <img
               src={WhyImage}
               alt="Team Collaboration"
-              className="h-full w-full object-cover object-right"
+              className="h-[240px] w-[270px] object-cover object-right"
             />
           </motion.div>
         </div>

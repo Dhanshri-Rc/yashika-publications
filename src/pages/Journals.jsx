@@ -44,6 +44,7 @@ import {
 import bg from "../assets/yashika-publication-journals-banner.webp"
 import j1 from "../assets/yashika-publication-research-journal.webp"
 import {Link} from "react-router-dom"
+import SEO from "../components/SEO";
 
 const journals = [
   {
@@ -177,6 +178,12 @@ const process = [
 const Journals = () => {
   return (
     <main className="w-full overflow-hidden bg-white text-[#06285c]">
+      <SEO
+  title="Our Journals | Yashika Publications"
+  description="Explore international, peer-reviewed, and open-access academic journals published by Yashika Publications."
+  keywords="academic journals, peer-reviewed journals, open-access journals, international journals"
+  path="/journals"
+/>
       {/* HERO */}
       <section
         className="relative min-h-[390px] bg-cover bg-center px-4 py-8 sm:px-8 lg:px-12"

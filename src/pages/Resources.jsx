@@ -36,6 +36,7 @@ import PageTransition from "../components/PageTransition";
 import bg from "../assets/yashika-publication-resources-banner.webp"
 import {Link} from "react-router-dom"
 import cta from "../assets/yashika-publication-call-to-action-banner.webp"
+import SEO from "../components/SEO";
 
 const authorResources = [
   {
@@ -227,6 +228,12 @@ const moreResources = [
 const Resources = () => {
   return (
     <PageTransition>
+      <SEO
+  title="Publication Resources | Yashika Publications"
+  description="Access publication templates, journal policies, author resources, downloads, FAQs, and academic publishing guides."
+  keywords="publication resources, manuscript template, journal policies, publishing FAQs"
+  path="/resources"
+/>
       {/* HERO */}
        <section
            className="relative sm:min-h-[390px] min-h-[340px] bg-cover bg-center px-4 py-8 sm:px-8 lg:px-12"

@@ -33,6 +33,7 @@ import {Link} from "react-router-dom";
 import heroImg from "../assets/yashika-publication-home-hero-banner.webp";
 import aboutImg from "../assets/yashika-publication-about-company.webp";
 import { ArrowRight, BadgeCheck, BrainCircuit, ChartNoAxesCombined, CloudCog, FilePenLine, LockKeyhole, Monitor, Network, PencilLine, ShieldCheck, UsersRound } from "lucide-react";
+import SEO from "../components/SEO";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 35 },
@@ -209,6 +210,12 @@ const journals = [
 function Home() {
   return (
     <div className="w-full overflow-hidden bg-white text-[#09224a]">
+      <SEO
+  title="Yashika Publications | International Peer-Reviewed Journals"
+  description="Explore international peer-reviewed and open-access journals, publication services, author resources, and reviewer opportunities from Yashika Publications."
+  keywords="Yashika Publications, peer-reviewed journals, international journals, research publication"
+  path="/"
+/>
       {/* HERO */}
      <section className="relative overflow-hidden bg-[#061f45]">
       <div

@@ -17,6 +17,7 @@ import {
 import PageTransition from "../components/PageTransition";
 
 import ContactHero from "../assets/yashika-publication-contact-us-banner.webp";
+import SEO from "../components/SEO";
 // import ContactMap from "../assets/contactMap.png";
 
 const contactDetails = [
@@ -145,6 +146,12 @@ const Contact = () => {
   return (
     <PageTransition>
       {/* HERO */}
+      <SEO
+  title="Contact Us | Yashika Publications"
+  description="Contact Yashika Publications for journal submissions, publication assistance, editorial support, and general enquiries."
+  keywords="contact Yashika Publications, publication support, journal enquiry"
+  path="/contact"
+/>
       <section
         className="relative overflow-visible bg-cover bg-center text-white"
         style={{

@@ -42,6 +42,7 @@ import l3 from "../assets/google-scholar-indexing.webp"
 import l4 from "../assets/crossref-doi-registration.webp"
 import l5 from "../assets/dimensions-indexed-journal.webp"
 import l6 from "../assets/yashika-publication-publication-process.webp"
+import SEO from "../components/SEO";
 
 
 const authorCards = [
@@ -112,6 +113,12 @@ const Authors = () => {
   return (
     <PageTransition>
       <main className="overflow-hidden bg-white text-[#061f5c]">
+        <SEO
+  title="Author Guidelines | Yashika Publications"
+  description="Access manuscript preparation instructions, submission guidelines, publication policies, and resources for authors."
+  keywords="author guidelines, manuscript submission, research paper publication, publishing guidelines"
+  path="/authors"
+/>
         {/* HERO */}
            <section
                 className="relative min-h-[410px] bg-cover bg-center px-4 py-8 sm:px-8 lg:px-12"

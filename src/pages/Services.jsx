@@ -28,6 +28,7 @@ import service5 from "../assets/yashika-publication-open-access-publishing.webp"
 import service6 from "../assets/yashika-publication-indexing-support.webp";
 import service7 from "../assets/yashika-publication-research-support.webp";
 import howEWork from "../assets/yashika-publication-peer-review-process.webp"
+import SEO from "../components/SEO";
 
 const services = [
   {
@@ -106,6 +107,12 @@ const Services = () => {
   return (
     <PageTransition>
       {/* HERO */}
+      <SEO
+  title="Publication Services | Yashika Publications"
+  description="Explore manuscript submission, peer review, journal publication, copy editing, indexing, and research support services."
+  keywords="publication services, copy editing, peer review service, journal indexing, manuscript support"
+  path="/services"
+/>
       <section
         className="relative overflow-hidden bg-cover bg-center text-white"
         style={{ backgroundImage: `url(${ServicesHero})` }}
