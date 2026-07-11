@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 
-const SITE_URL = "https://yashikapublications.com";
+const SITE_URL = "https://yashika-publication.web.app/";
 
 const SEO = ({
   title,
