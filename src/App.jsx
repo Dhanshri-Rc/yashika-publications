@@ -13,6 +13,14 @@ import Resources from "./pages/Resources";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import ScrollToTop from "./components/ScrollToTop";
+import SubmitYourPaper from "./pages/footerpages/SubmitYourPaper";
+import ReviewProcess from "./pages/footerpages/ReviewProcess";
+import FAQforAuthor from "./pages/footerpages/FAQforAuthor";
+import Authorguideline from "./pages/footerpages/Authorguideline";
+import PublicationEthics from "./pages/footerpages/PublicationEthics";
+import OpenAccessPolicy from "./pages/footerpages/OpenAccessPolicy";
+import ReviewersGuidelines from "./pages/footerpages/ReviewerGuidelines";
+import BenefitsOfReviewers from "./pages/footerpages/BenefitsReveiwers";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -28,6 +36,15 @@ const AnimatedRoutes = () => {
         <Route path="/resources" element={<Resources />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/submit-your-paper" element={<SubmitYourPaper />} />
+        <Route path="/review-process" element={<ReviewProcess />} />
+        <Route path="/faq-for-authors" element={<FAQforAuthor />} />
+        <Route path="/author-guidelines" element={<Authorguideline />} />
+        <Route path="/publication-ethics" element={<PublicationEthics />} />
+        <Route path="/open-access-policy" element={<OpenAccessPolicy />} />
+        <Route path="/reviewers-guidelines" element={<ReviewersGuidelines />} />
+        <Route path="/benefits-of-reviewers" element={<BenefitsOfReviewers />} />
+        {/* Add more routes for other pages as needed */}
         {/* Fallback route - redirect unknown paths to Home content (SPA friendly) */}
         <Route path="*" element={<Home />} />
       </Routes>

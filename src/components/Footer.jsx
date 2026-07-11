@@ -25,20 +25,17 @@ const journalLinks = [
 ];
 
 const authorLinks = [
-  "Author Guidelines",
-  "Submit Your Paper",
-  "Publication Ethics",
-  "Open Access Policy",
-  "FAQ for Authors",
-  
+  { name: "Author Guidelines", path: "/author-guidelines" },
+  { name: "Submit Your Paper", path: "/submit-manuscript" },
+  { name: "Publication Ethics", path: "/publication-ethics" },
+  { name: "Open Access Policy", path: "/open-access-policy" },
+  { name: "FAQ for Authors", path: "/faq-for-authors" },
 ];
 
 const policyLinks = [
-  "Reviewers Guidelines",
-  "Reviewer Process",
-  "Benefits of Reviewers",
-  
- 
+  { name: "Reviewers Guidelines", path: "/reviewer-guidelines" },
+  { name: "Reviewer Process", path: "/peer-review-process" },
+  { name: "Benefits of Reviewers", path: "/benefits-of-reviewers" },
 ];
 
 const socials = [
@@ -157,23 +154,16 @@ const FooterColumn = ({ title, links }) => {
       </h4>
 
       <ul className="space-y-1">
-        {links.map((link, index) => (
-          <li key={index}>
-            {typeof link === "string" ? (
-              <Link
-                to="/"
-                className="inline-block text-[12px] font-medium leading-[18px] text-white/90 transition-all duration-300 hover:translate-x-1 hover:text-orange-400 hover:underline"
-              >
-                {link}
-              </Link>
-            ) : (
-              <Link
-                to={link.path}
-                className="inline-block text-[12px] font-medium leading-[18px] text-white/90 transition-all duration-300 hover:translate-x-1 hover:text-orange-400 hover:underline"
-              >
-                {link.name}
-              </Link>
-            )}
+        {links.map((link) => (
+          <li key={link.path}>
+            <Link
+              to={link.path}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block text-[12px] font-medium leading-[18px] text-white/90 transition-all duration-300 hover:translate-x-1 hover:text-orange-400 hover:underline"
+            >
+              {link.name}
+            </Link>
           </li>
         ))}
       </ul>
