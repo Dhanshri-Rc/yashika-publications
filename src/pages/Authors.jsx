@@ -84,7 +84,7 @@ const stats1 = [
   [<FiGlobe />, "100+", "Countries\nReached"],
   [<FiUsers />, "200+", "Editorial\nExperts"],
   [<FiFileText />, "5", "Journals\nin Emerging Tech"],
-  [<FiAward />, "0%", "Strong Indexing\nfor Quality Publications"],
+  [<FiAward />, "Publish", "Strong Indexing\nfor Quality Publications"],
   [<FiShield />, "100%", "Ethical & Transparent\nPublishing"],
   [<FiRefreshCw />, "Fast", "Review &\nPublication"],
 ];

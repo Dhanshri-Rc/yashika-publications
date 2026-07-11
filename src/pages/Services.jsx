@@ -94,7 +94,7 @@ const stats = [
   { icon: <FaBookOpen />, value: "5+", label: " Journals", sub: "In Emerging Tech" },
   { icon: <FaUsers />, value: "200+", label: "Editorial Experts", sub: "Across the Globe" },
   { icon: <FaGlobe />, value: "100+", label: "Countries", sub: "Global Readership" },
-  { icon: <FaChartLine />, value: "0%", label: "Strong Indexing", sub: "for Quality Publications" },
+  // { icon: <FaChartLine />, value: "0%", label: "Strong Indexing", sub: "for Quality Publications" },
   { icon: <FaCheckCircle />, value: "Fast", label: "Publishing", sub: "Timely & Transparent" },
 ];
 
@@ -387,7 +387,7 @@ const Services = () => {
 
       {/* STATS */}
       <section className="bg-gradient-to-r from-[#001c46] via-[#003b8f] to-[#004aad] px-4 py-9 text-white sm:px-5">
-        <div className="mx-auto grid max-w-[1180px] grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mx-auto grid max-w-[1180px] grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((item, i) => (
             <motion.div
               key={i}

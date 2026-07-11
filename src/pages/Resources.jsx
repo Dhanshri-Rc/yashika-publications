@@ -140,14 +140,14 @@ const quickAccess = [
     bg: "bg-green-100",
     color: "text-green-600",
   },
-  {
-    title: "Editorial Board",
-    desc: "Join our editorial team and contribute.",
-    btn: "Apply Now",
-    icon: <FiUsers />,
-    bg: "bg-purple-100",
-    color: "text-purple-600",
-  },
+  // {
+  //   title: "Editorial Board",
+  //   desc: "Join our editorial team and contribute.",
+  //   btn: "Apply Now",
+  //   icon: <FiUsers />,
+  //   bg: "bg-purple-100",
+  //   color: "text-purple-600",
+  // },
   {
     title: "Policies & Ethics",
     desc: "Publication policies and ethical guidelines.",
@@ -295,7 +295,7 @@ const Resources = () => {
     </div>
 
     {/* Cards */}
-    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 
       {quickAccess.map((item, i) => (
         <motion.div

@@ -84,13 +84,7 @@ const stats = [
     desc: "International Experts",
     color: "#ff6b00",
   },
-  {
-    icon: <FaRegFileAlt />,
-    value: "0%",
-    title: "Strong Indexing",
-    desc: "For Quality Publications",
-    color: "#1677d2",
-  },
+ 
   {
     icon: <FaGlobe />,
     value: "Global Readership",
@@ -312,7 +306,7 @@ function Home() {
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.65 }}
-    className="grid overflow-hidden rounded-[10px] border border-[#e7edf5] bg-white shadow-[0_14px_35px_rgba(15,35,70,0.16)] sm:grid-cols-2 lg:grid-cols-6"
+    className="grid overflow-hidden rounded-[10px] border border-[#e7edf5] bg-white shadow-[0_14px_35px_rgba(15,35,70,0.16)] sm:grid-cols-2 lg:grid-cols-5"
   >
     {stats.map((item, index) => (
       <motion.div
