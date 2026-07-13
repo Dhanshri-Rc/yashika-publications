@@ -53,6 +53,16 @@ const AnimatedRoutes = () => {
         <Route path="/resources" element={<Resources />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/submit-your-paper" element={<SubmitYourPaper />} />
+        <Route path="/review-process" element={<ReviewProcess />} />
+        <Route path="/faq-for-authors" element={<FAQforAuthor />} />
+        <Route path="/author-guidelines" element={<Authorguideline />} />
+        <Route path="/publication-ethics" element={<PublicationEthics />} />
+        <Route path="/open-access-policy" element={<OpenAccessPolicy />} />
+        <Route path="/reviewer-guidelines" element={<ReviewersGuidelines />} />
+        <Route path="/benefits-of-reviewers" element={<BenefitsOfReviewers />} />
+        {/* Add more routes for other pages as needed */}
+        {/* Fallback route - redirect unknown paths to Home content (SPA friendly) */}
 
         <Route
           path="/submit-your-paper"

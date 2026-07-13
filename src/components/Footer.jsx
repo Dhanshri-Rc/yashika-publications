@@ -26,7 +26,7 @@ const journalLinks = [
 
 const authorLinks = [
   { name: "Author Guidelines", path: "/author-guidelines" },
-  { name: "Submit Your Paper", path: "/submit-manuscript" },
+  { name: "Submit Your Paper", path: "/submit-your-paper" },
   { name: "Publication Ethics", path: "/publication-ethics" },
   { name: "Open Access Policy", path: "/open-access-policy" },
   { name: "FAQ for Authors", path: "/faq-for-authors" },
@@ -34,7 +34,7 @@ const authorLinks = [
 
 const policyLinks = [
   { name: "Reviewers Guidelines", path: "/reviewer-guidelines" },
-  { name: "Reviewer Process", path: "/peer-review-process" },
+  { name: "Reviewer Process", path: "/review-process" },
   { name: "Benefits of Reviewers", path: "/benefits-of-reviewers" },
 ];
 
