@@ -59,7 +59,7 @@ const AnimatedRoutes = () => {
         <Route path="/author-guidelines" element={<Authorguideline />} />
         <Route path="/publication-ethics" element={<PublicationEthics />} />
         <Route path="/open-access-policy" element={<OpenAccessPolicy />} />
-        <Route path="/author-guidelines" element={<ReviewersGuidelines />} />
+        <Route path="/reviewer-guidelines" element={<ReviewersGuidelines />} />
         <Route path="/benefits-of-reviewers" element={<BenefitsOfReviewers />} />
         {/* Add more routes for other pages as needed */}
         {/* Fallback route - redirect unknown paths to Home content (SPA friendly) */}

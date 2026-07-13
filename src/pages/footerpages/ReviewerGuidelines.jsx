@@ -1,941 +1,651 @@
-import React from "react";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
+  Award,
   BookOpen,
+  Check,
   CheckCircle2,
-  Clock,
-  FileCheck,
-  Languages,
-  Lock,
+  ChevronDown,
+  CircleUserRound,
+  Clock3,
+  FileCheck2,
+  FileSearch,
+  GraduationCap,
+  Lightbulb,
+  LockKeyhole,
   Mail,
-  MessageSquare,
-  Scale,
-  Search,
+  MessageSquareText,
+  Microscope,
+  SearchCheck,
   ShieldCheck,
-  Star,
-  UserCheck,
-  XCircle,
+  Sparkles,
+  Target,
+  Trophy,
+  UserRoundCheck,
+  UsersRound,
 } from "lucide-react";
 
-import heroImg from "../../assets/yashika-publication-home-hero-banner.webp";
+import logo from "../../assets/yashika-publication-logo.webp";
+import reviewerBanner from "../../assets/yashika-publication-reviewers-banner.webp";
+import editorialTeam from "../../assets/yashika-publication-editorial-team.webp";
+import peerReview from "../../assets/yashika-publication-peer-review-process.webp";
 
-/* -------------------------------------------------------------------------- */
-/*                                  PAGE DATA                                 */
-/* -------------------------------------------------------------------------- */
-
-const quickGuidelines = [
+const stats = [
   {
-    icon: UserCheck,
-    title: "Accept Invitation",
-    description: "Confirm your availability and expertise before accepting.",
-    href: "#review-process",
-  },
-  {
-    icon: Scale,
-    title: "Conflict of Interest",
-    description: "Disclose any relationship that may affect impartiality.",
-    href: "#reviewer-ethics",
-  },
-  {
-    icon: Lock,
-    title: "Confidentiality",
-    description: "Treat the manuscript and review process as confidential.",
-    href: "#reviewer-ethics",
-  },
-  {
-    icon: Clock,
-    title: "Timely Review",
-    description: "Complete and submit your review within the given deadline.",
-    href: "#review-process",
-  },
-  {
-    icon: MessageSquare,
-    title: "Constructive Feedback",
-    description: "Provide clear, respectful, and actionable recommendations.",
-    href: "#reviewer-responsibilities",
+    icon: BookOpen,
+    title: "Double Blind Review",
+    text: "Ensuring impartiality through anonymous evaluation.",
+    tone: "blue",
   },
   {
     icon: ShieldCheck,
-    title: "Ethical Responsibility",
-    description: "Identify ethical, plagiarism, or integrity concerns.",
-    href: "#reviewer-ethics",
+    title: "Ethical Review",
+    text: "Upholding integrity, transparency and publication ethics.",
+    tone: "orange",
+  },
+  {
+    icon: UsersRound,
+    title: "Expert Reviewers",
+    text: "A global community of domain experts and research leaders.",
+    tone: "blue",
+  },
+  {
+    icon: Clock3,
+    title: "Fast Decisions",
+    text: "Timely reviews for efficient editorial decisions.",
+    tone: "orange",
+  },
+];
+
+const process = [
+  {
+    icon: Mail,
+    title: "Invitation",
+    text: "Reviewer is invited to review a manuscript.",
+  },
+  {
+    icon: CheckCircle2,
+    title: "Accept Review",
+    text: "Reviewer accepts the invitation and confirms availability.",
+  },
+  {
+    icon: FileSearch,
+    title: "Evaluate Manuscript",
+    text: "Carefully read and assess the quality of the submission.",
+  },
+  {
+    icon: MessageSquareText,
+    title: "Submit Comments",
+    text: "Provide constructive feedback and recommendation.",
+  },
+  {
+    icon: Award,
+    title: "Editorial Decision",
+    text: "Editors make decisions based on reviewer feedback.",
+  },
+  {
+    icon: BookOpen,
+    title: "Publication",
+    text: "High quality research is published and disseminated.",
   },
 ];
 
 const responsibilities = [
   {
-    icon: Search,
-    title: "Evaluate Originality",
-    description:
-      "Determine whether the manuscript presents original ideas, findings, methods, or interpretations.",
+    icon: LockKeyhole,
+    title: "Confidentiality",
+    text: "Maintain complete confidentiality of the manuscript.",
   },
   {
-    icon: FileCheck,
-    title: "Assess Methodology",
-    description:
-      "Check whether the research design, data collection, and analytical methods are appropriate and clearly explained.",
+    icon: SearchCheck,
+    title: "Originality Check",
+    text: "Ensure the work is original and not previously published.",
   },
   {
-    icon: BookOpen,
-    title: "Verify Literature",
-    description:
-      "Ensure that the manuscript cites relevant, current, and credible scholarly literature.",
+    icon: MessageSquareText,
+    title: "Constructive Feedback",
+    text: "Provide clear, respectful and helpful feedback.",
   },
   {
-    icon: Star,
-    title: "Assess Significance",
-    description:
-      "Evaluate the academic contribution, practical relevance, and potential impact of the research.",
+    icon: Clock3,
+    title: "Timely Review",
+    text: "Submit reviews within the agreed timeline for efficiency.",
   },
   {
-    icon: Languages,
-    title: "Review Presentation",
-    description:
-      "Assess the clarity, organization, language quality, figures, tables, and overall readability.",
+    icon: UsersRound,
+    title: "Conflict of Interest",
+    text: "Decline reviews with potential conflicts of interest.",
   },
   {
     icon: ShieldCheck,
-    title: "Check Research Ethics",
-    description:
-      "Identify possible plagiarism, fabricated data, improper attribution, or missing ethical approvals.",
-  },
-  {
-    icon: Scale,
-    title: "Make a Recommendation",
-    description:
-      "Recommend acceptance, revision, or rejection based only on the manuscript's academic merit.",
-  },
-  {
-    icon: Lock,
-    title: "Protect Confidentiality",
-    description:
-      "Do not share, discuss, copy, or use unpublished manuscript material for personal benefit.",
+    title: "Ethical Standards",
+    text: "Follow ethical guidelines and uphold research integrity.",
   },
 ];
 
-const processSteps = [
+const criteria = [
+  { icon: Lightbulb, title: "Originality", value: 90 },
+  { icon: Microscope, title: "Methodology", value: 85 },
+  { icon: FileCheck2, title: "Technical Quality", value: 80 },
+  { icon: GraduationCap, title: "Presentation", value: 85 },
+  { icon: BookOpen, title: "References", value: 75 },
+  { icon: Target, title: "Significance", value: 85 },
+];
+
+const benefits = [
   {
-    number: "1",
-    icon: Mail,
-    title: "Review Invitation",
-    description:
-      "The reviewer receives an invitation containing the manuscript title, abstract, and deadline.",
+    icon: Award,
+    title: "Certificate of Reviewing",
+    text: "Receive an official certificate recognizing your valuable contribution.",
   },
   {
-    number: "2",
-    icon: UserCheck,
-    title: "Accept or Decline",
-    description:
-      "Accept only when the manuscript matches your expertise and no conflict of interest exists.",
+    icon: Trophy,
+    title: "Recognition",
+    text: "Get acknowledged on our website and reviewer recognition platform.",
   },
   {
-    number: "3",
-    icon: BookOpen,
-    title: "Read Manuscript",
-    description:
-      "Evaluate the manuscript carefully, including all sections, figures, tables, and references.",
-  },
-  {
-    number: "4",
-    icon: MessageSquare,
-    title: "Prepare Comments",
-    description:
-      "Write structured comments for the authors and confidential remarks for the editor.",
-  },
-  {
-    number: "5",
-    icon: FileCheck,
-    title: "Submit Review",
-    description:
-      "Submit the completed review form and final recommendation within the assigned deadline.",
-  },
-  {
-    number: "6",
-    icon: Scale,
-    title: "Editorial Decision",
-    description:
-      "The editor evaluates all reviewer reports and communicates the final decision to the author.",
+    icon: GraduationCap,
+    title: "Professional Development",
+    text: "Enhance your academic profile and stay updated with the latest research.",
   },
 ];
 
-const reviewCriteria = [
-  {
-    criterion: "Originality",
-    description:
-      "The manuscript provides a novel contribution and avoids unnecessary duplication.",
-    priority: "High",
-  },
-  {
-    criterion: "Research Objective",
-    description:
-      "The problem statement, research questions, and objectives are clearly defined.",
-    priority: "High",
-  },
-  {
-    criterion: "Methodology",
-    description:
-      "The research design, sampling, instruments, and analysis are appropriate.",
-    priority: "High",
-  },
-  {
-    criterion: "Results",
-    description:
-      "Findings are accurately presented and supported by suitable evidence.",
-    priority: "High",
-  },
-  {
-    criterion: "Discussion",
-    description:
-      "The authors interpret the results and connect them with existing research.",
-    priority: "Medium",
-  },
-  {
-    criterion: "References",
-    description:
-      "Sources are relevant, recent, correctly cited, and appropriately balanced.",
-    priority: "Medium",
-  },
-  {
-    criterion: "Language & Structure",
-    description:
-      "The manuscript is clearly written, logically structured, and easy to understand.",
-    priority: "Medium",
-  },
-  {
-    criterion: "Ethical Compliance",
-    description:
-      "The study follows accepted ethical practices and provides required approvals.",
-    priority: "High",
-  },
+const ethics = [
+  "Treat every manuscript as confidential.",
+  "Do not share or discuss the manuscript.",
+  "Use the information only for review purposes.",
+  "Report ethical concerns to the editor.",
+  "Decline if you have a conflict of interest.",
+  "Respect authors and their work at all times.",
 ];
 
-const ethicalResponsibilities = [
-  "Maintain complete confidentiality throughout and after the review process.",
-  "Declare any personal, professional, academic, or financial conflict of interest.",
-  "Do not use unpublished information or ideas for personal or professional advantage.",
-  "Avoid personal criticism, offensive language, or unsupported accusations.",
-  "Report suspected plagiarism, duplicate publication, data manipulation, or unethical research.",
-  "Evaluate the manuscript objectively without discrimination or personal bias.",
-  "Do not contact the authors directly regarding the manuscript.",
-  "Return the review within the specified deadline or request an extension promptly.",
-];
-
-const goodPractices = [
-  "Focus comments on the research and not on the authors.",
-  "Begin with a concise summary of the manuscript.",
-  "Separate major comments from minor comments.",
-  "Explain the reason behind every important recommendation.",
-  "Suggest practical ways to improve the manuscript.",
-  "Mention both strengths and weaknesses.",
-  "Use professional, respectful, and clear language.",
-];
-
-const prohibitedPractices = [
-  "Do not reveal your identity when the journal uses anonymous review.",
-  "Do not share the manuscript with colleagues without editorial permission.",
-  "Do not request unnecessary citations to your own publications.",
-  "Do not rewrite the manuscript according to your personal writing style.",
-  "Do not delay the review without informing the editorial office.",
-  "Do not make acceptance dependent on irrelevant changes.",
-  "Do not retain or distribute manuscript copies after completing the review.",
-];
-
-const recommendationOptions = [
+const faqs = [
   {
-    title: "Accept",
-    description:
-      "The manuscript is suitable for publication without substantial changes.",
+    q: "How long does the review process take?",
+    a: "Reviewers are generally requested to submit their report within the timeline stated in the invitation email. If extra time is required, contact the editorial office promptly.",
   },
   {
-    title: "Minor Revision",
-    description:
-      "Small corrections are required, but the main research is academically sound.",
+    q: "What is expected in a good review?",
+    a: "A good review is objective, specific, respectful and evidence-based. It clearly identifies strengths, weaknesses and practical improvements.",
   },
   {
-    title: "Major Revision",
-    description:
-      "Substantial changes are required before the manuscript can be reconsidered.",
+    q: "Will my identity be revealed to the authors?",
+    a: "No. Yashika Publications follows a double-blind review process in which reviewer and author identities remain confidential.",
   },
   {
-    title: "Reject",
-    description:
-      "The manuscript has serious methodological, ethical, originality, or relevance concerns.",
+    q: "Can I suggest improvements to the manuscript?",
+    a: "Yes. Constructive recommendations that improve clarity, methodology, analysis, presentation and scholarly contribution are strongly encouraged.",
   },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                                ANIMATIONS                                  */
-/* -------------------------------------------------------------------------- */
 
 const fadeUp = {
-  hidden: {
-    opacity: 0,
-    y: 28,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.62,
-      ease: "easeOut",
-    },
-  },
+  hidden: { opacity: 0, y: 28 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
 };
 
-const staggerContainer = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.08,
-    },
-  },
-};
+const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } };
 
-/* -------------------------------------------------------------------------- */
-/*                              SHARED COMPONENTS                             */
-/* -------------------------------------------------------------------------- */
-
-function SectionHeading({ children, subtitle }) {
+function SectionHeading({ children, centered = false }) {
   return (
-    <div className="mb-5">
-      <h2 className="text-[16px] font-semibold uppercase tracking-[0.02em] text-[#075bc7] sm:text-[18px]">
+    <div className={centered ? "text-center" : "text-left"}>
+      <h2 className="text-[24px] font-[600] tracking-tight text-[#0B2C66] sm:text-[28px]">
         {children}
       </h2>
-
-      <div className="mt-2 h-[2px] w-[38px] rounded-full bg-[#ff7200]" />
-
-      {subtitle && (
-        <p className="mt-3 max-w-[850px] text-[11px] font-medium leading-[1.7] text-[#44556d] sm:text-[12px]">
-          {subtitle}
-        </p>
-      )}
+      <span
+        className={`mt-3 block h-1 w-12 rounded-full bg-[#F57C20] ${centered ? "mx-auto" : ""}`}
+      />
     </div>
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/*                                  HERO                                     */
-/* -------------------------------------------------------------------------- */
-
-function HeroSection() {
+function ProgressRing({ value }) {
+  const r = 38;
+  const c = 2 * Math.PI * r;
+  const offset = c - (value / 100) * c;
   return (
-    <section className="relative overflow-hidden bg-white">
-      <div
-        className="relative min-h-[440px] bg-cover bg-center bg-no-repeat sm:min-h-[470px] lg:min-h-[500px]"
-        style={{ backgroundImage: `url(${heroImg})` }}
-      >
-        <div className="relative z-10 mx-auto flex min-h-[440px] max-w-[1400px] items-center px-5 py-10 sm:min-h-[470px] sm:px-8 lg:min-h-[500px] lg:px-14">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            className="w-full max-w-[510px]"
-          >
-            <motion.div
-              whileHover={{ x: 4 }}
-              className="mb-6 flex flex-wrap items-center gap-2 text-[13px] font-semibold"
-            >
-              <a
-                href="/"
-                className="text-[#ff7600] transition-colors hover:text-white"
-              >
-                Home
-              </a>
-
-              <span className="text-white/75">›</span>
-
-              <span className="text-white">Reviewer Guidelines</span>
-            </motion.div>
-
-            <h1 className="max-w-[520px] text-[34px] font-semibold leading-none tracking-[-0.8px] text-white sm:text-[36px] md:text-[38px] lg:text-[40px]">
-              Reviewer Guidelines
-            </h1>
-
-            <div className="mt-5 h-[3px] w-[45px] rounded-full bg-[#ff7900]" />
-
-            <p className="mt-5 max-w-[450px] text-[16px] font-medium leading-[1.7] text-white sm:text-[18px]">
-              Artificial Intelligence Education Research
-              <br className="hidden sm:block" />
-              and Review (AIERRR)
-            </p>
-
-            <p className="mt-5 max-w-[485px] text-[13px] font-medium leading-[1.85] text-white/90 sm:text-[14px]">
-              These guidelines help reviewers conduct fair, confidential,
-              constructive, and timely peer reviews while maintaining the
-              academic and ethical standards of the journal.
-            </p>
-          </motion.div>
-        </div>
+    <div className="relative h-24 w-24">
+      <svg viewBox="0 0 96 96" className="h-full w-full -rotate-90">
+        <circle
+          cx="48"
+          cy="48"
+          r={r}
+          fill="none"
+          stroke="#E7EEFA"
+          strokeWidth="8"
+        />
+        <motion.circle
+          cx="48"
+          cy="48"
+          r={r}
+          fill="none"
+          stroke="#125FEA"
+          strokeWidth="8"
+          strokeLinecap="round"
+          strokeDasharray={c}
+          initial={{ strokeDashoffset: c }}
+          whileInView={{ strokeDashoffset: offset }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 1.1, ease: "easeOut" }}
+        />
+      </svg>
+      <div className="absolute inset-0 grid place-items-center text-[22px] font-[600] text-[#0B2C66]">
+        {value}%
       </div>
-
-      <div className="pointer-events-none absolute -bottom-[1px] left-0 h-[34px] w-full bg-white [clip-path:ellipse(62%_38%_at_50%_100%)] sm:h-[46px]" />
-    </section>
+    </div>
   );
 }
-
-/* -------------------------------------------------------------------------- */
-/*                              QUICK GUIDELINES                              */
-/* -------------------------------------------------------------------------- */
-
-function QuickGuidelines() {
-  return (
-    <motion.section
-      variants={fadeUp}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      whileHover={{
-        y: -4,
-        boxShadow: "0 14px 30px rgba(8,66,145,0.11)",
-      }}
-      className="grid overflow-hidden rounded-[8px] border border-[#dbe6f2] bg-[#f4f8ff] shadow-[0_4px_16px_rgba(8,66,145,0.06)] sm:grid-cols-2 lg:grid-cols-3"
-    >
-      {quickGuidelines.map((item, index) => {
-        const Icon = item.icon;
-
-        return (
-          <motion.a
-            key={item.title}
-            href={item.href}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.4,
-              delay: index * 0.06,
-            }}
-            whileHover={{
-              y: -4,
-              backgroundColor: "#eaf3ff",
-            }}
-            className="group flex min-h-[112px] items-start gap-4 border-b border-[#d9e4f0] px-5 py-5 sm:[&:nth-child(odd)]:border-r lg:border-r lg:[&:nth-child(3n)]:border-r-0"
-          >
-            <motion.div
-              whileHover={{
-                scale: 1.08,
-                rotate: 3,
-              }}
-              className="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-full bg-white text-[#075bc7] shadow-[0_5px_16px_rgba(8,66,145,0.11)]"
-            >
-              <Icon className="h-[22px] w-[22px]" strokeWidth={1.7} />
-            </motion.div>
-
-            <div>
-              <h3 className="text-[12px] font-bold leading-[1.4] text-[#072d74]">
-                {item.title}
-              </h3>
-
-              <p className="mt-2 text-[10px] font-medium leading-[1.6] text-[#394c67] sm:text-[11px]">
-                {item.description}
-              </p>
-            </div>
-          </motion.a>
-        );
-      })}
-    </motion.section>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/*                         REVIEWER RESPONSIBILITIES                          */
-/* -------------------------------------------------------------------------- */
-
-function ReviewerResponsibilities() {
-  return (
-    <section id="reviewer-responsibilities">
-      <SectionHeading
-        subtitle="Reviewers should provide an impartial, evidence-based, and constructive assessment of every manuscript."
-      >
-        Reviewer Responsibilities
-      </SectionHeading>
-
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.08 }}
-        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
-      >
-        {responsibilities.map((item) => {
-          const Icon = item.icon;
-
-          return (
-            <motion.article
-              key={item.title}
-              variants={fadeUp}
-              whileHover={{
-                y: -7,
-                scale: 1.012,
-                boxShadow: "0 15px 30px rgba(8,66,145,0.12)",
-              }}
-              className="group flex min-h-[190px] flex-col rounded-[8px] border border-[#dce5ef] bg-white px-5 py-5 shadow-[0_3px_13px_rgba(8,66,145,0.05)]"
-            >
-              <motion.div
-                whileHover={{
-                  scale: 1.09,
-                  rotate: 4,
-                }}
-                className="flex h-[46px] w-[46px] items-center justify-center rounded-full bg-[#edf4ff] text-[#075bc7]"
-              >
-                <Icon className="h-[24px] w-[24px]" strokeWidth={1.7} />
-              </motion.div>
-
-              <h3 className="mt-4 text-[13px] font-bold text-[#072d74]">
-                {item.title}
-              </h3>
-
-              <p className="mt-3 text-[10px] font-medium leading-[1.7] text-[#394c67] sm:text-[11px]">
-                {item.description}
-              </p>
-            </motion.article>
-          );
-        })}
-      </motion.div>
-    </section>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/*                              REVIEW PROCESS                                */
-/* -------------------------------------------------------------------------- */
-
-function ReviewProcess() {
-  return (
-    <section id="review-process">
-      <SectionHeading
-        subtitle="The peer-review process follows a structured workflow to ensure fairness, accuracy, and timely editorial decisions."
-      >
-        Peer Review Process
-      </SectionHeading>
-
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.08 }}
-        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
-      >
-        {processSteps.map((step) => {
-          const Icon = step.icon;
-
-          return (
-            <motion.article
-              key={step.title}
-              variants={fadeUp}
-              whileHover={{
-                y: -7,
-                boxShadow: "0 15px 30px rgba(8,66,145,0.12)",
-              }}
-              className="group flex min-h-[180px] gap-5 rounded-[8px] border border-[#dbe6f2] bg-white px-5 py-5"
-            >
-              <div className="flex flex-col items-center gap-4">
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  className="flex h-[32px] w-[32px] items-center justify-center rounded-full bg-[#07347d] text-[12px] font-bold text-white"
-                >
-                  {step.number}
-                </motion.div>
-
-                <motion.div
-                  whileHover={{
-                    scale: 1.1,
-                    rotate: 4,
-                  }}
-                  className="text-[#075bc7]"
-                >
-                  <Icon className="h-[30px] w-[30px]" strokeWidth={1.65} />
-                </motion.div>
-              </div>
-
-              <div>
-                <h3 className="text-[12px] font-bold text-[#092b68]">
-                  {step.title}
-                </h3>
-
-                <p className="mt-3 text-[10px] font-medium leading-[1.65] text-[#394c67] sm:text-[11px]">
-                  {step.description}
-                </p>
-              </div>
-            </motion.article>
-          );
-        })}
-      </motion.div>
-    </section>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/*                              REVIEW CRITERIA                               */
-/* -------------------------------------------------------------------------- */
-
-function ReviewCriteria() {
-  return (
-    <section>
-      <SectionHeading
-        subtitle="The following criteria should guide the reviewer's academic and editorial assessment."
-      >
-        Manuscript Evaluation Criteria
-      </SectionHeading>
-
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.58 }}
-        className="overflow-hidden rounded-[7px] border border-[#dbe5ef] bg-white shadow-[0_4px_16px_rgba(8,66,145,0.06)]"
-      >
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[760px] border-collapse">
-            <thead>
-              <tr className="bg-[#062c68] text-white">
-                <th className="w-[23%] border-r border-white/25 px-5 py-3 text-left text-[11px] font-semibold">
-                  Evaluation Criterion
-                </th>
-
-                <th className="w-[59%] border-r border-white/25 px-5 py-3 text-left text-[11px] font-semibold">
-                  Description
-                </th>
-
-                <th className="w-[18%] px-5 py-3 text-center text-[11px] font-semibold">
-                  Priority
-                </th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {reviewCriteria.map((item, index) => (
-                <motion.tr
-                  key={item.criterion}
-                  initial={{ opacity: 0, x: -14 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 0.35,
-                    delay: index * 0.05,
-                  }}
-                  whileHover={{
-                    backgroundColor: "#f3f8ff",
-                  }}
-                  className="border-b border-[#dfe7ef] last:border-b-0"
-                >
-                  <td className="border-r border-[#dfe7ef] px-5 py-4 text-[11px] font-bold text-[#102651]">
-                    {item.criterion}
-                  </td>
-
-                  <td className="border-r border-[#dfe7ef] px-5 py-4 text-[10px] font-medium leading-[1.6] text-[#30435f] sm:text-[11px]">
-                    {item.description}
-                  </td>
-
-                  <td className="px-5 py-4 text-center">
-                    <span
-                      className={`inline-flex min-w-[68px] justify-center rounded-full px-3 py-1 text-[10px] font-bold ${
-                        item.priority === "High"
-                          ? "bg-[#e9f2ff] text-[#075bc7]"
-                          : "bg-[#fff3e8] text-[#e96800]"
-                      }`}
-                    >
-                      {item.priority}
-                    </span>
-                  </td>
-                </motion.tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </motion.div>
-    </section>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/*                               REVIEW ETHICS                                */
-/* -------------------------------------------------------------------------- */
-
-function ReviewerEthics() {
-  return (
-    <section id="reviewer-ethics">
-      <SectionHeading
-        subtitle="Ethical conduct is essential to maintaining trust, fairness, confidentiality, and research integrity."
-      >
-        Reviewer Ethics and Confidentiality
-      </SectionHeading>
-
-      <motion.div
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.12 }}
-        whileHover={{
-          y: -5,
-          boxShadow: "0 16px 34px rgba(8,66,145,0.12)",
-        }}
-        className="grid gap-6 rounded-[9px] border border-[#dbe6f2] bg-[#f4f8ff] px-6 py-7 shadow-[0_4px_16px_rgba(8,66,145,0.05)] md:grid-cols-[72px_minmax(0,1fr)]"
-      >
-        <motion.div
-          whileHover={{
-            scale: 1.08,
-            rotate: 4,
-          }}
-          className="mx-auto flex h-[64px] w-[64px] items-center justify-center rounded-full bg-[#07347d] text-white md:mx-0"
-        >
-          <ShieldCheck className="h-[32px] w-[32px]" strokeWidth={1.6} />
-        </motion.div>
-
-        <div className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
-          {ethicalResponsibilities.map((item) => (
-            <motion.div
-              key={item}
-              whileHover={{ x: 4 }}
-              className="flex items-start gap-3"
-            >
-              <CheckCircle2
-                className="mt-[2px] h-[14px] w-[14px] shrink-0 text-[#075bc7]"
-                strokeWidth={2}
-              />
-
-              <p className="text-[10px] font-medium leading-[1.65] text-[#30435f] sm:text-[11px]">
-                {item}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-    </section>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/*                              BEST PRACTICES                                */
-/* -------------------------------------------------------------------------- */
-
-function BestPractices() {
-  return (
-    <section>
-      <SectionHeading>
-        Constructive Review Practices
-      </SectionHeading>
-
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-        className="grid gap-5 lg:grid-cols-2"
-      >
-        <motion.article
-          variants={fadeUp}
-          whileHover={{
-            y: -7,
-            boxShadow: "0 16px 32px rgba(15,139,76,0.12)",
-          }}
-          className="rounded-[8px] border border-[#cfe8da] bg-[#f5fcf8] px-6 py-6"
-        >
-          <div className="flex items-center gap-4">
-            <div className="flex h-[44px] w-[44px] items-center justify-center rounded-full bg-[#e1f5e9] text-[#159153]">
-              <CheckCircle2 className="h-[23px] w-[23px]" />
-            </div>
-
-            <div>
-              <h3 className="text-[15px] font-bold text-[#0b6840]">
-                Recommended Practices
-              </h3>
-
-              <p className="mt-1 text-[10px] font-medium text-[#51645a] sm:text-[11px]">
-                A professional reviewer should:
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-5 space-y-3">
-            {goodPractices.map((item) => (
-              <motion.div
-                key={item}
-                whileHover={{ x: 4 }}
-                className="flex items-start gap-3"
-              >
-                <CheckCircle2 className="mt-[2px] h-[14px] w-[14px] shrink-0 text-[#159153]" />
-
-                <p className="text-[10px] font-medium leading-[1.6] text-[#344b40] sm:text-[11px]">
-                  {item}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.article>
-
-        <motion.article
-          variants={fadeUp}
-          whileHover={{
-            y: -7,
-            boxShadow: "0 16px 32px rgba(198,61,61,0.11)",
-          }}
-          className="rounded-[8px] border border-[#f0d5d5] bg-[#fff8f8] px-6 py-6"
-        >
-          <div className="flex items-center gap-4">
-            <div className="flex h-[44px] w-[44px] items-center justify-center rounded-full bg-[#fdeaea] text-[#c54343]">
-              <XCircle className="h-[23px] w-[23px]" />
-            </div>
-
-            <div>
-              <h3 className="text-[15px] font-bold text-[#9e3030]">
-                Prohibited Practices
-              </h3>
-
-              <p className="mt-1 text-[10px] font-medium text-[#6c5555] sm:text-[11px]">
-                A reviewer must not:
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-5 space-y-3">
-            {prohibitedPractices.map((item) => (
-              <motion.div
-                key={item}
-                whileHover={{ x: 4 }}
-                className="flex items-start gap-3"
-              >
-                <XCircle className="mt-[2px] h-[14px] w-[14px] shrink-0 text-[#c54343]" />
-
-                <p className="text-[10px] font-medium leading-[1.6] text-[#5d4343] sm:text-[11px]">
-                  {item}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.article>
-      </motion.div>
-    </section>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/*                             RECOMMENDATIONS                                */
-/* -------------------------------------------------------------------------- */
-
-function RecommendationSection() {
-  return (
-    <section>
-      <SectionHeading
-        subtitle="The final recommendation should reflect the manuscript's quality, validity, originality, and readiness for publication."
-      >
-        Reviewer Recommendation Options
-      </SectionHeading>
-
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
-      >
-        {recommendationOptions.map((item, index) => (
-          <motion.article
-            key={item.title}
-            variants={fadeUp}
-            whileHover={{
-              y: -7,
-              scale: 1.012,
-              boxShadow: "0 15px 30px rgba(8,66,145,0.12)",
-            }}
-            className="rounded-[8px] border border-[#dbe6f2] bg-white px-5 py-5"
-          >
-            <div className="flex items-center gap-3">
-              <span className="flex h-[28px] w-[28px] items-center justify-center rounded-full bg-[#07347d] text-[11px] font-bold text-white">
-                {index + 1}
-              </span>
-
-              <h3 className="text-[13px] font-bold text-[#063b87]">
-                {item.title}
-              </h3>
-            </div>
-
-            <p className="mt-4 text-[10px] font-medium leading-[1.7] text-[#394c67] sm:text-[11px]">
-              {item.description}
-            </p>
-          </motion.article>
-        ))}
-      </motion.div>
-    </section>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/*                              CONTACT STRIP                                 */
-/* -------------------------------------------------------------------------- */
-
-function ContactStrip() {
-  return (
-    <motion.section
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.55 }}
-      whileHover={{
-        y: -4,
-        boxShadow: "0 14px 28px rgba(8,66,145,0.11)",
-      }}
-      className="flex flex-col items-center justify-center gap-4 rounded-[8px] border border-[#dbe6f2] bg-[#edf4ff] px-5 py-4 text-center shadow-[0_3px_13px_rgba(8,66,145,0.05)] sm:flex-row"
-    >
-      <div className="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-full bg-[#07347d] text-white">
-        <Mail className="h-[21px] w-[21px]" strokeWidth={1.7} />
-      </div>
-
-      <p className="text-[10px] font-medium leading-[1.7] text-[#263b5c] sm:text-[11px]">
-        For reviewer-related queries or assistance, please contact the editorial
-        office at:{" "}
-        <a
-          href="mailto:editor.aierrr@yashikapublications.com"
-          className="font-bold text-[#075bc7] hover:underline"
-        >
-          editor.aierrr@yashikapublications.com
-        </a>
-      </p>
-    </motion.section>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/*                                  PAGE                                     */
-/* -------------------------------------------------------------------------- */
 
 export default function ReviewerGuidelines() {
+  const [openFaq, setOpenFaq] = useState(null);
+
   return (
-    <main className="min-h-screen w-full overflow-x-hidden bg-white text-[#102651]">
-      <HeroSection />
+    <motion.main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="overflow-hidden bg-white text-[#10213D]"
+    >
+      {/* HERO */}
+      <section className="relative min-h-[340px] overflow-hidden bg-[#082F70]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(35,101,231,.35),transparent_30%),linear-gradient(115deg,#071F4F_0%,#0B2C66_48%,transparent_48%)]" />
+        <div className="absolute inset-y-0 right-0 w-full lg:w-[57%]">
+          <img
+            src={reviewerBanner}
+            alt="Professional reviewer and editor team"
+            className="h-full w-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0B2C66] via-[#0B2C66]/20 to-transparent lg:from-[#0B2C66]/45" />
+        </div>
+        <div className="absolute -left-20 top-0 h-72 w-72 rotate-45 border border-blue-400/20" />
+        <div className="absolute left-[37%] top-[-120px] h-[520px] w-36 rotate-[28deg] bg-blue-500/35 blur-[1px]" />
+        <div className="absolute left-[43%] top-[-100px] h-[520px] w-1 rotate-[28deg] bg-[#F57C20]" />
 
-      <section className="bg-white px-4 pb-12 pt-6 sm:px-8 lg:px-14">
-        <div className="mx-auto max-w-[1180px]">
-          <QuickGuidelines />
+        <div className="relative mx-auto flex min-h-[320px] max-w-[1260px] items-center px-5 py-12 sm:px-8 lg:px-10">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            animate="show"
+            className="max-w-[620px]"
+          >
+            <motion.img
+              variants={fadeUp}
+              src={logo}
+              alt="Yashika Publications"
+              className="mb-7 h-10 w-auto object-contain sm:h-12"
+            />
+            <motion.h1
+              variants={fadeUp}
+              className="text-white text-[36px] font-[600] leading-tight sm:text-[40px] md:text-[44px]"
+            >
+              Reviewer Guidelines
+            </motion.h1>
+            <motion.span
+              variants={fadeUp}
+              className="mt-2 block h-1 w-12 rounded-full bg-[#F57C20]"
+            />
+            <motion.p
+              variants={fadeUp}
+              className="mt-4 text-[18px] font-[500] leading-snug md:text-[22px] text-white/95"
+            >
+              Maintaining Excellence Through
+              <br className="hidden sm:block" /> Rigorous and Ethical Peer
+              Review
+            </motion.p>
+            {/* <motion.div variants={fadeUp} className="mt-5 flex flex-wrap items-center gap-2 text-xs font-medium text-white/80 sm:text-sm">
+              <Link to="/" className="hover:text-white">Home</Link><span>/</span><Link to="/reviewers" className="hover:text-white">For Reviewers</Link><span>/</span><span className="font-semibold text-[#FFA64D]">Reviewer Guidelines</span>
+            </motion.div> */}
+          </motion.div>
+        </div>
+      </section>
 
-          <div className="mt-8">
-            <ReviewerResponsibilities />
-          </div>
+      {/* WELCOME + STATS */}
+      <section className="relative bg-[radial-gradient(circle_at_0%_50%,rgba(64,125,238,.08),transparent_25%),radial-gradient(circle_at_100%_40%,rgba(64,125,238,.08),transparent_25%)] py-10">
+        <div className="mx-auto max-w-[1260px] px-5 sm:px-8 lg:px-10">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            className="grid gap-7 lg:grid-cols-2 lg:items-center"
+          >
+            <motion.div variants={fadeUp}>
+              <SectionHeading>
+                Welcome to the
+                <br />
+                Reviewer Community
+              </SectionHeading>
+            </motion.div>
+            <motion.p
+              variants={fadeUp}
+              className="text-[14px] leading-7 text-slate-600 sm:text-[16px]"
+            >
+              At Yashika Publications, our reviewers play a vital role in
+              maintaining the highest standards of academic integrity and
+              scholarly excellence. Your expertise helps us ensure that only
+              rigorous, ethical, and impactful research reaches the world.
+            </motion.p>
+          </motion.div>
 
-          <div className="mt-8">
-            <ReviewProcess />
-          </div>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.15 }}
+            className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+          >
+            {stats.map(({ icon: Icon, title, text, tone }) => (
+              <motion.article
+                key={title}
+                variants={fadeUp}
+                whileHover={{ y: -8, scale: 1.015 }}
+                className="group rounded-[24px] border border-white/80 bg-white/75 p-6 text-center shadow-[0_14px_35px_rgba(18,60,120,.11)] backdrop-blur-xl"
+              >
+                <div
+                  className={`mx-auto grid h-12 w-12 place-items-center rounded-full text-white shadow-lg transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110 ${tone === "orange" ? "bg-[#F57C20] shadow-orange-200" : "bg-[#125FEA] shadow-blue-200"}`}
+                >
+                  <Icon size={23} />
+                </div>
+                <h3 className="mt-5 text-[15px] font-[550] text-[#0B2C66]">
+                  {title}
+                </h3>
+                <p className="mt-2 text-[14px] leading-6 text-slate-600">
+                  {text}
+                </p>
+              </motion.article>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
-          <div className="mt-8">
-            <ReviewCriteria />
-          </div>
+      {/* TIMELINE */}
+      <section className="py-8">
+        <div className="mx-auto max-w-[1260px] px-5 sm:px-8 lg:px-10">
+          <SectionHeading centered>The Review Process</SectionHeading>
 
-          <div className="mt-8">
-            <ReviewerEthics />
-          </div>
+          <div className="relative mt-12">
+            <div className="absolute left-[7%] right-[7%] top-4 hidden h-[3px] bg-gradient-to-r from-[#125FEA] via-[#347CF3] to-[#125FEA] lg:block" />
 
-          <div className="mt-8">
-            <BestPractices />
-          </div>
+            <motion.div
+              variants={stagger}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.15 }}
+              className="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-6"
+            >
+              {process.map(({ icon: Icon, title, text }, index) => (
+                <motion.article
+                  key={title}
+                  variants={fadeUp}
+                  whileHover={{ y: -7, scale: 1.03 }}
+                  className="relative flex h-[240px] flex-col items-center rounded-[20px] border border-slate-100 bg-white px-4 pt-9 pb-6 text-center shadow-[0_10px_28px_rgba(16,56,108,.12)]"
+                >
+                  <div className="absolute left-1/2 top-0 z-10 flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#125FEA] text-sm font-semibold text-white ring-4 ring-white">
+                    {index + 1}
+                  </div>
 
-          <div className="mt-8">
-            <RecommendationSection />
-          </div>
+                  <Icon className="text-[#125FEA]" size={30} />
 
-          <div className="mt-6">
-            <ContactStrip />
+                  <h3 className="mt-4 flex h-12 items-center justify-center text-[15px] font-semibold text-[#0B2C66]">
+                    {title}
+                  </h3>
+
+                  <p className="mt-2 flex-1 text-sm leading-6 text-slate-600">
+                    {text}
+                  </p>
+                </motion.article>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>
-    </main>
+
+      {/* RESPONSIBILITIES */}
+      <section className="bg-[#FBFCFF] py-8">
+        <div className="mx-auto max-w-[1260px] px-5 sm:px-8 lg:px-10">
+          <SectionHeading>Reviewer Responsibilities</SectionHeading>
+          <div className="mt-9 grid gap-10 lg:grid-cols-[1.15fr_.85fr] lg:items-center">
+            <motion.div
+              variants={stagger}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.15 }}
+              className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+            >
+              {responsibilities.map(({ icon: Icon, title, text }, index) => (
+                <motion.article
+                  key={title}
+                  variants={fadeUp}
+                  whileHover={{
+                    y: -6,
+                    boxShadow: "0 18px 40px rgba(17,67,139,.15)",
+                  }}
+                  className="rounded-[20px] border border-slate-100 bg-white p-5 shadow-[0_8px_24px_rgba(17,67,139,.09)]"
+                >
+                  <div
+                    className={`grid h-11 w-11 place-items-center rounded-full text-white ${index % 3 === 1 ? "bg-[#F57C20]" : "bg-[#125FEA]"}`}
+                  >
+                    <Icon size={21} />
+                  </div>
+                  <h3 className="mt-4 text-[14px] font-[550] text-[#0B2C66]">
+                    {title}
+                  </h3>
+                  <p className="mt-2 text-[13px] leading-5 text-slate-600">
+                    {text}
+                  </p>
+                </motion.article>
+              ))}
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 35 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="relative"
+            >
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="rounded-[28px] bg-gradient-to-br from-blue-50 to-white p-5"
+              >
+                <img
+                  src={editorialTeam}
+                  alt="Reviewer working on laptop"
+                  className="mx-auto max-h-[360px] w-full rounded-[22px] object-cover"
+                />
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* CRITERIA */}
+      <section className="py-8">
+        <div className="mx-auto max-w-[1260px] px-5 sm:px-8 lg:px-10">
+          <SectionHeading>Evaluation Criteria</SectionHeading>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.15 }}
+            className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6"
+          >
+            {criteria.map(({ icon: Icon, title, value }) => (
+              <motion.article
+                key={title}
+                variants={fadeUp}
+                whileHover={{ y: -7 }}
+                className="rounded-[20px] border border-slate-100 bg-white p-4 text-center shadow-[0_10px_28px_rgba(16,56,108,.11)]"
+              >
+                <ProgressRing value={value} />
+                <div className="mt-2 flex items-center justify-center gap-2 text-[#0B2C66]">
+                  <Icon size={16} className="text-[#125FEA]" />
+                  <span className="text-[12px] font-[550] sm:text-[14px]">
+                    {title}
+                  </span>
+                </div>
+              </motion.article>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* BENEFITS */}
+      <section className="pb-16">
+        <div className="mx-auto max-w-[1260px] px-5 sm:px-8 lg:px-10">
+          <SectionHeading>Reviewer Benefits</SectionHeading>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.15 }}
+            className="mt-8 grid gap-5 lg:grid-cols-3"
+          >
+            {benefits.map(({ icon: Icon, title, text }, index) => (
+              <motion.article
+                key={title}
+                variants={fadeUp}
+                whileHover={{ y: -8, scale: 1.01 }}
+                className="flex items-center gap-5 rounded-[22px] border border-slate-100 bg-white p-6 shadow-[0_12px_30px_rgba(16,56,108,.11)]"
+              >
+                <div
+                  className={`grid h-16 w-16 shrink-0 place-items-center rounded-full text-white shadow-lg ${index === 1 ? "bg-[#F57C20] shadow-orange-200" : "bg-gradient-to-br from-[#125FEA] to-[#072D73] shadow-blue-200"}`}
+                >
+                  <Icon size={30} />
+                </div>
+                <div>
+                  <h3 className="font-[550] text-[#0B2C66]">{title}</h3>
+                  <p className="mt-2 text-[13px] leading-6 text-slate-600">
+                    {text}
+                  </p>
+                </div>
+              </motion.article>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ETHICS */}
+      <section className="relative overflow-hidden bg-[#082D68] py-8 text-white">
+        <div className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_1px_1px,#57A0FF_1px,transparent_0)] [background-size:24px_24px]" />
+        <div className="absolute -right-16 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full border border-blue-300/20" />
+        <div className="relative mx-auto grid max-w-[1260px] gap-8 px-5 sm:px-8 lg:grid-cols-[1.4fr_.6fr] lg:px-10">
+          <div>
+            <h2 className="text-[24px] font-[550] sm:text-[28px]">
+              Ethics &amp; Confidentiality
+            </h2>
+            <span className="mt-2 block h-1 w-12 bg-[#F57C20]" />
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {ethics.map((item) => (
+                <div
+                  key={item}
+                  className="flex items-center gap-3 text-[14px] text-white/90"
+                >
+                  <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full border border-blue-300 shadow-[0_0_14px_rgba(76,146,255,.7)]">
+                    <Check size={14} />
+                  </span>
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+          <motion.div
+            animate={{ scale: [1, 1.04, 1], opacity: [0.85, 1, 0.85] }}
+            transition={{ duration: 3.5, repeat: Infinity }}
+            className="hidden items-center justify-center lg:flex"
+          >
+            <div className="grid h-40 w-40 place-items-center rounded-full border border-blue-300/30 bg-blue-500/10 shadow-[0_0_65px_rgba(40,116,255,.32)]">
+              <ShieldCheck size={80} className="text-blue-300" />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-8">
+        <div className="mx-auto max-w-[1260px] px-5 sm:px-8 lg:px-10">
+          <SectionHeading>Frequently Asked Questions</SectionHeading>
+          <div className="mt-7 grid gap-4 lg:grid-cols-2">
+            {faqs.map((faq, index) => {
+              const open = openFaq === index;
+              return (
+                <motion.div
+                  key={faq.q}
+                  layout
+                  className="text-[14px]  font-medium overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-[0_7px_22px_rgba(16,56,108,.09)]"
+                >
+                  <button
+                    onClick={() => setOpenFaq(open ? null : index)}
+                    className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                  >
+                    <span className="flex items-center gap-3 font-[550] text-[#0B2C66]">
+                      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#125FEA] text-white ">
+                        <CircleUserRound size={16} />
+                      </span>
+                      {faq.q}
+                    </span>
+                    <motion.span animate={{ rotate: open ? 180 : 0 }}>
+                      <ChevronDown size={19} />
+                    </motion.span>
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {open && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <p className="px-5 pb-5 pl-16 text-[13px] leading-6 text-slate-600">
+                          {faq.a}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#0D63E8] via-[#064DCA] to-[#071F58] py-8 text-white">
+        <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(135deg,transparent_40%,#fff_41%,transparent_42%)] [background-size:70px_70px]" />
+        <div className="relative mx-auto flex max-w-[1260px] flex-col items-center justify-between gap-6 px-5 sm:px-8 lg:flex-row lg:px-10">
+          <div className="flex items-center gap-5">
+            <div className="grid h-16 w-16 place-items-center rounded-full border border-white/30 bg-white/10">
+              <UserRoundCheck size={34} />
+            </div>
+            <div>
+              <h2 className="text-[24px] font-[550] sm:text-[28px]">
+                Become a Reviewer
+              </h2>
+              <p className="mt-1 max-w-xl text-[14px] text-white/85">
+                Join our global community of experts and contribute to the
+                advancement of knowledge and society.
+              </p>
+            </div>
+          </div>
+          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#F57C20] px-6 py-3 text-[13px] font-[500] shadow-lg shadow-orange-950/20 transition hover:-translate-y-1 hover:bg-[#ff8d34]"
+            >
+              Apply as Reviewer <Sparkles size={17} />
+            </Link>
+            <a
+              href="mailto:info@yashikapublications.com"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/55 px-6 py-3 text-[13px] font-[500] transition hover:-translate-y-1 hover:bg-white hover:text-[#0B2C66]"
+            >
+              Contact Editorial Office <Mail size={17} />
+            </a>
+          </div>
+        </div>
+      </section>
+    </motion.main>
   );
 }
