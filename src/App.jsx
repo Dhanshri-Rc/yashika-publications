@@ -53,7 +53,6 @@ const AnimatedRoutes = () => {
         <Route path="/resources" element={<Resources />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
-<<<<<<< HEAD
         <Route path="/submit-your-paper" element={<SubmitYourPaper />} />
         <Route path="/review-process" element={<ReviewProcess />} />
         <Route path="/faq-for-authors" element={<FAQforAuthor />} />
@@ -64,7 +63,6 @@ const AnimatedRoutes = () => {
         <Route path="/benefits-of-reviewers" element={<BenefitsOfReviewers />} />
         {/* Add more routes for other pages as needed */}
         {/* Fallback route - redirect unknown paths to Home content (SPA friendly) */}
-=======
 
         <Route
           path="/submit-your-paper"
@@ -106,7 +104,6 @@ const AnimatedRoutes = () => {
           element={<BenefitsOfReviewers />}
         />
 
->>>>>>> 315a94d5338a9c37484983c541eb4d153fbae3fb
         <Route path="*" element={<Home />} />
       </Routes>
     </AnimatePresence>
