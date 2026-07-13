@@ -1,8 +1,14 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -12,7 +18,7 @@ import Reviewers from "./pages/Reviewers";
 import Resources from "./pages/Resources";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
-import ScrollToTop from "./components/ScrollToTop";
+
 import SubmitYourPaper from "./pages/footerpages/SubmitYourPaper";
 import ReviewProcess from "./pages/footerpages/ReviewProcess";
 import FAQforAuthor from "./pages/footerpages/FAQforAuthor";
@@ -21,6 +27,17 @@ import PublicationEthics from "./pages/footerpages/PublicationEthics";
 import OpenAccessPolicy from "./pages/footerpages/OpenAccessPolicy";
 import ReviewersGuidelines from "./pages/footerpages/ReviewerGuidelines";
 import BenefitsOfReviewers from "./pages/footerpages/BenefitsReveiwers";
+
+const hideLayoutRoutes = [
+  "/submit-your-paper",
+  "/review-process",
+  "/faq-for-authors",
+  "/author-guidelines",
+  "/publication-ethics",
+  "/open-access-policy",
+  "/reviewers-guidelines",
+  "/benefits-of-reviewers",
+];
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -36,6 +53,7 @@ const AnimatedRoutes = () => {
         <Route path="/resources" element={<Resources />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
+<<<<<<< HEAD
         <Route path="/submit-your-paper" element={<SubmitYourPaper />} />
         <Route path="/review-process" element={<ReviewProcess />} />
         <Route path="/faq-for-authors" element={<FAQforAuthor />} />
@@ -46,25 +64,81 @@ const AnimatedRoutes = () => {
         <Route path="/benefits-of-reviewers" element={<BenefitsOfReviewers />} />
         {/* Add more routes for other pages as needed */}
         {/* Fallback route - redirect unknown paths to Home content (SPA friendly) */}
+=======
+
+        <Route
+          path="/submit-your-paper"
+          element={<SubmitYourPaper />}
+        />
+
+        <Route
+          path="/review-process"
+          element={<ReviewProcess />}
+        />
+
+        <Route
+          path="/faq-for-authors"
+          element={<FAQforAuthor />}
+        />
+
+        <Route
+          path="/author-guidelines"
+          element={<Authorguideline />}
+        />
+
+        <Route
+          path="/publication-ethics"
+          element={<PublicationEthics />}
+        />
+
+        <Route
+          path="/open-access-policy"
+          element={<OpenAccessPolicy />}
+        />
+
+        <Route
+          path="/reviewers-guidelines"
+          element={<ReviewersGuidelines />}
+        />
+
+        <Route
+          path="/benefits-of-reviewers"
+          element={<BenefitsOfReviewers />}
+        />
+
+>>>>>>> 315a94d5338a9c37484983c541eb4d153fbae3fb
         <Route path="*" element={<Home />} />
       </Routes>
     </AnimatePresence>
   );
 };
 
-function App() {
+const AppLayout = () => {
+  const location = useLocation();
+
+  const hideLayout = hideLayoutRoutes.includes(location.pathname);
+
+  return (
+    <div className="flex min-h-screen flex-col">
+      {!hideLayout && <Navbar />}
+
+      <ScrollToTop />
+
+      <main className="flex-1">
+        <AnimatedRoutes />
+      </main>
+
+      {!hideLayout && <Footer />}
+    </div>
+  );
+};
+
+const App = () => {
   return (
     <BrowserRouter>
-      <div className="flex min-h-screen flex-col">
-        <Navbar />
-          <ScrollToTop />
-        <main className="flex-1">
-          <AnimatedRoutes />
-        </main>
-        <Footer />
-      </div>
+      <AppLayout />
     </BrowserRouter>
   );
-}
+};
 
 export default App;
