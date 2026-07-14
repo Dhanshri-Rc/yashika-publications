@@ -31,6 +31,8 @@ import {
 } from "lucide-react";
 
 import PageTransition from "../../components/PageTransition";
+import logo from "../../assets/yashika-publication-logo.webp";
+import reviewerBanner from "../../assets/yashika-publication-reviewers-banner.webp";
 
 /* =====================================================
    PAGE DATA
@@ -552,166 +554,239 @@ const Authorguideline = () => {
 
 const StandalonePageHeader = ({ scrollToSection }) => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-r from-[#043577] via-[#075cae] to-[#0877d1]">
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -left-20 -top-28 h-[280px] w-[280px] rounded-full border-[48px] border-white/[0.05]" />
+    // <section className="relative overflow-hidden bg-gradient-to-r from-[#043577] via-[#075cae] to-[#0877d1]">
+    //   <div className="pointer-events-none absolute inset-0 overflow-hidden">
+    //     <div className="absolute -left-20 -top-28 h-[280px] w-[280px] rounded-full border-[48px] border-white/[0.05]" />
 
-        <div className="absolute right-[7%] top-[-90px] h-[230px] w-[230px] rounded-full bg-white/[0.04]" />
+    //     <div className="absolute right-[7%] top-[-90px] h-[230px] w-[230px] rounded-full bg-white/[0.04]" />
 
-        <div className="absolute bottom-[-90px] right-[30%] h-[210px] w-[210px] rounded-full border-[38px] border-white/[0.04]" />
+    //     <div className="absolute bottom-[-90px] right-[30%] h-[210px] w-[210px] rounded-full border-[38px] border-white/[0.04]" />
 
-        <div className="absolute right-0 top-0 h-full w-[340px] opacity-20">
-          <div className="h-full w-full bg-[radial-gradient(circle,#ffffff_1.4px,transparent_1.4px)] [background-size:19px_19px]" />
-        </div>
-      </div>
+    //     <div className="absolute right-0 top-0 h-full w-[340px] opacity-20">
+    //       <div className="h-full w-full bg-[radial-gradient(circle,#ffffff_1.4px,transparent_1.4px)] [background-size:19px_19px]" />
+    //     </div>
+    //   </div>
 
-      <div className="relative mx-auto max-w-[1400px] px-5 py-7 sm:px-8 lg:px-14">
-        <div className="flex flex-col gap-4 border-b border-white/15 pb-5 sm:flex-row sm:items-center sm:justify-between">
-          <motion.div
-            initial={{ opacity: 0, x: -18 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <p className="text-[11px] font-[700] uppercase tracking-[2px] text-[#ffb36b]">
-              Yashika Publications
-            </p>
+    //   <div className="relative mx-auto max-w-[1400px] px-5 py-7 sm:px-8 lg:px-14">
+    //     <div className="flex flex-col gap-4 border-b border-white/15 pb-5 sm:flex-row sm:items-center sm:justify-between">
+    //       <motion.div
+    //         initial={{ opacity: 0, x: -18 }}
+    //         animate={{ opacity: 1, x: 0 }}
+    //         transition={{ duration: 0.5 }}
+    //       >
+    //         <p className="text-[11px] font-[700] uppercase tracking-[2px] text-[#ffb36b]">
+    //           Yashika Publications
+    //         </p>
 
-            <p className="mt-1 text-[11px] text-white/75">
-              Author Information and Publishing Resources
-            </p>
-          </motion.div>
+    //         <p className="mt-1 text-[11px] text-white/75">
+    //           Author Information and Publishing Resources
+    //         </p>
+    //       </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 18 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Link
-              to="/"
-              className="group inline-flex h-[39px] items-center justify-center gap-2 rounded-[5px] border border-white/45 px-5 text-[11px] font-[600] text-white transition-all duration-300 hover:border-white hover:bg-white hover:text-[#0754a0]"
-            >
-              Back to Website
+    //       <motion.div
+    //         initial={{ opacity: 0, x: 18 }}
+    //         animate={{ opacity: 1, x: 0 }}
+    //         transition={{ duration: 0.5 }}
+    //       >
+    //         <Link
+    //           to="/"
+    //           className="group inline-flex h-[39px] items-center justify-center gap-2 rounded-[5px] border border-white/45 px-5 text-[11px] font-[600] text-white transition-all duration-300 hover:border-white hover:bg-white hover:text-[#0754a0]"
+    //         >
+    //           Back to Website
 
-              <ChevronRight
-                size={14}
-                strokeWidth={2}
-                className="transition-transform duration-300 group-hover:translate-x-1"
+    //           <ChevronRight
+    //             size={14}
+    //             strokeWidth={2}
+    //             className="transition-transform duration-300 group-hover:translate-x-1"
+    //           />
+    //         </Link>
+    //       </motion.div>
+    //     </div>
+
+    //     <motion.div
+    //       initial={{ opacity: 0, y: 24 }}
+    //       animate={{ opacity: 1, y: 0 }}
+    //       transition={{
+    //         duration: 0.6,
+    //         delay: 0.08,
+    //       }}
+    //       className="py-9 sm:py-11"
+    //     >
+    //       <div className="flex flex-wrap items-center gap-2 text-[10px] font-[500]">
+    //         <Link
+    //           to="/"
+    //           className="text-[#ffad5c] transition-colors duration-300 hover:text-white"
+    //         >
+    //           Home
+    //         </Link>
+
+    //         <ChevronRight
+    //           size={10}
+    //           strokeWidth={2.2}
+    //           className="text-white/50"
+    //         />
+
+    //         <span className="text-white/70">
+    //           For Authors
+    //         </span>
+
+    //         <ChevronRight
+    //           size={10}
+    //           strokeWidth={2.2}
+    //           className="text-white/50"
+    //         />
+
+    //         <span className="text-white">
+    //           Author Guidelines
+    //         </span>
+    //       </div>
+
+    //       <div className="mt-6 flex max-w-[900px] items-start gap-4">
+    //         <motion.div
+    //           whileHover={{
+    //             scale: 1.08,
+    //             rotate: 3,
+    //           }}
+    //           className="hidden h-[60px] w-[60px] shrink-0 items-center justify-center rounded-[9px] border border-white/20 bg-white/10 text-white shadow-lg backdrop-blur-sm sm:flex"
+    //         >
+    //           <FileCheck2
+    //             size={30}
+    //             strokeWidth={1.7}
+    //           />
+    //         </motion.div>
+
+    //         <div>
+    //           <h1 className="text-[31px] font-[700] leading-[1.15] tracking-[-0.7px] text-white sm:text-[38px] lg:text-[42px]">
+    //             Author Guidelines
+    //           </h1>
+
+    //           <div className="mt-4 h-[3px] w-[42px] rounded-full bg-[#ff7200]" />
+
+    //           <p className="mt-5 max-w-[720px] text-[12px] leading-[1.8] text-white/85 sm:text-[13px]">
+    //             Instructions for preparing, formatting, and
+    //             submitting manuscripts to Yashika Publications.
+    //             Please review all requirements carefully before
+    //             submitting your research.
+    //           </p>
+    //         </div>
+    //       </div>
+
+    //       <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+    //         <motion.a
+    //           href="/documents/aierrr-manuscript-template.docx"
+    //           download
+    //           whileHover={{
+    //             y: -3,
+    //             boxShadow:
+    //               "0 10px 25px rgba(0,0,0,0.18)",
+    //           }}
+    //           whileTap={{ scale: 0.97 }}
+    //           className="inline-flex h-[43px] items-center justify-center gap-2 rounded-[5px] bg-white px-6 text-[11px] font-[700] text-[#0756a5] transition-all duration-300 hover:bg-[#fff3e8] hover:text-[#e76700]"
+    //         >
+    //           <Download size={15} strokeWidth={2} />
+
+    //           Download Manuscript Template
+    //         </motion.a>
+
+    //         <motion.a
+    //           href="#submission-process"
+    //           onClick={(event) =>
+    //             scrollToSection(
+    //               event,
+    //               "#submission-process"
+    //             )
+    //           }
+    //           whileHover={{
+    //             y: -3,
+    //             backgroundColor:
+    //               "rgba(255,255,255,0.12)",
+    //           }}
+    //           whileTap={{ scale: 0.97 }}
+    //           className="inline-flex h-[43px] items-center justify-center gap-2 rounded-[5px] border border-white/50 px-6 text-[11px] font-[700] text-white transition-all duration-300"
+    //         >
+    //           <Send size={15} strokeWidth={2} />
+
+    //           View Submission Process
+    //         </motion.a>
+    //       </div>
+    //     </motion.div>
+    //   </div>
+
+    //   <div className="absolute bottom-[-1px] left-0 h-[24px] w-full bg-[#f6f8fc] [clip-path:polygon(0_55%,18%_35%,36%_62%,55%_38%,75%_58%,100%_35%,100%_100%,0_100%)]" />
+    // </section>
+    <section className="relative min-h-[340px] overflow-hidden bg-[#082D68]">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_20%,rgba(37,99,235,.42),transparent_30%),linear-gradient(115deg,#061B46_0%,#0B2C66_50%,transparent_50%)]" />
+    
+            <div className="absolute inset-y-0 right-0 w-full lg:w-[56%]">
+              <img
+                src={reviewerBanner}
+                alt="Submit research paper"
+                className="h-full w-full object-cover object-center"
               />
-            </Link>
-          </motion.div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.6,
-            delay: 0.08,
-          }}
-          className="py-9 sm:py-11"
-        >
-          <div className="flex flex-wrap items-center gap-2 text-[10px] font-[500]">
-            <Link
-              to="/"
-              className="text-[#ffad5c] transition-colors duration-300 hover:text-white"
-            >
-              Home
-            </Link>
-
-            <ChevronRight
-              size={10}
-              strokeWidth={2.2}
-              className="text-white/50"
-            />
-
-            <span className="text-white/70">
-              For Authors
-            </span>
-
-            <ChevronRight
-              size={10}
-              strokeWidth={2.2}
-              className="text-white/50"
-            />
-
-            <span className="text-white">
-              Author Guidelines
-            </span>
-          </div>
-
-          <div className="mt-6 flex max-w-[900px] items-start gap-4">
+    
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0B2C66] via-[#0B2C66]/45 to-transparent lg:from-[#0B2C66]/65" />
+            </div>
+    
             <motion.div
-              whileHover={{
-                scale: 1.08,
-                rotate: 3,
+              animate={{
+                y: [0, -12, 0],
+                rotate: [25, 28, 25],
               }}
-              className="hidden h-[60px] w-[60px] shrink-0 items-center justify-center rounded-[9px] border border-white/20 bg-white/10 text-white shadow-lg backdrop-blur-sm sm:flex"
-            >
-              <FileCheck2
-                size={30}
-                strokeWidth={1.7}
-              />
-            </motion.div>
-
-            <div>
-              <h1 className="text-[31px] font-[700] leading-[1.15] tracking-[-0.7px] text-white sm:text-[38px] lg:text-[42px]">
-                Author Guidelines
-              </h1>
-
-              <div className="mt-4 h-[3px] w-[42px] rounded-full bg-[#ff7200]" />
-
-              <p className="mt-5 max-w-[720px] text-[12px] leading-[1.8] text-white/85 sm:text-[13px]">
-                Instructions for preparing, formatting, and
-                submitting manuscripts to Yashika Publications.
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="absolute left-[38%] top-[-130px] hidden h-[560px] w-36 bg-blue-500/25 lg:block"
+            />
+    
+            <div className="absolute left-[44%] top-[-120px] hidden h-[550px] w-1 rotate-[28deg] bg-[#F57C20] lg:block" />
+    
+            <div className="relative mx-auto flex min-h-[340px] max-w-[1260px] items-center px-5 py-14 sm:px-8 lg:px-10">
+              <motion.div
+                variants={stagger}
+                initial="hidden"
+                animate="show"
+                className="max-w-[650px]"
+              >
+                <motion.img
+                  variants={fadeUp}
+                  src={logo}
+                  alt="Yashika Publications"
+                  className="mb-7 h-10 w-auto object-contain sm:h-12"
+                />
+    
+                <motion.p
+                  variants={fadeUp}
+                  className="mb-3 text-[14px] font-[500] uppercase tracking-[0.2em] text-[#FFA65C]"
+                >
+                   Author Guidelines
+                </motion.p>
+    
+                <motion.h1
+                  variants={fadeUp}
+                  className="text-white text-[36px] font-[600] leading-tight sm:text-[40px] md:text-[44px]"
+                >
+                  Author Guidelines
+                </motion.h1>
+    
+                <motion.span
+                  variants={fadeUp}
+                  className="mt-3 block h-1 w-14 rounded-full bg-[#F57C20]"
+                />
+    
+                <motion.p
+                  variants={fadeUp}
+                  className="mt-5 max-w-[590px] text-[16px] font-[500] leading-7 text-white/90 sm:text-[18px]"
+                >
+                 Instructions for preparing, formatting, and
+               submitting manuscripts to Yashika Publications.
                 Please review all requirements carefully before
                 submitting your research.
-              </p>
+             </motion.p>
+              </motion.div>
             </div>
-          </div>
-
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-            <motion.a
-              href="/documents/aierrr-manuscript-template.docx"
-              download
-              whileHover={{
-                y: -3,
-                boxShadow:
-                  "0 10px 25px rgba(0,0,0,0.18)",
-              }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex h-[43px] items-center justify-center gap-2 rounded-[5px] bg-white px-6 text-[11px] font-[700] text-[#0756a5] transition-all duration-300 hover:bg-[#fff3e8] hover:text-[#e76700]"
-            >
-              <Download size={15} strokeWidth={2} />
-
-              Download Manuscript Template
-            </motion.a>
-
-            <motion.a
-              href="#submission-process"
-              onClick={(event) =>
-                scrollToSection(
-                  event,
-                  "#submission-process"
-                )
-              }
-              whileHover={{
-                y: -3,
-                backgroundColor:
-                  "rgba(255,255,255,0.12)",
-              }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex h-[43px] items-center justify-center gap-2 rounded-[5px] border border-white/50 px-6 text-[11px] font-[700] text-white transition-all duration-300"
-            >
-              <Send size={15} strokeWidth={2} />
-
-              View Submission Process
-            </motion.a>
-          </div>
-        </motion.div>
-      </div>
-
-      <div className="absolute bottom-[-1px] left-0 h-[24px] w-full bg-[#f6f8fc] [clip-path:polygon(0_55%,18%_35%,36%_62%,55%_38%,75%_58%,100%_35%,100%_100%,0_100%)]" />
-    </section>
+          </section>
   );
 };
 
