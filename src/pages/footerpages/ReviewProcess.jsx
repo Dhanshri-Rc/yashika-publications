@@ -28,7 +28,7 @@ import {
 
 import logo from "../../assets/yashika-publication-logo.webp";
 import reviewerBanner from "../../assets/yashika-publication-reviewers-banner.webp";
-import peerReview from "../../assets/yashika-publication-peer-review-process.webp";
+import peerReview from "../../assets/yashika-publication-call-to-action-banner.webp";
 import editorialTeam from "../../assets/yashika-publication-editorial-team.webp";
 
 /* -------------------------------------------------------------------------- */

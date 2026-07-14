@@ -172,35 +172,16 @@ export default function BenefitsOfReviewers() {
 
             <motion.span
               variants={fadeUp}
-              className="mt-3 block h-1 w-14 rounded-full bg-[#F57C20]"
+              className="mt-2 block h-1 w-14 rounded-full bg-[#F57C20]"
             />
 
             <motion.p
               variants={fadeUp}
-              className="mt-5 max-w-[580px] text-[16px] font-[500] leading-7 text-white/90 sm:text-[18px]"
+              className="mt-5 max-w-[580px] text-[16px] font-[500] leading-6 text-white/90 sm:text-[18px]"
             >
               Recognizing the expertise, contribution and commitment of our
               reviewer community.
             </motion.p>
-
-            <motion.div
-              variants={fadeUp}
-              className="mt-6 flex flex-wrap items-center gap-2 text-[13px] text-white/75"
-            >
-              <Link to="/" className="transition hover:text-white">
-                Home
-              </Link>
-
-              <span>/</span>
-
-              <span>For Reviewers</span>
-
-              <span>/</span>
-
-              <span className="font-semibold text-[#FFA65C]">
-                Benefits of Reviewers
-              </span>
-            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -209,7 +190,7 @@ export default function BenefitsOfReviewers() {
       {/* INTRODUCTION SECTION                                             */}
       {/* ================================================================ */}
 
-      <section className="relative py-14 lg:py-16">
+      <section className="relative py-8">
         <div className="absolute left-0 top-0 h-72 w-72 rounded-full bg-blue-50/70 blur-3xl" />
 
         <div className="relative mx-auto grid max-w-[1260px] gap-10 px-5 sm:px-8 lg:grid-cols-[1fr_.9fr] lg:items-center lg:px-10">
@@ -305,7 +286,7 @@ export default function BenefitsOfReviewers() {
       {/* BENEFITS SECTION                                                 */}
       {/* ================================================================ */}
 
-      <section className="bg-[#F8FAFE] py-14 lg:py-16">
+      <section className="bg-[#F8FAFE] py-8">
         <div className="mx-auto max-w-[1260px] px-5 sm:px-8 lg:px-10">
           <div className="mx-auto max-w-3xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#125FEA]">
@@ -369,7 +350,7 @@ export default function BenefitsOfReviewers() {
       {/* RECOGNITION PROCESS SECTION                                      */}
       {/* ================================================================ */}
 
-      <section className="py-14 lg:py-16">
+      <section className="py-8">
         <div className="mx-auto max-w-[1260px] px-5 sm:px-8 lg:px-10">
           <div className="mx-auto max-w-3xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#125FEA]">
@@ -421,7 +402,7 @@ export default function BenefitsOfReviewers() {
       {/* CTA SECTION                                                       */}
       {/* ================================================================ */}
 
-      <section className="relative overflow-hidden bg-gradient-to-r from-[#0D63E8] via-[#084AB9] to-[#071F58] py-10 text-white">
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#0D63E8] via-[#084AB9] to-[#071F58] py-8 text-white">
         <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(135deg,transparent_42%,#fff_43%,transparent_44%)] [background-size:80px_80px]" />
 
         <motion.div
