@@ -455,14 +455,10 @@ const stagger = {
 ===================================================== */
 
 const Authorguideline = () => {
-  const [activeSection, setActiveSection] = useState(
-    "#before-submission"
-  );
+  const [activeSection, setActiveSection] = useState("#before-submission");
 
   useEffect(() => {
-    const sectionIds = sidebarItems.map((item) =>
-      item.href.replace("#", "")
-    );
+    const sectionIds = sidebarItems.map((item) => item.href.replace("#", ""));
 
     const handleScroll = () => {
       const currentSection = sectionIds.find((sectionId) => {
@@ -507,27 +503,23 @@ const Authorguideline = () => {
   return (
     <PageTransition>
       <main className="min-h-screen overflow-x-hidden bg-[#f6f8fc] text-[#172b4d]">
-        <StandalonePageHeader
-          scrollToSection={scrollToSection}
-        />
+        <StandalonePageHeader scrollToSection={scrollToSection} />
 
-        <QuickNavigation
-          scrollToSection={scrollToSection}
-        />
+        <QuickNavigation scrollToSection={scrollToSection} />
 
-        <section className="px-4 pb-12 pt-8 sm:px-6 lg:px-10 xl:px-14">
-          <div className="mx-auto grid max-w-[1380px] gap-7 lg:grid-cols-[275px_minmax(0,1fr)]">
+        <section className="px-4 pb-10 pt-7 sm:px-6 sm:pb-12 sm:pt-8 lg:px-8 xl:px-14">
+          <div className="mx-auto grid max-w-[1380px] gap-7 lg:grid-cols-[240px_minmax(0,1fr)] xl:grid-cols-[275px_minmax(0,1fr)]">
             <Sidebar
               activeSection={activeSection}
               scrollToSection={scrollToSection}
             />
 
-            <div className="min-w-0 space-y-9">
+            <div className="min-w-0 space-y-7 sm:space-y-9">
               <BeforeSubmissionSection />
 
               <CategoriesSection />
 
-              <div className="grid gap-6 xl:grid-cols-2">
+              <div className="grid gap-5 md:grid-cols-2 xl:gap-6">
                 <ManuscriptStructureSection />
 
                 <FormattingSection />
@@ -554,239 +546,77 @@ const Authorguideline = () => {
 
 const StandalonePageHeader = ({ scrollToSection }) => {
   return (
-    // <section className="relative overflow-hidden bg-gradient-to-r from-[#043577] via-[#075cae] to-[#0877d1]">
-    //   <div className="pointer-events-none absolute inset-0 overflow-hidden">
-    //     <div className="absolute -left-20 -top-28 h-[280px] w-[280px] rounded-full border-[48px] border-white/[0.05]" />
+    <section className="relative min-h-[390px] overflow-hidden bg-[#082D68] sm:min-h-[410px] lg:min-h-[340px]">
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_12%_20%,rgba(37,99,235,.42),transparent_30%),linear-gradient(115deg,#061B46_0%,#0B2C66_50%,transparent_50%)]" />
 
-    //     <div className="absolute right-[7%] top-[-90px] h-[230px] w-[230px] rounded-full bg-white/[0.04]" />
+      <div className="absolute inset-y-0 right-0 z-0 w-full lg:w-[56%]">
+        <img
+          src={reviewerBanner}
+          alt="Submit research paper"
+          className="h-full w-full object-cover object-[65%_center] sm:object-center"
+        />
 
-    //     <div className="absolute bottom-[-90px] right-[30%] h-[210px] w-[210px] rounded-full border-[38px] border-white/[0.04]" />
+      </div>
 
-    //     <div className="absolute right-0 top-0 h-full w-[340px] opacity-20">
-    //       <div className="h-full w-full bg-[radial-gradient(circle,#ffffff_1.4px,transparent_1.4px)] [background-size:19px_19px]" />
-    //     </div>
-    //   </div>
+      <motion.div
+        animate={{
+          y: [0, -12, 0],
+          rotate: [25, 28, 25],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute left-[38%] top-[-130px] hidden h-[560px] w-36 bg-blue-500/25 lg:block"
+      />
 
-    //   <div className="relative mx-auto max-w-[1400px] px-5 py-7 sm:px-8 lg:px-14">
-    //     <div className="flex flex-col gap-4 border-b border-white/15 pb-5 sm:flex-row sm:items-center sm:justify-between">
-    //       <motion.div
-    //         initial={{ opacity: 0, x: -18 }}
-    //         animate={{ opacity: 1, x: 0 }}
-    //         transition={{ duration: 0.5 }}
-    //       >
-    //         <p className="text-[11px] font-[700] uppercase tracking-[2px] text-[#ffb36b]">
-    //           Yashika Publications
-    //         </p>
+      <div className="absolute left-[44%] top-[-120px] hidden h-[550px] w-1 rotate-[28deg] bg-[#F57C20] lg:block" />
 
-    //         <p className="mt-1 text-[11px] text-white/75">
-    //           Author Information and Publishing Resources
-    //         </p>
-    //       </motion.div>
+      <div className="relative z-20 mx-auto flex min-h-[390px] max-w-[1260px] items-center px-4 py-12 sm:min-h-[410px] sm:px-6 sm:py-14 lg:min-h-[340px] lg:px-10">
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          animate="visible"
+          className="w-full max-w-[650px] text-center sm:text-left"
+        >
+          <motion.img
+            variants={fadeUp}
+            src={logo}
+            alt="Yashika Publications"
+            className="mx-auto mb-6 h-9 w-auto object-contain sm:mx-0 sm:mb-7 sm:h-12"
+          />
 
-    //       <motion.div
-    //         initial={{ opacity: 0, x: 18 }}
-    //         animate={{ opacity: 1, x: 0 }}
-    //         transition={{ duration: 0.5 }}
-    //       >
-    //         <Link
-    //           to="/"
-    //           className="group inline-flex h-[39px] items-center justify-center gap-2 rounded-[5px] border border-white/45 px-5 text-[11px] font-[600] text-white transition-all duration-300 hover:border-white hover:bg-white hover:text-[#0754a0]"
-    //         >
-    //           Back to Website
+          <motion.p
+            variants={fadeUp}
+            className="mb-3 text-[11px] font-[600] uppercase tracking-[0.16em] text-[#FFA65C] sm:text-[13px] sm:tracking-[0.2em]"
+          >
+            Author Guidelines
+          </motion.p>
 
-    //           <ChevronRight
-    //             size={14}
-    //             strokeWidth={2}
-    //             className="transition-transform duration-300 group-hover:translate-x-1"
-    //           />
-    //         </Link>
-    //       </motion.div>
-    //     </div>
+          <motion.h1
+            variants={fadeUp}
+            className="text-[31px] font-[600] leading-tight text-white sm:text-[38px] md:text-[42px] lg:text-[44px]"
+          >
+            Author Guidelines
+          </motion.h1>
 
-    //     <motion.div
-    //       initial={{ opacity: 0, y: 24 }}
-    //       animate={{ opacity: 1, y: 0 }}
-    //       transition={{
-    //         duration: 0.6,
-    //         delay: 0.08,
-    //       }}
-    //       className="py-9 sm:py-11"
-    //     >
-    //       <div className="flex flex-wrap items-center gap-2 text-[10px] font-[500]">
-    //         <Link
-    //           to="/"
-    //           className="text-[#ffad5c] transition-colors duration-300 hover:text-white"
-    //         >
-    //           Home
-    //         </Link>
+          <motion.span
+            variants={fadeUp}
+            className="mx-auto mt-3 block h-1 w-14 rounded-full bg-[#F57C20] sm:mx-0"
+          />
 
-    //         <ChevronRight
-    //           size={10}
-    //           strokeWidth={2.2}
-    //           className="text-white/50"
-    //         />
-
-    //         <span className="text-white/70">
-    //           For Authors
-    //         </span>
-
-    //         <ChevronRight
-    //           size={10}
-    //           strokeWidth={2.2}
-    //           className="text-white/50"
-    //         />
-
-    //         <span className="text-white">
-    //           Author Guidelines
-    //         </span>
-    //       </div>
-
-    //       <div className="mt-6 flex max-w-[900px] items-start gap-4">
-    //         <motion.div
-    //           whileHover={{
-    //             scale: 1.08,
-    //             rotate: 3,
-    //           }}
-    //           className="hidden h-[60px] w-[60px] shrink-0 items-center justify-center rounded-[9px] border border-white/20 bg-white/10 text-white shadow-lg backdrop-blur-sm sm:flex"
-    //         >
-    //           <FileCheck2
-    //             size={30}
-    //             strokeWidth={1.7}
-    //           />
-    //         </motion.div>
-
-    //         <div>
-    //           <h1 className="text-[31px] font-[700] leading-[1.15] tracking-[-0.7px] text-white sm:text-[38px] lg:text-[42px]">
-    //             Author Guidelines
-    //           </h1>
-
-    //           <div className="mt-4 h-[3px] w-[42px] rounded-full bg-[#ff7200]" />
-
-    //           <p className="mt-5 max-w-[720px] text-[12px] leading-[1.8] text-white/85 sm:text-[13px]">
-    //             Instructions for preparing, formatting, and
-    //             submitting manuscripts to Yashika Publications.
-    //             Please review all requirements carefully before
-    //             submitting your research.
-    //           </p>
-    //         </div>
-    //       </div>
-
-    //       <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-    //         <motion.a
-    //           href="/documents/aierrr-manuscript-template.docx"
-    //           download
-    //           whileHover={{
-    //             y: -3,
-    //             boxShadow:
-    //               "0 10px 25px rgba(0,0,0,0.18)",
-    //           }}
-    //           whileTap={{ scale: 0.97 }}
-    //           className="inline-flex h-[43px] items-center justify-center gap-2 rounded-[5px] bg-white px-6 text-[11px] font-[700] text-[#0756a5] transition-all duration-300 hover:bg-[#fff3e8] hover:text-[#e76700]"
-    //         >
-    //           <Download size={15} strokeWidth={2} />
-
-    //           Download Manuscript Template
-    //         </motion.a>
-
-    //         <motion.a
-    //           href="#submission-process"
-    //           onClick={(event) =>
-    //             scrollToSection(
-    //               event,
-    //               "#submission-process"
-    //             )
-    //           }
-    //           whileHover={{
-    //             y: -3,
-    //             backgroundColor:
-    //               "rgba(255,255,255,0.12)",
-    //           }}
-    //           whileTap={{ scale: 0.97 }}
-    //           className="inline-flex h-[43px] items-center justify-center gap-2 rounded-[5px] border border-white/50 px-6 text-[11px] font-[700] text-white transition-all duration-300"
-    //         >
-    //           <Send size={15} strokeWidth={2} />
-
-    //           View Submission Process
-    //         </motion.a>
-    //       </div>
-    //     </motion.div>
-    //   </div>
-
-    //   <div className="absolute bottom-[-1px] left-0 h-[24px] w-full bg-[#f6f8fc] [clip-path:polygon(0_55%,18%_35%,36%_62%,55%_38%,75%_58%,100%_35%,100%_100%,0_100%)]" />
-    // </section>
-    <section className="relative min-h-[340px] overflow-hidden bg-[#082D68]">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_20%,rgba(37,99,235,.42),transparent_30%),linear-gradient(115deg,#061B46_0%,#0B2C66_50%,transparent_50%)]" />
-    
-            <div className="absolute inset-y-0 right-0 w-full lg:w-[56%]">
-              <img
-                src={reviewerBanner}
-                alt="Submit research paper"
-                className="h-full w-full object-cover object-center"
-              />
-    
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0B2C66] via-[#0B2C66]/45 to-transparent lg:from-[#0B2C66]/65" />
-            </div>
-    
-            <motion.div
-              animate={{
-                y: [0, -12, 0],
-                rotate: [25, 28, 25],
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute left-[38%] top-[-130px] hidden h-[560px] w-36 bg-blue-500/25 lg:block"
-            />
-    
-            <div className="absolute left-[44%] top-[-120px] hidden h-[550px] w-1 rotate-[28deg] bg-[#F57C20] lg:block" />
-    
-            <div className="relative mx-auto flex min-h-[340px] max-w-[1260px] items-center px-5 py-14 sm:px-8 lg:px-10">
-              <motion.div
-                variants={stagger}
-                initial="hidden"
-                animate="show"
-                className="max-w-[650px]"
-              >
-                <motion.img
-                  variants={fadeUp}
-                  src={logo}
-                  alt="Yashika Publications"
-                  className="mb-7 h-10 w-auto object-contain sm:h-12"
-                />
-    
-                <motion.p
-                  variants={fadeUp}
-                  className="mb-3 text-[14px] font-[500] uppercase tracking-[0.2em] text-[#FFA65C]"
-                >
-                   Author Guidelines
-                </motion.p>
-    
-                <motion.h1
-                  variants={fadeUp}
-                  className="text-white text-[36px] font-[600] leading-tight sm:text-[40px] md:text-[44px]"
-                >
-                  Author Guidelines
-                </motion.h1>
-    
-                <motion.span
-                  variants={fadeUp}
-                  className="mt-3 block h-1 w-14 rounded-full bg-[#F57C20]"
-                />
-    
-                <motion.p
-                  variants={fadeUp}
-                  className="mt-5 max-w-[590px] text-[16px] font-[500] leading-7 text-white/90 sm:text-[18px]"
-                >
-                 Instructions for preparing, formatting, and
-               submitting manuscripts to Yashika Publications.
-                Please review all requirements carefully before
-                submitting your research.
-             </motion.p>
-              </motion.div>
-            </div>
-          </section>
+          <motion.p
+            variants={fadeUp}
+            className="mx-auto mt-5 max-w-[590px] text-[14px] font-[500] leading-6 text-white/90 sm:mx-0 sm:text-[16px] sm:leading-7 lg:text-[18px]"
+          >
+            Instructions for preparing, formatting, and submitting manuscripts
+            to Yashika Publications. Please review all requirements carefully
+            before submitting your research.
+          </motion.p>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 
@@ -794,11 +624,7 @@ const StandalonePageHeader = ({ scrollToSection }) => {
    SHARED COMPONENTS
 ===================================================== */
 
-const SectionHeading = ({
-  number,
-  title,
-  description,
-}) => {
+const SectionHeading = ({ number, title, description }) => {
   return (
     <div className="mb-6">
       <div className="flex items-start gap-3">
@@ -826,7 +652,7 @@ const SectionHeading = ({
 
 const QuickNavigation = ({ scrollToSection }) => {
   return (
-    <section className="relative z-10 px-4 pt-8 sm:px-6 lg:px-10 xl:px-14">
+    <section className="relative z-10 px-4 pt-6 sm:px-6 sm:pt-8 lg:px-8 xl:px-14">
       <motion.div
         variants={stagger}
         initial="hidden"
@@ -835,7 +661,7 @@ const QuickNavigation = ({ scrollToSection }) => {
           once: true,
           amount: 0.15,
         }}
-        className="mx-auto grid max-w-[1380px] overflow-hidden rounded-[7px] border border-[#dce5ef] bg-white shadow-[0_8px_25px_rgba(6,48,105,0.08)] sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6"
+        className="mx-auto grid max-w-[1380px] overflow-hidden rounded-[10px] border border-[#dce5ef] bg-white shadow-[0_8px_25px_rgba(6,48,105,0.08)] sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6"
       >
         {quickLinks.map((item, index) => {
           const Icon = item.icon;
@@ -844,25 +670,20 @@ const QuickNavigation = ({ scrollToSection }) => {
             <motion.a
               key={item.title}
               href={item.href}
-              onClick={(event) =>
-                scrollToSection(event, item.href)
-              }
+              onClick={(event) => scrollToSection(event, item.href)}
               variants={fadeUp}
               whileHover={{
                 y: -5,
                 backgroundColor: "#f4f8ff",
               }}
-              className={`group flex min-h-[105px] items-center gap-4 border-[#e2e8f0] px-5 py-5 transition-colors duration-300 ${
+              className={`group flex min-h-[88px] items-center gap-3 border-[#e2e8f0] px-4 py-4 transition-colors duration-300 sm:min-h-[100px] sm:gap-4 sm:px-5 sm:py-5 ${
                 index !== quickLinks.length - 1
                   ? "border-b xl:border-b-0 xl:border-r"
                   : ""
               }`}
             >
               <div className="flex h-[45px] w-[45px] shrink-0 items-center justify-center rounded-[7px] bg-[#eaf3ff] text-[#0861bd] transition-all duration-300 group-hover:bg-[#0861bd] group-hover:text-white">
-                <Icon
-                  size={23}
-                  strokeWidth={1.8}
-                />
+                <Icon size={23} strokeWidth={1.8} />
               </div>
 
               <div>
@@ -882,12 +703,9 @@ const QuickNavigation = ({ scrollToSection }) => {
   );
 };
 
-const Sidebar = ({
-  activeSection,
-  scrollToSection,
-}) => {
+const Sidebar = ({ activeSection, scrollToSection }) => {
   return (
-    <aside className="self-start lg:sticky lg:top-6">
+    <aside className="hidden self-start lg:sticky lg:top-6 lg:block">
       <motion.div
         variants={fadeUp}
         initial="hidden"
@@ -903,16 +721,13 @@ const Sidebar = ({
 
         <div className="mt-5 space-y-1">
           {sidebarItems.map((item) => {
-            const active =
-              activeSection === item.href;
+            const active = activeSection === item.href;
 
             return (
               <a
                 key={item.href}
                 href={item.href}
-                onClick={(event) =>
-                  scrollToSection(event, item.href)
-                }
+                onClick={(event) => scrollToSection(event, item.href)}
                 className={`group flex items-center gap-3 rounded-[5px] px-2 py-[9px] transition-all duration-300 ${
                   active
                     ? "bg-[#0861bd] text-white"
@@ -941,25 +756,18 @@ const Sidebar = ({
       <motion.div
         whileHover={{
           y: -5,
-          boxShadow:
-            "0 15px 30px rgba(7,75,161,0.14)",
+          boxShadow: "0 15px 30px rgba(7,75,161,0.14)",
         }}
         className="mt-5 rounded-[7px] bg-gradient-to-br from-[#0a62bc] to-[#063778] p-5 text-center text-white shadow-[0_7px_20px_rgba(5,59,129,0.18)]"
       >
         <div className="mx-auto flex h-[54px] w-[54px] items-center justify-center rounded-full bg-white/15">
-          <Download
-            size={27}
-            strokeWidth={1.8}
-          />
+          <Download size={27} strokeWidth={1.8} />
         </div>
 
-        <h3 className="mt-4 text-[15px] font-[700]">
-          Manuscript Template
-        </h3>
+        <h3 className="mt-4 text-[15px] font-[700]">Manuscript Template</h3>
 
         <p className="mt-3 text-[10px] leading-[1.7] text-white/85">
-          Use the official journal template to prepare
-          your manuscript.
+          Use the official journal template to prepare your manuscript.
         </p>
 
         <a
@@ -968,7 +776,6 @@ const Sidebar = ({
           className="mt-5 inline-flex h-[40px] w-full items-center justify-center gap-2 rounded-[5px] bg-white px-3 text-[10px] font-[700] text-[#0759ad] transition-all duration-300 hover:-translate-y-1 hover:bg-[#fff4ea] hover:text-[#e76400]"
         >
           <Download size={14} />
-
           Download DOCX
         </a>
       </motion.div>
@@ -982,10 +789,7 @@ const Sidebar = ({
 
 const BeforeSubmissionSection = () => {
   return (
-    <section
-      id="before-submission"
-      className="scroll-mt-6"
-    >
+    <section id="before-submission" className="scroll-mt-24">
       <SectionHeading
         number="01"
         title="Before Submission"
@@ -1011,16 +815,12 @@ const BeforeSubmissionSection = () => {
               variants={fadeUp}
               whileHover={{
                 y: -7,
-                boxShadow:
-                  "0 14px 30px rgba(6,58,131,0.12)",
+                boxShadow: "0 14px 30px rgba(6,58,131,0.12)",
               }}
-              className="group rounded-[7px] border border-[#dce5ef] bg-white p-5 shadow-[0_4px_15px_rgba(6,48,105,0.05)]"
+              className="group rounded-[10px] border border-[#dce5ef] bg-white p-4 shadow-[0_4px_15px_rgba(6,48,105,0.05)] sm:p-5"
             >
               <div className="flex h-[43px] w-[43px] items-center justify-center rounded-[7px] bg-[#eaf3ff] text-[#0861bd] transition-all duration-300 group-hover:bg-[#0861bd] group-hover:text-white">
-                <Icon
-                  size={22}
-                  strokeWidth={1.8}
-                />
+                <Icon size={22} strokeWidth={1.8} />
               </div>
 
               <h3 className="mt-4 text-[13px] font-[700] text-[#113b79]">
@@ -1040,10 +840,7 @@ const BeforeSubmissionSection = () => {
 
 const CategoriesSection = () => {
   return (
-    <section
-      id="manuscript-categories"
-      className="scroll-mt-6"
-    >
+    <section id="manuscript-categories" className="scroll-mt-24">
       <SectionHeading
         number="02"
         title="Manuscript Categories"
@@ -1121,8 +918,8 @@ const CategoriesSection = () => {
       </motion.div>
 
       <p className="mt-3 text-[10px] leading-[1.6] text-[#677589]">
-        Word limits include the main text, references,
-        tables and figure captions unless otherwise stated.
+        Word limits include the main text, references, tables and figure
+        captions unless otherwise stated.
       </p>
     </section>
   );
@@ -1132,12 +929,9 @@ const ManuscriptStructureSection = () => {
   return (
     <section
       id="manuscript-structure"
-      className="scroll-mt-6 rounded-[7px] border border-[#dce5ef] bg-white p-5 shadow-[0_4px_16px_rgba(6,48,105,0.05)]"
+      className="scroll-mt-24 rounded-[10px] border border-[#dce5ef] bg-white p-4 shadow-[0_4px_16px_rgba(6,48,105,0.05)] sm:p-5"
     >
-      <SectionHeading
-        number="03"
-        title="Manuscript Structure"
-      />
+      <SectionHeading number="03" title="Manuscript Structure" />
 
       <div className="space-y-1">
         {manuscriptStructure.map((item, index) => (
@@ -1147,7 +941,7 @@ const ManuscriptStructureSection = () => {
               x: 4,
               backgroundColor: "#f4f8ff",
             }}
-            className="grid gap-2 rounded-[5px] border-b border-[#e7ecf2] px-2 py-3 last:border-b-0 sm:grid-cols-[32px_125px_1fr]"
+            className="grid grid-cols-[30px_minmax(0,1fr)] gap-x-2 gap-y-1 rounded-[5px] border-b border-[#e7ecf2] px-1 py-3 last:border-b-0 sm:grid-cols-[32px_135px_minmax(0,1fr)] sm:px-2"
           >
             <span className="flex h-[24px] w-[24px] items-center justify-center rounded-full bg-[#eaf3ff] text-[9px] font-[700] text-[#0861bd]">
               {index + 1}
@@ -1157,7 +951,7 @@ const ManuscriptStructureSection = () => {
               {item.title}
             </h3>
 
-            <p className="text-[10px] leading-[1.65] text-[#59687d]">
+            <p className="col-start-2 text-[10px] leading-[1.65] text-[#59687d] sm:col-start-auto">
               {item.description}
             </p>
           </motion.div>
@@ -1171,12 +965,9 @@ const FormattingSection = () => {
   return (
     <section
       id="formatting-requirements"
-      className="scroll-mt-6 rounded-[7px] border border-[#dce5ef] bg-white p-5 shadow-[0_4px_16px_rgba(6,48,105,0.05)]"
+      className="scroll-mt-24 rounded-[10px] border border-[#dce5ef] bg-white p-4 shadow-[0_4px_16px_rgba(6,48,105,0.05)] sm:p-5"
     >
-      <SectionHeading
-        number="04"
-        title="Formatting Requirements"
-      />
+      <SectionHeading number="04" title="Formatting Requirements" />
 
       <div className="space-y-1">
         {formattingRequirements.map((item) => {
@@ -1189,20 +980,17 @@ const FormattingSection = () => {
                 x: 4,
                 backgroundColor: "#f4f8ff",
               }}
-              className="grid grid-cols-[32px_105px_1fr] items-start gap-2 rounded-[5px] border-b border-[#e7ecf2] px-2 py-3 last:border-b-0"
+              className="grid grid-cols-[32px_minmax(0,1fr)] items-start gap-x-2 gap-y-1 rounded-[5px] border-b border-[#e7ecf2] px-2 py-3 last:border-b-0 sm:grid-cols-[32px_120px_minmax(0,1fr)]"
             >
               <div className="flex h-[25px] w-[25px] items-center justify-center rounded-[5px] bg-[#eaf3ff] text-[#0861bd]">
-                <Icon
-                  size={13}
-                  strokeWidth={1.9}
-                />
+                <Icon size={13} strokeWidth={1.9} />
               </div>
 
               <h3 className="text-[11px] font-[700] text-[#173c76]">
                 {item.label}
               </h3>
 
-              <p className="text-[10px] leading-[1.6] text-[#59687d]">
+              <p className="col-start-2 text-[10px] leading-[1.6] text-[#59687d] sm:col-start-auto">
                 {item.value}
               </p>
             </motion.div>
@@ -1215,7 +1003,7 @@ const FormattingSection = () => {
 
 const SupportingGuidelines = () => {
   return (
-    <div className="grid gap-6 xl:grid-cols-2">
+    <div className="grid gap-5 md:grid-cols-2 xl:gap-6">
       {supportingGuidelines.map((section) => {
         const Icon = section.icon;
 
@@ -1234,17 +1022,13 @@ const SupportingGuidelines = () => {
             viewport={{ once: true }}
             whileHover={{
               y: -5,
-              boxShadow:
-                "0 14px 30px rgba(6,58,131,0.1)",
+              boxShadow: "0 14px 30px rgba(6,58,131,0.1)",
             }}
-            className="scroll-mt-6 rounded-[7px] border border-[#dce5ef] bg-white p-5 shadow-[0_4px_16px_rgba(6,48,105,0.05)]"
+            className="scroll-mt-24 rounded-[10px] border border-[#dce5ef] bg-white p-4 shadow-[0_4px_16px_rgba(6,48,105,0.05)] sm:p-5"
           >
             <div className="flex items-center gap-3">
               <div className="flex h-[42px] w-[42px] items-center justify-center rounded-[7px] bg-[#eaf3ff] text-[#0861bd]">
-                <Icon
-                  size={21}
-                  strokeWidth={1.8}
-                />
+                <Icon size={21} strokeWidth={1.8} />
               </div>
 
               <div>
@@ -1283,10 +1067,7 @@ const SupportingGuidelines = () => {
 
 const SubmissionProcess = () => {
   return (
-    <section
-      id="submission-process"
-      className="scroll-mt-6"
-    >
+    <section id="submission-process" className="scroll-mt-24">
       <SectionHeading
         number="10"
         title="Submission Process"
@@ -1296,7 +1077,7 @@ const SubmissionProcess = () => {
       <div className="relative">
         <div className="absolute left-[10%] right-[10%] top-[35px] hidden border-t-2 border-dashed border-[#b6cae4] xl:block" />
 
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {submissionSteps.map((step, index) => (
             <motion.article
               key={step.number}
@@ -1315,10 +1096,9 @@ const SubmissionProcess = () => {
               }}
               whileHover={{
                 y: -7,
-                boxShadow:
-                  "0 14px 30px rgba(6,58,131,0.12)",
+                boxShadow: "0 14px 30px rgba(6,58,131,0.12)",
               }}
-              className="relative rounded-[7px] border border-[#dce5ef] bg-white px-4 pb-5 pt-9 text-center shadow-[0_4px_16px_rgba(6,48,105,0.05)]"
+              className="relative mt-3 rounded-[10px] border border-[#dce5ef] bg-white px-4 pb-5 pt-10 text-center shadow-[0_4px_16px_rgba(6,48,105,0.05)]"
             >
               <div className="absolute left-1/2 top-0 flex h-[31px] w-[31px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#073b82] text-[10px] font-[700] text-white">
                 {step.number}
@@ -1346,14 +1126,12 @@ const SubmissionProcess = () => {
             href="/submit-your-paper"
             whileHover={{
               y: -3,
-              boxShadow:
-                "0 10px 25px rgba(8,97,189,0.25)",
+              boxShadow: "0 10px 25px rgba(8,97,189,0.25)",
             }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex h-[45px] items-center justify-center gap-2 rounded-[5px] bg-[#0861bd] px-7 text-[11px] font-[700] text-white transition-colors hover:bg-[#064e9b]"
           >
             Submit Your Manuscript
-
             <Send size={15} />
           </motion.a>
         </div>
@@ -1384,12 +1162,9 @@ const AfterAcceptance = () => {
         y: 0,
       }}
       viewport={{ once: true }}
-      className="scroll-mt-6 rounded-[7px] border border-[#cfe0f2] bg-[#edf5ff] p-5 sm:p-6"
+      className="scroll-mt-24 rounded-[10px] border border-[#cfe0f2] bg-[#edf5ff] p-4 sm:p-6"
     >
-      <SectionHeading
-        number="11"
-        title="After Acceptance"
-      />
+      <SectionHeading number="11" title="After Acceptance" />
 
       <div className="grid gap-4 sm:grid-cols-2">
         {acceptanceItems.map((item) => (
@@ -1406,9 +1181,7 @@ const AfterAcceptance = () => {
               className="mt-[1px] shrink-0 text-[#0861bd]"
             />
 
-            <p className="text-[10px] leading-[1.65] text-[#4f6077]">
-              {item}
-            </p>
+            <p className="text-[10px] leading-[1.65] text-[#4f6077]">{item}</p>
           </motion.div>
         ))}
       </div>
@@ -1430,12 +1203,11 @@ const ImportantNote = () => {
       viewport={{ once: true }}
       whileHover={{
         y: -4,
-        boxShadow:
-          "0 14px 30px rgba(7,75,161,0.1)",
+        boxShadow: "0 14px 30px rgba(7,75,161,0.1)",
       }}
-      className="mx-auto mt-8 grid max-w-[1380px] overflow-hidden rounded-[7px] border border-[#ccddf0] bg-white shadow-[0_5px_18px_rgba(6,48,105,0.06)] lg:grid-cols-[1fr_0.65fr]"
+      className="mx-auto mt-8 grid max-w-[1380px] overflow-hidden rounded-[10px] border border-[#ccddf0] bg-white shadow-[0_5px_18px_rgba(6,48,105,0.06)] md:grid-cols-[1fr_0.75fr]"
     >
-      <div className="flex items-start gap-4 p-5 sm:p-6">
+      <div className="flex items-start gap-3 p-4 sm:gap-4 sm:p-6">
         <div className="flex h-[43px] w-[43px] shrink-0 items-center justify-center rounded-full bg-[#eaf3ff] text-[#0861bd]">
           <Info size={22} />
         </div>
@@ -1446,19 +1218,15 @@ const ImportantNote = () => {
           </h3>
 
           <p className="mt-2 text-[10px] leading-[1.7] text-[#53637a] sm:text-[11px]">
-            Failure to follow the author guidelines may
-            delay editorial evaluation or result in the
-            manuscript being returned for correction before
-            peer review.
+            Failure to follow the author guidelines may delay editorial
+            evaluation or result in the manuscript being returned for correction
+            before peer review.
           </p>
         </div>
       </div>
 
-      <div className="flex items-center gap-4 border-t border-[#dce5ef] bg-[#f1f6fd] p-5 sm:p-6 lg:border-l lg:border-t-0">
-        <Mail
-          size={22}
-          className="shrink-0 text-[#0861bd]"
-        />
+      <div className="flex items-center gap-3 border-t border-[#dce5ef] bg-[#f1f6fd] p-4 sm:gap-4 sm:p-6 md:border-l md:border-t-0">
+        <Mail size={22} className="shrink-0 text-[#0861bd]" />
 
         <div>
           <p className="text-[10px] text-[#53637a]">

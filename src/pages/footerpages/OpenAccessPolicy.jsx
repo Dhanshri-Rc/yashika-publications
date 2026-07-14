@@ -533,7 +533,7 @@ export default function OpenAccessPolicy() {
           <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
             <Link
               to="/submit-your-paper"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#F57C20] px-6 py-3 text-[13px] font-[600] text-white shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-[#FF8D35]"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#F57C20] px-4 py-3 text-[12px] font-[500] text-white shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-[#FF8D35]"
             >
               Submit Your Paper
               <Send size={17} />
@@ -541,7 +541,7 @@ export default function OpenAccessPolicy() {
 
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/50 px-6 py-3 text-[13px] font-[600] text-white transition duration-300 hover:-translate-y-1 hover:bg-white hover:text-[#0B2C66]"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/50 px-4 py-3 text-[12px] font-[500] text-white transition duration-300 hover:-translate-y-1 hover:bg-white hover:text-[#0B2C66]"
             >
               Contact Editorial Office
               <Mail size={17} />
