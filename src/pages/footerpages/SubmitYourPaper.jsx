@@ -203,14 +203,14 @@ export default function SubmitYourPaper() {
 
             <motion.p
               variants={fadeUp}
-              className="mb-3 text-[12px] font-semibold uppercase tracking-[0.2em] text-[#FFA65C]"
+              className="mb-3 text-[14px] font-[500] uppercase tracking-[0.2em] text-[#FFA65C]"
             >
               Manuscript Submission
             </motion.p>
 
             <motion.h1
               variants={fadeUp}
-              className="text-[36px] font-[600] leading-tight text-white sm:text-[42px] lg:text-[48px]"
+              className="text-white text-[36px] font-[600] leading-tight sm:text-[40px] md:text-[44px]"
             >
               Submit Your Paper
             </motion.h1>
@@ -227,25 +227,6 @@ export default function SubmitYourPaper() {
               Submit your original research for expert peer review and global
               scholarly publication.
             </motion.p>
-
-            <motion.div
-              variants={fadeUp}
-              className="mt-6 flex flex-wrap items-center gap-2 text-[13px] text-white/75"
-            >
-              <Link to="/" className="transition hover:text-white">
-                Home
-              </Link>
-
-              <span>/</span>
-
-              <span>For Authors</span>
-
-              <span>/</span>
-
-              <span className="font-semibold text-[#FFA65C]">
-                Submit Your Paper
-              </span>
-            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -254,7 +235,7 @@ export default function SubmitYourPaper() {
       {/* SUBMISSION STEPS                                                   */}
       {/* ================================================================== */}
 
-      <section className="relative py-14 lg:py-16">
+      <section className="relative py-10">
         <div className="absolute left-0 top-0 h-72 w-72 rounded-full bg-blue-50 blur-3xl" />
         <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-orange-50 blur-3xl" />
 
@@ -265,11 +246,11 @@ export default function SubmitYourPaper() {
               Submission Process
             </span>
 
-            <h2 className="mx-auto mt-4 max-w-[570px] text-[24px] font-[600] leading-tight text-[#0B2C66] sm:text-[28px] lg:text-[30px]">
+            <h2 className="mx-auto mt-4 max-w-[500px] text-[20px] font-[600] leading-tight text-[#0B2C66] sm:text-[24px] lg:text-[28px]">
               Submit Your Manuscript in Four Simple Steps
             </h2>
 
-            <span className="mx-auto mt-4 block h-1 w-14 rounded-full bg-[#F57C20]" />
+            <span className="mx-auto mt-2 block h-1 w-14 rounded-full bg-[#F57C20]" />
 
             <p className="mx-auto mt-5 max-w-2xl text-[13px] leading-7 text-slate-600 sm:text-[14px]">
               Prepare all required information and files before beginning your
@@ -294,7 +275,7 @@ export default function SubmitYourPaper() {
                   whileHover={{
                     y: -8,
                   }}
-                  className="relative rounded-[24px] border border-slate-100 bg-white px-5 pb-6 pt-12 text-center shadow-[0_12px_32px_rgba(15,54,110,.10)]"
+                  className="relative rounded-[24px] border border-slate-100 bg-white px-5 pb-6 pt-16 text-center shadow-[0_12px_32px_rgba(15,54,110,.10)]"
                 >
                   <div
                     className={`absolute left-1/2 top-0 z-10 grid h-16 w-16 -translate-x-1/2 -translate-y-2 place-items-center rounded-full text-white ring-8 ring-white shadow-lg ${
@@ -306,11 +287,11 @@ export default function SubmitYourPaper() {
                     <Icon size={25} />
                   </div>
 
-                  <span className="mt-2 inline-block text-[11px] font-bold uppercase tracking-[0.16em] text-[#125FEA]">
+                  <span className="mt-2 inline-block text-[11px] font-[500] uppercase tracking-[0.16em] text-[#125FEA]">
                     Step {number}
                   </span>
 
-                  <h3 className="mt-3 text-[15px] font-[600] text-[#0B2C66]">
+                  <h3 className="mt-3 text-[14px] font-[550] text-[#0B2C66]">
                     {title}
                   </h3>
 
@@ -318,7 +299,7 @@ export default function SubmitYourPaper() {
                     {text}
                   </p>
                 </motion.article>
-              )
+              ),
             )}
           </motion.div>
         </div>
@@ -352,15 +333,15 @@ export default function SubmitYourPaper() {
               Before Submission
             </span>
 
-            <h2 className="mt-4 max-w-[430px] text-[24px] font-[600] leading-tight text-[#0B2C66] sm:text-[28px] lg:text-[30px]">
+            <h2 className="mt-4 max-w-[430px] text-[20px] font-[600] leading-tight text-[#0B2C66] sm:text-[24px] lg:text-[28px]">
               Manuscript Requirements
             </h2>
 
             <span className="mt-4 block h-1 w-14 rounded-full bg-[#F57C20]" />
 
             <p className="mt-5 text-[13px] leading-7 text-slate-600 sm:text-[14px]">
-              Please confirm that your manuscript follows the journal
-              guidelines and includes all required details.
+              Please confirm that your manuscript follows the journal guidelines
+              and includes all required details.
             </p>
 
             <div className="mt-7 space-y-3">
@@ -376,9 +357,7 @@ export default function SubmitYourPaper() {
                     <Check size={15} strokeWidth={3} />
                   </span>
 
-                  <p className="text-[12px] leading-6 text-slate-600">
-                    {item}
-                  </p>
+                  <p className="text-[13px] leading-6 text-slate-600">{item}</p>
                 </motion.div>
               ))}
             </div>
@@ -391,7 +370,7 @@ export default function SubmitYourPaper() {
                 />
 
                 <div>
-                  <h3 className="text-[14px] font-[600] text-[#0B2C66]">
+                  <h3 className="text-[14px] font-[530] text-[#0B2C66]">
                     Submission Declaration
                   </h3>
 
@@ -422,8 +401,8 @@ export default function SubmitYourPaper() {
             className="rounded-[28px] border border-slate-100 bg-white p-5 shadow-[0_18px_50px_rgba(15,54,110,.12)] sm:p-7 lg:p-8"
           >
             <div className="flex items-start gap-4 border-b border-slate-100 pb-6">
-              <div className="grid h-13 w-13 h-[52px] shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-[#216DED] to-[#092F70] text-white">
-                <Upload size={24} />
+              <div className="grid h-12 w-12 h-[48px] shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-[#216DED] to-[#092F70] text-white">
+                <Upload size={20} />
               </div>
 
               <div>
@@ -846,13 +825,13 @@ export default function SubmitYourPaper() {
             </div>
 
             <div>
-              <h2 className="text-[24px] font-[600] sm:text-[28px]">
+              <h2 className="text-[18px] font-[550] sm:text-[20px]">
                 Need Help Before Submission?
               </h2>
 
               <p className="mt-2 max-w-2xl text-[13px] leading-6 text-blue-100/85 sm:text-[14px]">
-                Review the author guidelines or contact the editorial office
-                for manuscript preparation support.
+                Review the author guidelines or contact the editorial office for
+                manuscript preparation support.
               </p>
             </div>
           </div>
@@ -860,7 +839,7 @@ export default function SubmitYourPaper() {
           <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
             <Link
               to="/author-guidelines"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#F57C20] px-6 py-3 text-[13px] font-[600] text-white transition duration-300 hover:-translate-y-1 hover:bg-[#FF8D35]"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#F57C20] px-4 py-3 text-[12px] font-[500] text-white transition duration-300 hover:-translate-y-1 hover:bg-[#FF8D35]"
             >
               Author Guidelines
               <ArrowRight size={17} />
@@ -868,7 +847,7 @@ export default function SubmitYourPaper() {
 
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/50 px-6 py-3 text-[13px] font-[600] text-white transition duration-300 hover:-translate-y-1 hover:bg-white hover:text-[#0B2C66]"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/50 px-4 py-3 text-[12px] font-[500] text-white transition duration-300 hover:-translate-y-1 hover:bg-white hover:text-[#0B2C66]"
             >
               Contact Editorial Office
               <Mail size={17} />
