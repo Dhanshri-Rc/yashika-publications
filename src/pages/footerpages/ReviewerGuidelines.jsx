@@ -617,8 +617,8 @@ export default function ReviewerGuidelines() {
         <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(135deg,transparent_40%,#fff_41%,transparent_42%)] [background-size:70px_70px]" />
         <div className="relative mx-auto flex max-w-[1260px] flex-col items-center justify-between gap-6 px-5 sm:px-8 lg:flex-row lg:px-10">
           <div className="flex items-center gap-5">
-            <div className="grid h-16 w-16 place-items-center rounded-full border border-white/30 bg-white/10">
-              <UserRoundCheck size={34} />
+            <div className="grid h-16 w-16 shrink-0 place-items-center rounded-full border border-white/30 bg-white/10">
+              <UserRoundCheck size={30} className="text-white" />
             </div>
             <div>
               <h2 className="text-[24px] font-[550] sm:text-[28px]">

@@ -552,10 +552,10 @@ const StandalonePageHeader = ({ scrollToSection }) => {
       <div className="absolute inset-y-0 right-0 z-0 w-full lg:w-[56%]">
         <img
           src={reviewerBanner}
-          alt="Submit research paper"
-          className="h-full w-full object-cover object-[65%_center] sm:object-center"
+          alt="Author guidelines"
+          className="h-full w-full object-cover object-[68%_center] sm:object-center"
         />
-
+        <div className="absolute inset-0 bg-[#061B46]/82 sm:bg-[#061B46]/70 lg:bg-gradient-to-r lg:from-[#0B2C66] lg:via-[#0B2C66]/55 lg:to-transparent" />
       </div>
 
       <motion.div
@@ -568,10 +568,10 @@ const StandalonePageHeader = ({ scrollToSection }) => {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute left-[38%] top-[-130px] hidden h-[560px] w-36 bg-blue-500/25 lg:block"
+        className="absolute left-[38%] top-[-130px] z-[1] hidden h-[560px] w-36 bg-blue-500/25 lg:block"
       />
 
-      <div className="absolute left-[44%] top-[-120px] hidden h-[550px] w-1 rotate-[28deg] bg-[#F57C20] lg:block" />
+      <div className="absolute left-[44%] top-[-120px] z-[2] hidden h-[550px] w-1 rotate-[28deg] bg-[#F57C20] lg:block" />
 
       <div className="relative z-20 mx-auto flex min-h-[390px] max-w-[1260px] items-center px-4 py-12 sm:min-h-[410px] sm:px-6 sm:py-14 lg:min-h-[340px] lg:px-10">
         <motion.div
@@ -632,7 +632,7 @@ const SectionHeading = ({ number, title, description }) => {
           {number}
         </span>
 
-        <div>
+        <div className="min-w-0">
           <h2 className="text-[18px] font-[700] leading-[1.35] text-[#0b3675] sm:text-[20px]">
             {title}
           </h2>
@@ -677,10 +677,16 @@ const QuickNavigation = ({ scrollToSection }) => {
                 backgroundColor: "#f4f8ff",
               }}
               className={`group flex min-h-[88px] items-center gap-3 border-[#e2e8f0] px-4 py-4 transition-colors duration-300 sm:min-h-[100px] sm:gap-4 sm:px-5 sm:py-5 ${
-                index !== quickLinks.length - 1
-                  ? "border-b xl:border-b-0 xl:border-r"
-                  : ""
-              }`}
+                index !== quickLinks.length - 1 ? "border-b" : ""
+              } ${
+                index % 2 === 0 ? "sm:border-r" : ""
+              } ${
+                index < 4 ? "lg:border-b" : "lg:border-b-0"
+              } ${
+                index % 3 !== 2 ? "lg:border-r" : "lg:border-r-0"
+              } ${
+                index < 5 ? "xl:border-r" : "xl:border-r-0"
+              } xl:border-b-0`}
             >
               <div className="flex h-[45px] w-[45px] shrink-0 items-center justify-center rounded-[7px] bg-[#eaf3ff] text-[#0861bd] transition-all duration-300 group-hover:bg-[#0861bd] group-hover:text-white">
                 <Icon size={23} strokeWidth={1.8} />
@@ -804,7 +810,7 @@ const BeforeSubmissionSection = () => {
           once: true,
           amount: 0.1,
         }}
-        className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3"
+        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
       >
         {beforeSubmission.map((item) => {
           const Icon = item.icon;
@@ -857,10 +863,10 @@ const CategoriesSection = () => {
           y: 0,
         }}
         viewport={{ once: true }}
-        className="overflow-hidden rounded-[7px] border border-[#dce5ef] bg-white shadow-[0_4px_16px_rgba(6,48,105,0.05)]"
+        className="overflow-hidden rounded-[10px] border border-[#dce5ef] bg-white shadow-[0_4px_16px_rgba(6,48,105,0.05)]"
       >
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[830px] border-collapse">
+          <table className="w-full min-w-[760px] border-collapse lg:min-w-0">
             <thead>
               <tr className="bg-[#073b82] text-white">
                 <th className="border-r border-white/15 px-4 py-3 text-left text-[11px] font-[700]">
@@ -1031,7 +1037,7 @@ const SupportingGuidelines = () => {
                 <Icon size={21} strokeWidth={1.8} />
               </div>
 
-              <div>
+              <div className="min-w-0">
                 <p className="text-[9px] font-[700] text-[#ff6b00]">
                   {section.number}
                 </p>
@@ -1129,7 +1135,7 @@ const SubmissionProcess = () => {
               boxShadow: "0 10px 25px rgba(8,97,189,0.25)",
             }}
             whileTap={{ scale: 0.97 }}
-            className="inline-flex h-[45px] items-center justify-center gap-2 rounded-[5px] bg-[#0861bd] px-7 text-[11px] font-[700] text-white transition-colors hover:bg-[#064e9b]"
+            className="inline-flex w-full max-w-[280px] items-center justify-center gap-2 rounded-[7px] bg-[#0861bd] px-5 py-3 text-[11px] font-[700] text-white transition-colors hover:bg-[#064e9b] sm:w-auto sm:px-7"
           >
             Submit Your Manuscript
             <Send size={15} />
@@ -1207,7 +1213,7 @@ const ImportantNote = () => {
       }}
       className="mx-auto mt-8 grid max-w-[1380px] overflow-hidden rounded-[10px] border border-[#ccddf0] bg-white shadow-[0_5px_18px_rgba(6,48,105,0.06)] md:grid-cols-[1fr_0.75fr]"
     >
-      <div className="flex items-start gap-3 p-4 sm:gap-4 sm:p-6">
+      <div className="flex flex-col items-start gap-3 p-4 xs:flex-row sm:gap-4 sm:p-6">
         <div className="flex h-[43px] w-[43px] shrink-0 items-center justify-center rounded-full bg-[#eaf3ff] text-[#0861bd]">
           <Info size={22} />
         </div>
@@ -1225,17 +1231,17 @@ const ImportantNote = () => {
         </div>
       </div>
 
-      <div className="flex items-center gap-3 border-t border-[#dce5ef] bg-[#f1f6fd] p-4 sm:gap-4 sm:p-6 md:border-l md:border-t-0">
+      <div className="flex items-start gap-3 border-t border-[#dce5ef] bg-[#f1f6fd] p-4 sm:items-center sm:gap-4 sm:p-6 md:border-l md:border-t-0">
         <Mail size={22} className="shrink-0 text-[#0861bd]" />
 
-        <div>
+        <div className="min-w-0">
           <p className="text-[10px] text-[#53637a]">
             For author-related enquiries:
           </p>
 
           <a
             href="mailto:editor.aierrr@yashikapublications.com"
-            className="mt-1 block break-all text-[11px] font-[700] text-[#0861bd] transition-colors hover:text-[#ff6b00] hover:underline"
+            className="mt-1 block break-all text-[10px] font-[700] text-[#0861bd] transition-colors hover:text-[#ff6b00] hover:underline sm:text-[11px]"
           >
             editor.aierrr@yashikapublications.com
           </a>
