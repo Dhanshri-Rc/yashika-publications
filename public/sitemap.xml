@@ -49,4 +49,36 @@
     <priority>0.6</priority>
   </url>
 
+  <url>
+  <loc>https://yashika-publication.web.app/submit-your-paper</loc>
+</url>
+
+<url>
+  <loc>https://yashika-publication.web.app/author-guidelines</loc>
+</url>
+
+<url>
+  <loc>https://yashika-publication.web.app/publication-ethics</loc>
+</url>
+
+<url>
+  <loc>https://yashika-publication.web.app/open-access-policy</loc>
+</url>
+
+<url>
+  <loc>https://yashika-publication.web.app/reviewer-guidelines</loc>
+</url>
+
+<url>
+  <loc>https://yashika-publication.web.app/benefits-of-reviewers</loc>
+</url>
+
+<url>
+  <loc>https://yashika-publication.web.app/review-process</loc>
+</url>
+
+<url>
+  <loc>https://yashika-publication.web.app/faq-for-authors</loc>
+</url>
+
 </urlset>

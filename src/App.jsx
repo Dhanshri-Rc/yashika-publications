@@ -1,4 +1,10 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+  Navigate,
+} from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 import Navbar from "./components/Navbar";
@@ -40,6 +46,7 @@ const AnimatedRoutes = () => {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
+        {/* Main pages */}
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/authors" element={<Authors />} />
@@ -48,40 +55,50 @@ const AnimatedRoutes = () => {
         <Route path="/resources" element={<Resources />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/submit-your-paper" element={<SubmitYourPaper />} />
-        <Route path="/review-process" element={<ReviewProcess />} />
-        <Route path="/faq-for-authors" element={<FAQforAuthor />} />
-        <Route path="/author-guidelines" element={<Authorguideline />} />
-        <Route path="/publication-ethics" element={<PublicationEthics />} />
-        <Route path="/open-access-policy" element={<OpenAccessPolicy />} />
-        <Route path="/reviewer-guidelines" element={<ReviewersGuidelines />} />
+
+        {/* Footer pages */}
+        <Route
+          path="/submit-your-paper"
+          element={<SubmitYourPaper />}
+        />
+
+        <Route
+          path="/review-process"
+          element={<ReviewProcess />}
+        />
+
+        <Route
+          path="/faq-for-authors"
+          element={<FAQforAuthor />}
+        />
+
+        <Route
+          path="/author-guidelines"
+          element={<Authorguideline />}
+        />
+
+        <Route
+          path="/publication-ethics"
+          element={<PublicationEthics />}
+        />
+
+        <Route
+          path="/open-access-policy"
+          element={<OpenAccessPolicy />}
+        />
+
+        <Route
+          path="/reviewer-guidelines"
+          element={<ReviewersGuidelines />}
+        />
+
         <Route
           path="/benefits-of-reviewers"
           element={<BenefitsOfReviewers />}
         />
-        {/* Add more routes for other pages as needed */}
-        {/* Fallback route - redirect unknown paths to Home content (SPA friendly) */}
 
-        <Route path="/submit-your-paper" element={<SubmitYourPaper />} />
-
-        <Route path="/review-process" element={<ReviewProcess />} />
-
-        <Route path="/faq-for-authors" element={<FAQforAuthor />} />
-
-        <Route path="/author-guidelines" element={<Authorguideline />} />
-
-        <Route path="/publication-ethics" element={<PublicationEthics />} />
-
-        <Route path="/open-access-policy" element={<OpenAccessPolicy />} />
-
-        <Route path="/reviewers-guidelines" element={<ReviewersGuidelines />} />
-
-        <Route
-          path="/benefits-of-reviewers"
-          element={<BenefitsOfReviewers />}
-        />
-
-        <Route path="*" element={<Home />} />
+        {/* Unknown routes */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </AnimatePresence>
   );
@@ -90,7 +107,12 @@ const AnimatedRoutes = () => {
 const AppLayout = () => {
   const location = useLocation();
 
-  const hideLayout = hideLayoutRoutes.includes(location.pathname);
+  const normalizedPath =
+    location.pathname.length > 1
+      ? location.pathname.replace(/\/+$/, "")
+      : location.pathname;
+
+  const hideLayout = hideLayoutRoutes.includes(normalizedPath);
 
   return (
     <div className="flex min-h-screen flex-col">

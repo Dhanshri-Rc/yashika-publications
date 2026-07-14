@@ -194,7 +194,7 @@ const Contact = () => {
               transition={{ duration: 0.55, delay: 0.2 }}
               className="mt-6 space-y-4"
             >
-              {contactDetails.map((item, index) => (
+              {contactDetails.map((item) => (
                 <motion.a
                   key={item.title}
                   href={item.href || undefined}
