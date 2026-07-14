@@ -277,25 +277,6 @@ export default function FAQforAuthor() {
               Find clear answers about manuscript submission, peer review,
               publication and journal policies.
             </motion.p>
-
-            <motion.div
-              variants={fadeUp}
-              className="mt-6 flex flex-wrap items-center gap-2 text-[13px] text-white/75"
-            >
-              <Link to="/" className="transition hover:text-white">
-                Home
-              </Link>
-
-              <span>/</span>
-
-              <span>For Authors</span>
-
-              <span>/</span>
-
-              <span className="font-semibold text-[#FFA65C]">
-                FAQ for Authors
-              </span>
-            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -417,25 +398,29 @@ export default function FAQforAuthor() {
             </div>
 
             <div className="mt-4 flex flex-wrap gap-2">
-              {["All", "Submission", "Peer Review", "Publication", "Policies"].map(
-                (category) => (
-                  <button
-                    type="button"
-                    key={category}
-                    onClick={() => {
-                      setActiveCategory(category);
-                      setOpenFaq(null);
-                    }}
-                    className={`rounded-full px-4 py-2 text-[12px] font-[600] transition ${
-                      activeCategory === category
-                        ? "bg-[#125FEA] text-white shadow-md shadow-blue-200"
-                        : "bg-slate-100 text-slate-600 hover:bg-blue-50 hover:text-[#125FEA]"
-                    }`}
-                  >
-                    {category}
-                  </button>
-                )
-              )}
+              {[
+                "All",
+                "Submission",
+                "Peer Review",
+                "Publication",
+                "Policies",
+              ].map((category) => (
+                <button
+                  type="button"
+                  key={category}
+                  onClick={() => {
+                    setActiveCategory(category);
+                    setOpenFaq(null);
+                  }}
+                  className={`rounded-full px-4 py-2 text-[12px] font-[600] transition ${
+                    activeCategory === category
+                      ? "bg-[#125FEA] text-white shadow-md shadow-blue-200"
+                      : "bg-slate-100 text-slate-600 hover:bg-blue-50 hover:text-[#125FEA]"
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
             </div>
           </div>
 
@@ -539,10 +524,7 @@ export default function FAQforAuthor() {
               })
             ) : (
               <div className="rounded-[22px] border border-slate-100 bg-white px-6 py-12 text-center shadow-[0_8px_26px_rgba(15,54,110,.08)]">
-                <Search
-                  size={35}
-                  className="mx-auto text-slate-300"
-                />
+                <Search size={35} className="mx-auto text-slate-300" />
 
                 <h3 className="mt-4 text-[16px] font-[600] text-[#0B2C66]">
                   No questions found
@@ -677,7 +659,7 @@ export default function FAQforAuthor() {
                         />
                       </Link>
                     </motion.article>
-                  )
+                  ),
                 )}
               </motion.div>
             </div>
@@ -712,7 +694,7 @@ export default function FAQforAuthor() {
             </div>
 
             <div>
-              <h2 className="text-[24px] font-[600] sm:text-[28px]">
+              <h2 className="text-[24px] font-[550] sm:text-[26px]">
                 Still Have a Question?
               </h2>
 
@@ -726,7 +708,7 @@ export default function FAQforAuthor() {
           <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#F57C20] px-6 py-3 text-[13px] font-[600] text-white shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-[#FF8D35]"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#F57C20] px-4 py-3 text-[13px] font-[500] text-white shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-[#FF8D35]"
             >
               Contact Editorial Office
               <ArrowRight size={17} />
@@ -734,7 +716,7 @@ export default function FAQforAuthor() {
 
             <Link
               to="/submit-your-paper"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/50 px-6 py-3 text-[13px] font-[600] text-white transition duration-300 hover:-translate-y-1 hover:bg-white hover:text-[#0B2C66]"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/50 px-4 py-3 text-[12px] font-[500] text-white transition duration-300 hover:-translate-y-1 hover:bg-white hover:text-[#0B2C66]"
             >
               Submit Your Paper
               <Send size={17} />

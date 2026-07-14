@@ -7,6 +7,7 @@ import {
   BookOpenCheck,
   Check,
   Copyright,
+  Download,
   FileCheck2,
   FileWarning,
   Fingerprint,
@@ -20,8 +21,10 @@ import {
   Sparkles,
   UserCheck,
   Users,
+  BookOpen
 } from "lucide-react";
 import logo from "../../assets/yashika-publication-logo.webp";
+import reviewerBanner from "../../assets/yashika-publication-reviewers-banner.webp";
 import editorialTeam from "../../assets/yashika-publication-editorial-team.webp";
 import peerReview from "../../assets/yashika-publication-peer-review-process.webp";
 
@@ -54,12 +57,12 @@ const ethicsPrinciples = [
     title: "Responsible Authorship",
     text: "Only individuals who made meaningful scholarly contributions should be listed as authors.",
   },
-{
-  icon: Scale,
-  number: "05",
-  title: "Conflict Disclosure",
-  text: "Authors, reviewers and editors must disclose relevant financial or personal conflicts.",
-},
+  {
+    icon: Scale,
+    number: "05",
+    title: "Conflict Disclosure",
+    text: "Authors, reviewers and editors must disclose relevant financial or personal conflicts.",
+  },
   {
     icon: ShieldCheck,
     number: "06",
@@ -191,6 +194,18 @@ const stagger = {
   },
 };
 
+const scrollToSection = (event, selector) => {
+  event.preventDefault();
+
+  const element = document.querySelector(selector);
+
+  if (element) {
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+};
 /* -------------------------------------------------------------------------- */
 /*                               MAIN COMPONENT                               */
 /* -------------------------------------------------------------------------- */
@@ -206,7 +221,7 @@ export default function PublicationEthics() {
       {/* ASYMMETRIC HERO                                                   */}
       {/* ================================================================== */}
 
-      <section className="relative overflow-hidden bg-[#071F58]">
+      {/* <section className="relative overflow-hidden bg-[#071F58]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_30%,rgba(37,99,235,.35),transparent_30%),radial-gradient(circle_at_85%_20%,rgba(245,124,32,.16),transparent_25%)]" />
 
         <div className="absolute left-0 top-0 h-full w-[42%] bg-[linear-gradient(135deg,rgba(255,255,255,.06)_25%,transparent_25%)] bg-[length:70px_70px] opacity-40" />
@@ -326,6 +341,78 @@ export default function PublicationEthics() {
             </motion.div>
           </motion.div>
         </div>
+      </section> */}
+
+      <section className="relative min-h-[340px] overflow-hidden bg-[#082D68]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_20%,rgba(37,99,235,.42),transparent_30%),linear-gradient(115deg,#061B46_0%,#0B2C66_50%,transparent_50%)]" />
+
+        <div className="absolute inset-y-0 right-0 w-full lg:w-[56%]">
+          <img
+            src={reviewerBanner}
+            alt="Submit research paper"
+            className="h-full w-full object-cover object-center"
+          />
+
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0B2C66] via-[#0B2C66]/45 to-transparent lg:from-[#0B2C66]/65" />
+        </div>
+
+        <motion.div
+          animate={{
+            y: [0, -12, 0],
+            rotate: [25, 28, 25],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute left-[38%] top-[-130px] hidden h-[560px] w-36 bg-blue-500/25 lg:block"
+        />
+
+        <div className="absolute left-[44%] top-[-120px] hidden h-[550px] w-1 rotate-[28deg] bg-[#F57C20] lg:block" />
+
+        <div className="relative mx-auto flex min-h-[340px] max-w-[1260px] items-center px-5 py-14 sm:px-8 lg:px-10">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            animate="show"
+            className="max-w-[650px]"
+          >
+            <motion.img
+              variants={fadeUp}
+              src={logo}
+              alt="Yashika Publications"
+              className="mb-7 h-10 w-auto object-contain sm:h-12"
+            />
+
+            <motion.p
+              variants={fadeUp}
+              className="mb-3 text-[14px] font-[500] uppercase tracking-[0.2em] text-[#FFA65C]"
+            >
+              Ethical Publishing
+            </motion.p>
+
+            <motion.h1
+              variants={fadeUp}
+              className="text-white text-[36px] font-[600] leading-tight sm:text-[40px] md:text-[44px]"
+            >
+              Publication Ethics
+            </motion.h1>
+
+            <motion.span
+              variants={fadeUp}
+              className="mt-3 block h-1 w-14 rounded-full bg-[#F57C20]"
+            />
+
+            <motion.p
+              variants={fadeUp}
+              className="mt-5 max-w-[590px] text-[16px] font-[500] leading-7 text-white/90 sm:text-[18px]"
+            >
+              Protecting academic integrity through transparent editorial
+              practices, responsible authorship and ethical peer review.
+            </motion.p>
+          </motion.div>
+        </div>
       </section>
 
       {/* ================================================================== */}
@@ -405,7 +492,7 @@ export default function PublicationEthics() {
                   }`}
                 >
                   <span
-                    className={`absolute right-5 top-3 text-[48px] font-black ${
+                    className={`absolute right-5 top-3 text-[48px] font-[550] ${
                       index === 0 || index === 5
                         ? "text-white/5"
                         : "text-blue-50"
@@ -419,8 +506,8 @@ export default function PublicationEthics() {
                       index === 0 || index === 5
                         ? "bg-white/10 text-white"
                         : index % 2 === 1
-                        ? "bg-orange-50 text-[#F57C20]"
-                        : "bg-blue-50 text-[#125FEA]"
+                          ? "bg-orange-50 text-[#F57C20]"
+                          : "bg-blue-50 text-[#125FEA]"
                     }`}
                   >
                     <Icon size={24} />
@@ -446,7 +533,7 @@ export default function PublicationEthics() {
                     {text}
                   </p>
                 </motion.article>
-              )
+              ),
             )}
           </motion.div>
         </div>
@@ -598,10 +685,7 @@ export default function PublicationEthics() {
                   whileHover={{ x: 5 }}
                   className="flex items-center gap-3 rounded-[17px] border border-red-100 bg-red-50/60 px-4 py-3"
                 >
-                  <AlertTriangle
-                    size={17}
-                    className="shrink-0 text-red-500"
-                  />
+                  <AlertTriangle size={17} className="shrink-0 text-red-500" />
 
                   <span className="text-[12px] font-[500] leading-5 text-slate-700">
                     {item}
@@ -652,9 +736,7 @@ export default function PublicationEthics() {
               >
                 <div
                   className={`absolute left-1/2 top-0 z-10 grid h-16 w-16 -translate-x-1/2 -translate-y-2 place-items-center rounded-full text-[15px] font-[600] text-white ring-8 ring-[#0B2C66] ${
-                    index === 1 || index === 3
-                      ? "bg-[#F57C20]"
-                      : "bg-[#125FEA]"
+                    index === 1 || index === 3 ? "bg-[#F57C20]" : "bg-[#125FEA]"
                   }`}
                 >
                   {number}
@@ -677,7 +759,7 @@ export default function PublicationEthics() {
       {/* CTA SECTION                                                        */}
       {/* ================================================================== */}
 
-      <section className="relative overflow-hidden bg-white py-12">
+      {/* <section className="relative overflow-hidden bg-white py-12">
         <div className="mx-auto max-w-[1260px] px-5 sm:px-8 lg:px-10">
           <div className="relative overflow-hidden rounded-[30px] bg-gradient-to-r from-[#0D63E8] via-[#084AB9] to-[#071F58] px-6 py-10 text-white shadow-[0_28px_65px_rgba(7,45,115,.22)] sm:px-10 lg:px-12">
             <div className="absolute inset-0 opacity-15 [background-image:linear-gradient(135deg,transparent_42%,#fff_43%,transparent_44%)] [background-size:85px_85px]" />
@@ -731,6 +813,59 @@ export default function PublicationEthics() {
                 </Link>
               </div>
             </div>
+          </div>
+        </div>
+      </section> */}
+      <section className="relative overflow-hidden bg-[#071F58] py-11 text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_50%,rgba(34,104,235,.45),transparent_30%),radial-gradient(circle_at_90%_20%,rgba(245,124,32,.18),transparent_25%)]" />
+
+        <motion.div
+          animate={{
+            x: [0, 18, 0],
+            rotate: [0, 4, 0],
+          }}
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute -right-12 -top-24 h-72 w-72 rounded-full border border-blue-200/20"
+        />
+
+        <div className="relative mx-auto flex max-w-[1260px] flex-col items-center justify-between gap-7 px-5 text-center sm:px-8 lg:flex-row lg:px-10 lg:text-left">
+          <div className="flex max-w-3xl flex-col items-center gap-5 sm:flex-row">
+            <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl border border-white/25 bg-white/10">
+              <BookOpen size={31} />
+            </div>
+
+            <div>
+              <h2 className="text-[18px] font-[550] sm:text-[20px]">
+                Questions About Publication Ethics?
+              </h2>
+
+              <p className="mt-2 max-w-2xl text-[13px] leading-6 text-blue-100/85 sm:text-[14px]">
+                Contact the editorial office to report an ethical concern or
+                request clarification about our publication policies.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+            <Link
+              to="/author-guidelines"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#F57C20] px-4 py-3 text-[12px] font-[500] text-white transition duration-300 hover:-translate-y-1 hover:bg-[#FF8D35]"
+            >
+              Submit Your Paper
+              <ArrowRight size={17} />
+            </Link>
+
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/50 px-4 py-3 text-[12px] font-[500] text-white transition duration-300 hover:-translate-y-1 hover:bg-white hover:text-[#0B2C66]"
+            >
+              Contact Editorial Office
+              <Mail size={17} />
+            </Link>
           </div>
         </div>
       </section>
